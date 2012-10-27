@@ -10,7 +10,7 @@ html * {
 /* ========= */
 @page {
 	margin: 12mm 16mm 10mm 16mm;
-	size: 7in 9.25in landscape;
+	size: 8.5in 11in portrait;
 
 	@footnotes {
 		border-top: thin solid black;
@@ -63,12 +63,12 @@ h1, h2, h3, h4, h5, h6 {
 /* = CONTAINER = */
 /* ============= */
 div.container {
-	height: 7in;
+	height: 11in;
 	left: 0;
 	page: cover;
 	position: absolute;
 	top: 0;
-	width: 9.25in;
+	width: 8.5in;
 	z-index: -1;
 }
 
@@ -84,7 +84,7 @@ div.frontcover div {
 	padding-top: 0.25in;
 	position: absolute;
 	top: 2.5in;
-	width: 7.25in;
+	width: 8.5in;
 }
 
 div.frontcover h1 {
