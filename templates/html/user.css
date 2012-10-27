@@ -1,1 +1,8 @@
 /* add custom CSS */
+pre, code {
+  page-break-inside: avoid;
+}
+
+hr {
+  border: 1px solid black;
+}
