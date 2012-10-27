@@ -1,0 +1,2 @@
+* FetchApp
+* getdpd.com
