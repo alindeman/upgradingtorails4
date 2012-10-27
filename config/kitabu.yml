@@ -1,5 +1,5 @@
 # The book's title. Will be used everywhere!
-title: "[Your Book Title]"
+title: "Upgrading to Rails 4"
 
 # The book's language.
 language: en
@@ -22,18 +22,18 @@ publisher: "Andy Lindeman"
 published_at: "2012-10-27"
 
 # Some book description.
-subject: "[Your book description]"
+subject: "A guide for upgrading applications from Rails 3 to Rails 4"
 
 # Some keywords that identify this book.
-keywords: "[Your book keywords (comma-separated)]"
+keywords: "rails4, rails, ruby, web"
 
 # Some unique identification. Works great with your domain
 # like `http://yourbook.example.com`.
-uid: "5c1a4510c6a8e9404ef36aa4fa910c9c"
+uid: "http://upgradingtorails4.com"
 
 # Your book identification like ISBN or ISSN.
 identifier:
-  id: "http://yourbook.example.com"
+  id: "http://upgradingtorails4.com"
   type: "URL" # can be ISBN, ISSN or URL
 
 # This book authors.
