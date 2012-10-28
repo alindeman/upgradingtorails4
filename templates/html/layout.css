@@ -76,15 +76,13 @@ div.container {
 /* = FRONTCOVER = */
 /* ============== */
 div.frontcover {
-	background: #fff;
 }
 
-div.frontcover div {
-	left: 1in;
-	padding-top: 0.25in;
-	position: absolute;
-	top: 2.5in;
-	width: 8.5in;
+div.frontcover img {
+  margin: 0;
+  padding: 0;
+  width: 8.5in;
+  height: 11in;
 }
 
 div.frontcover h1 {
