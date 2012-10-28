@@ -6,3 +6,5 @@ output/*.txt
 output/*.pdf
 output/tmp
 .DS_Store
+.bundle
+bin/
