@@ -1,2 +1,3 @@
-output/*.{html,epub,pdf}
+output/.*{html,epub,pdf}
 output/tmp
+.DS_Store
