@@ -1,3 +1,8 @@
-output/.*{html,epub,pdf}
+output/*.html
+output/*.epub
+output/*.html
+output/*.mobi
+output/*.txt
+output/*.pdf
 output/tmp
 .DS_Store
