@@ -4,18 +4,13 @@ Querying the database looked drastically different between Rails 2 and Rails 3.
 Thankfully Rails 4 does not change things up nearly as much but there are some
 improvements and gotchas you need to be aware of.
 
-### Pay attention if ...
-
-* You see deprecation warning when making database queries
-* TODO
-
 ---
 
 ### Rails 2 Finder Syntax
 
-Speaking of Rails 2, Rails 4 deprecates the older style of finding records. If
-you have an application that was upgraded to Rails 3 without using the new
-chained syntax, you will receive lots of deprecation warnings in Rails 4:
+Rails 2 finder syntax is deprecated. If you have an application that uses
+`find(:all)` and `find(:first)`, you'll need to transition it to the new
+chained syntax.
 
 @@@ ruby
 Post.find(:all, conditions: ["created_at > ?", 2.days.ago])
@@ -34,8 +29,10 @@ Post.where("created_at > ?", 2.days.ago)
 
 ### Relation#all
 
-In Rails 3, calling `all` at the end of a chain of scopes forced the database
-query to execute and the results to be returned as an array:
+Calling `all` on a relation in Rails 4 will return a new relation instead of
+an `Array`.
+
+Consider this code snippet and the return values in Rails 3:
 
 @@@ ruby
 Post.where("created_at > ?, 2.days.ago).all
@@ -45,8 +42,8 @@ Post.where("created_at > ?", 2.days.ago).all.class
 # Array
 @@@
 
-In Rails 4, **`all` returns a new Relation**. This new relation simply
-represents "all" of the records and can be further chained onto.
+In Rails 4, however, `all` does not force the query to an `Array`. It has
+similar behavior to `scoped` in Rails 3:
 
 @@@ ruby
 Post.all.where("created_at > ?", 2.days.ago)
@@ -56,22 +53,22 @@ Post.all.where("created_at > ?", 2.days.ago).class
 # ActiveRecord::Relation
 @@@
 
-If you see errors caused by code that previously expected an `Array` and is not
-handling the change to `ActiveRecord::Relation` properly, you can change the
-call from `all` to `to_a`:
+This change should mostly be transparent. Both `ActiveRecord::Relation` and
+`Array` are `Enumerable`; furthermore, if there is a method that
+`ActiveRecord::Relation` does not respond to, but `Array` does`, the method
+will be proxied through to a loaded version of the query results transparently.
+
+However, if you see errors caused by code that previously expected an `Array`
+and is not handling the change to `ActiveRecord::Relation` properly, you can
+force the scope to execute and return an `Array` with `to_a`:
 
 @@@ ruby
 Post.where("created_at > ?", 2.days.ago).to_a.class
 # Array
 @@@
 
-If you've been thinking that `all` in Rails 4 sounds like `scoped` in Rails 3,
-you're right! And in fact, `Relation#scope` is deprecated in favor of `all`.
-
-@@@ ruby
-Post.scoped # Rails 3
-Post.all    # Rails 4
-@@@
+This is also a change you can start making today, as `ActiveRecord::Relation`
+supports `to_a` in Rails 3.
 
 ### Relation#none
 
@@ -111,3 +108,70 @@ the query has been stunted.
 
 The `none` scope is implemented by returning an `ActiveRecord::NullRelation`.
 No database query will be used when a `none` scope is chained on.
+
+### Relation#includes
+
+The `includes` scope is most often used to eager-load associated records, to
+avoid the [N+1 query
+problem](http://guides.rubyonrails.org/active_record_querying.html#eager-loading-associations):
+
+@@@ ruby
+# OUCH: Executes a query to find all posts, then N queries to find each posts'
+# comments!
+Post.find_each do |post|
+  post.comments.each do |comment|
+    # ...
+  end
+end
+@@@
+
+A solution that `includes` comments allows Rails to run 1 or 2 queries at most:
+@@@ ruby
+Post.includes(:comments).find_each do |post|
+  post.comments.each do |comment|
+    # ...
+  end
+end
+@@@
+
+Rails usually uses an `OUTER JOIN` to perform the eager loading. However, while
+it was never *guaranteed* to perform an `OUTER JOIN`, many developers have
+written code that takes advantage of this hidden implementation detail.
+
+For instance, a query that selects a post and its *visible* comments only.
+
+@@@ ruby
+Post.includes(:comments).where("comments.visible = ?", true).find_each do |post|
+  # ...
+end
+@@@
+
+**This will cause a deprecation warning in Rails 4.**
+
+@@@ ruby
+Post.includes(:comments).where("comments.visible = ?", true)
+# DEPRECATION WARNING: It looks like you are eager loading table(s) (one of:
+# posts, comments) that are referenced in a string SQL snippet.
+@@@
+
+Rails was required to parse the string in the `where` clause to figure out that
+the `comments` table was referenced.
+
+There are a few ways to fix it; first, you can explicitly tell Rails that the
+query `references` a joined table:
+
+@@@ ruby
+Post.includes(:comments).references(:comments).where("comments.visible = ?", true)
+@@@
+
+Or you can use a hash of conditions, which does not require the `references`:
+
+@@@ ruby
+Post.includes(:comments).where(comments: { visible: true })
+@@@
+
+This deprecation will only bite you if you pair `includes` with a `where`
+condition on the joined table. If you only use `includes` only to eager load
+associations, this will not affect your code.
+If you only use `includes` for eager loading associations, you should have no
+problems upgrading.
