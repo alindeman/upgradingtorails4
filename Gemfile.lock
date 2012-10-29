@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alindeman/kitabu.git
-  revision: fe000f36f6c4a296c327db50f1afb5dc68dcff40
+  revision: 19df52a0e1e0fd2e8e440e817c6738bfd793033f
   specs:
     kitabu (1.0.0)
       RedCloth
