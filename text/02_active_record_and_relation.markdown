@@ -53,10 +53,11 @@ Post.all.where("created_at > ?", 2.days.ago).class
 # ActiveRecord::Relation
 @@@
 
-This change should mostly be transparent. Both `ActiveRecord::Relation` and
-`Array` are `Enumerable`; furthermore, if there is a method that
-`ActiveRecord::Relation` does not respond to, but `Array` does`, the method
-will be proxied through to a loaded version of the query results transparently.
+In most cases, the change should not affect your code. Both
+`ActiveRecord::Relation` and `Array` are `Enumerable`; furthermore, if there is
+a method that `ActiveRecord::Relation` does not respond to but `Array` does`,
+the method will be proxied through to a version of the results that has been
+loaded into an `Array`.
 
 However, if you see errors caused by code that previously expected an `Array`
 and is not handling the change to `ActiveRecord::Relation` properly, you can
@@ -73,11 +74,11 @@ supports `to_a` in Rails 3.
 ### Relation#none
 
 It was previously not possible to reliably return a scope that would select no
-records, but still allow other scopes to be chained onto it. However, Rails 4
-introduces the `none` scope to faciliate this!
+records but still allow other scopes to be chained onto it. However, Rails 4
+introduces the `none` scope to faciliate this.
 
-For example, consider an authorization scheme where an unapproved user cannot
-view any posts:
+Consider an authorization scheme where an unapproved user cannot view any
+posts:
 
 @@@ ruby
 class Post < ActiveRecord::Base
@@ -135,10 +136,10 @@ end
 @@@
 
 Rails usually uses an `OUTER JOIN` to perform the eager loading. However, while
-it was never *guaranteed* to perform an `OUTER JOIN`, many developers have
-written code that takes advantage of this hidden implementation detail.
+Rails never *guaranteed* that it would use an `OUTER JOIN`, many developers
+have written code that takes advantage of this implementation detail.
 
-For instance, a query that selects a post and its *visible* comments only.
+Consider a query that selects a post and its visible comments:
 
 @@@ ruby
 Post.includes(:comments).where("comments.visible = ?", true).find_each do |post|
@@ -157,8 +158,8 @@ Post.includes(:comments).where("comments.visible = ?", true)
 Rails was required to parse the string in the `where` clause to figure out that
 the `comments` table was referenced.
 
-There are a few ways to fix it; first, you can explicitly tell Rails that the
-query `references` a joined table:
+There are a few ways to fix the code; first, you can explicitly tell Rails that
+the query `references` a joined table:
 
 @@@ ruby
 Post.includes(:comments).references(:comments).where("comments.visible = ?", true)
@@ -171,7 +172,5 @@ Post.includes(:comments).where(comments: { visible: true })
 @@@
 
 This deprecation will only bite you if you pair `includes` with a `where`
-condition on the joined table. If you only use `includes` only to eager load
-associations, this will not affect your code.
-If you only use `includes` for eager loading associations, you should have no
-problems upgrading.
+condition on the joined table. If you use `includes` only to eager load
+associations, this deprecation will not affect your code.
