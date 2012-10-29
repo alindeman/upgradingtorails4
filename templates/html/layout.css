@@ -342,6 +342,7 @@ acronym:after {
 /* ============= */
 .highlight {
 	font-size: 20pt;
+  margin-left: 10px;
 }
 
 .highlight strong {
