@@ -210,7 +210,6 @@ div.frontcover * {
 /* = CODING = */
 /* ========== */
 pre, code {
-	color: #090;
 	font-family: monaco, monospace;
 	font-size: 9pt;
 }
