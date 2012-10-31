@@ -27,6 +27,110 @@ chained scope syntax introduced in Rails 3:
 Post.where("created_at > ?", 2.days.ago)
 @@@
 
+### Dynamic Finders
+
+Many of the dynamic finders have been deprecated in favor of alternate syntax.
+Most of the alternate syntax is already supported in Rails 3.2.
+
+<table>
+  <tr>
+    <th>Deprecated Syntax</th>
+    <th>Preferred Syntax</th>
+  </tr>
+  <tr>
+    <td>
+      <code>find_all_by_...</code><br/>
+      <code>scoped_by_...</code>
+    </td>
+    <td>
+      <code>where(...)</code>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>find_last_by_...</code>
+    </td>
+    <td>
+      <code>where(...).last</code>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>first_or_initialize_by_...</code>
+    </td>
+    <td>
+      <code>first_or_initialize_by(...)</code>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>find_or_create_by_...</code><br/>
+      <code>first_or_create_by_...!</code>
+    </td>
+    <td>
+      <code>find_or_create_by(...)</code><br/>
+      <code>find_or_create_by!(...)</code>
+    </td>
+  </tr>
+</table>
+
+An example of each and the newly preferred alternative:
+
+@@@ ruby
+# User.find_all_by_last_name("Lindeman")
+User.where(last_name: "Lindeman")
+
+# User.find_last_by_email("andy@andylindeman.com")
+User.where(email: "andy@andylindeman.com").last
+
+# User.first_or_initialize_by_github_id(395621)
+User.first_or_initialize_by(github_id: 395621)
+
+# User.find_or_create_by_twitter_handle("alindeman")
+User.first_or_create_by(twitter_handle: "alindeman")
+@@@
+
+Finally, the `find_by_...` dynamic finder is *not* deprecated. Code such as
+`User.find_by_email("andy@andylindeman.com")` will continue functioning without
+deprecation warnings.
+
+### Eager-Evaluated Scopes
+
+Creating a scope without a callable object is deprecated in Rails 4:
+
+@@@ ruby
+class Comment < ActiveRecord::Base
+  scope :visible, where(visible: true)
+end
+# DEPRECATION WARNING: Using #scope without passing a callable object is
+# deprecated.
+@@@
+
+The preferred syntax in Rails 4 is to create scopes by passing a proc or lambda
+(though any object that responds to `call` will do).
+
+@@@ ruby
+class Comment < ActiveRecord::Base
+  # Ruby 1.9 lambda syntax
+  scope :visible, -> { where(visible: true) }
+
+  # Also acceptable
+  scope :visible, proc { where(visible: true) }
+  scope :visible, lambda { where(visible: true) }
+end
+@@@
+
+In addition to reducing complexity for ActiveRecord, this new requirement will
+prevent the "age-old" bug when using the current time in a scope:
+
+@@@ ruby
+class Comment < ActiveRecord::Base
+  # No longer possible to make this error where the
+  # time is "stuck" at the time the web server starts
+  scope :recent, where("created_at > ?", 5.days.ago)
+end
+@@@
+
 ### Relation#all
 
 Calling `all` on a relation in Rails 4 will return a new relation instead of
