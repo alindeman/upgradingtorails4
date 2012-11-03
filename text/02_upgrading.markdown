@@ -61,7 +61,7 @@ If the application uses any gems for the asset pipeline (introduced in Rails
 gem 'sass-rails', github: 'rails/sass-rails'
 
 # Replaces "gem 'coffee-rails', '~>3.x.y'"
-gem 'coffee-rails', github: 'rails/coffe-rails'
+gem 'coffee-rails', github: 'rails/coffee-rails'
 @@@
 
 <!-- TODO: Remove after release -->
