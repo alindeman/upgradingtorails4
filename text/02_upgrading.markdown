@@ -10,8 +10,7 @@ That said, upgrading to Rails 4 is a bit more involved than simply running
 
 Rails 4 *requires* at least Ruby 1.9.3. Attempting to run it on anything below
 1.9.3 will either cause syntax errors to be raised before the application can
-even get started or cause the application to boot but raise various
-difficult-to-debug runtime errors.
+even get started or cause the raise runtime errors after booting.
 
 If using [`rvm`](https://rvm.io/), installing Ruby 1.9.3 is straightforward:
 
@@ -27,7 +26,7 @@ $ rvm use --rvmrc 1.9.3
 @@@
 
 <!-- TODO: actcheck this -->
-If an existing application uses [JRuby](http://jruby.org), Rails 4.0 requires
+If an existing application uses [JRuby](http://jruby.org), Rails 4 requires
 version 1.7.0 or above.
 
 @@@ text
@@ -38,7 +37,7 @@ $ rvm use --rvmrc jruby-1.7.0
 
 ### Upgrading Rails Itself
 
-Rails 4 has not been yet been packaged and released; the best way to upgrade
+Rails 4 has not been yet been packaged and released; the best way to upgrade an
 existing application is to tell Bundler to use the `master` branch of the Rails
 git repository.
 
@@ -50,9 +49,9 @@ Open `Gemfile` in a text editor and change the line that starts with `gem
 gem 'rails', github: 'rails/rails'
 @@@
 
-Rails 4 also depends on newer versions of gems that drive the asset pipeline.
-If the application uses any gems for the asset pipeline (introduced in Rails
-3.1), they must also be upgraded:
+Rails 4 also depends on newer versions of gems that drive the asset pipeline
+introduced in Rails 3.1. If the application uses any gems for the asset
+pipeline, they must also be upgraded:
 
 @@@ ruby
 # Gemfile
@@ -65,11 +64,8 @@ gem 'coffee-rails', github: 'rails/coffee-rails'
 @@@
 
 <!-- TODO: Remove after release -->
-Additionally because Rails 4 has not yet been released, it currently depends on
-other gems that themselves have not yet been released.
-
-For this reason, it is necessary to add these lines to `Gemfile` outside of
-any groups:
+Additionally, Rails 4 depends on other gems that themselves have not yet been
+released. For this reason, it is necessary to add these lines to `Gemfile`:
 
 @@@ ruby
 # Gemfile
@@ -98,8 +94,7 @@ Fetching gem metadata from https://rubygems.org/..
 Using ...
 @@@
 
-<!-- TODO: At some point, factory_girl_rails will support Rails 4.0. Clarify
-the point here -->
+<!-- TODO: At some point, ransack will support Rails 4. Clarify the point here -->
 It is also possible, however, that an application depends on gems that are
 locked to Rails 3. If this happens, `bundle` will show output like:
 
@@ -113,17 +108,39 @@ Bundler could not find compatible versions for gem "activerecord":
       activerecord (4.0.0.beta)
 @@@
 
+In this case the current version of
+[ransack](https://github.com/ernie/ransack), a gem for performing complicated
+database searches, is not yet compatible with Rails 4.
+
 If the gem is under active development, it may already have a version that
 supports Rails 4. Check the gem's website or source repository (often hosted on
 [GitHub](http://github.com)).
 
-If a Rails 4 compatible version is available, tweak the version in `Gemfile`
-and add that gem to the list passed to `bundle update`:
+If a Rails 4 compatible version is available, specify the compatible version in
+`Gemfile` and add that gem to the list passed to `bundle update`:
 
-@@@ text
-bundle update rails ransack
+@@@ ruby
+# Gemfile
+gem 'ransack', 'X.Y.Z' # TODO
 @@@
 
-The list of gems needing update may grow and it may feel like playing
-whack-a-mole, but it's a necessary pain as Bundler will not allow any
-dependency to conflict, even temporarily.
+@@@ text
+$ bundle update rails ransack
+@@@
+
+If a Rails 4 compatible version is not yet available, the upgrade is
+unfortunately not possible until that gem adds support or the gem is removed
+from the application.
+
+Check the gem's issue tracker to see if the authors are aware of the
+incompatibility; if not, create a new issue. If you have the time, the best way
+to help a gem become compatible with Rails 4 is to [fork it, fix it, and make a
+pull request](https://help.github.com/articles/creating-a-pull-request).
+
+<!-- TODO: Add info about using a fork -->
+
+It is possible that an application will require many iterations of `bundle
+update`, seeing an incompatibility, upgrading the outdated gem, and rerunning
+`bundle update`. It may begin feel like a game of whack-a-mole! Once `bundle`
+does run successfully, though, you are riding on Rails 4 and are ready to move
+on through rest of the book.
