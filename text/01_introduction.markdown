@@ -7,13 +7,14 @@ certain problems in the bud now to save pain later.
 My goal with this book is to provide a clear path for upgrading Rails 3
 applications to Rails 4.
 
-The book is split into two major parts: deprecations and new features.
-Deprecations come first because that section contains information about
-features you may be using that are either going to be removed or are already
-removed from Rails 4.
+The book is split into three major parts:
 
-The new features section covers novel features of Rails 4 that you may want
-to be aware of, especially when upgrading. Many of these new features will
+1. Deprecations: features removed in Rails 4 or marked for removal in a future
+   release
+2. New Features: novel features in Rails 4 to be aware of, especially when
+   upgrading
+3. Common Upgarding Errors: scenarios you might encounter when upgrading a
+   Rails application and how to fix them
 
 ### Beta
 
