@@ -48,3 +48,12 @@ If you need to preserve graceful degradation of AJAX forms in Rails 4:
 * Re-enable embedding tokens on a case-by-case basis by passing
   `authenticity_token: true` in the options to `form_for` (e.g., `form_for
   @obj, remote: true, authenticity_token: true`).
+
+### Caching
+
+TODO: Rails 4 removes action caching and page caching.
+
+### Disabling Asset Pipeline
+
+TODO: Disabling the asset pipeline is easier. Simply remove the gems; no need
+for configuration options.
