@@ -1,13 +1,11 @@
 ## Rails.queue
 
 `Rails.queue` adds an abstraction layer between your code and background job
-processors
+processors.
 
-### Pay attention if ...
-
-<!-- TODO: add links to each of these gems -->
-* You use a gem like `queue_classic`, `delayed_job`, `resque` or `sidekiq` to
-manage background tasks
+If an existing application uses a gem like `queue_classic`, `delayed_job`,
+`resque` or `sidekiq` to manage background tasks, it may benefit from hiding
+the specifics of those gems behind the generic facade of `Rails.queue`.
 
 ---
 
