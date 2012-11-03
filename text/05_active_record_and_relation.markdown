@@ -239,3 +239,8 @@ Post.includes(:comments).where(comments: { visible: true })
 This deprecation will only bite you if you pair `includes` with a `where`
 condition on the joined table. If you use `includes` only to eager load
 associations, this deprecation will not affect your code.
+
+### Relation#order
+
+<!-- TODO: `order` prepends rather than appends -->
+<!-- http://edgeguides.rubyonrails.org/active_record_querying.html#ordering -->
