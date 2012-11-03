@@ -133,11 +133,11 @@ unfortunately not possible until that gem adds support or the gem is removed
 from the application.
 
 Check the gem's issue tracker to see if the authors are aware of the
-incompatibility; if not, create a new issue. If you have the time, the best way
-to help a gem become compatible with Rails 4 is to [fork it, fix it, and make a
-pull request](https://help.github.com/articles/creating-a-pull-request).
+incompatibility; if not, create a new issue.
 
-<!-- TODO: Add info about using a fork -->
+It is also possible that the gem already works with Rails 4 and the constraints
+that the gem authors impose is unnecessary. For information on how to fork the
+gem and loosen the constraints, see Appendix A (TODO).
 
 It is possible that an application will require many iterations of `bundle
 update`, seeing an incompatibility, upgrading the outdated gem, and rerunning
