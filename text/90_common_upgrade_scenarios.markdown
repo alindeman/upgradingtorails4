@@ -1,4 +1,4 @@
-## Common Upgrading Errors
+## Common Upgrading Scenarios
 
 This section covers common error messages and other behavior that is likely to
 occur when upgrading applications from Rails 3 to Rails 4.
