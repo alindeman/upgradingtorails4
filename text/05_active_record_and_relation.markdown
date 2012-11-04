@@ -1,4 +1,4 @@
-## ActiveRecord & ActiveRecord::Relation
+## ActiveRecord
 
 Querying the database changed dramactially from Rails 2 and Rails 3.
 Thankfully Rails 4 does not change things up nearly as much, but there are some
