@@ -74,6 +74,29 @@ gem 'activerecord-deprecated_finders',
 gem 'journey', github: 'rails/journey'
 @@@
 
+Finally, Rails 4 moves many features into gems that were previously shipped
+with Rails itself. Later chapters go into more detail about these changes. For
+now, however, add all of the gems that are required to keep many Rails
+features working properly after upgrading:
+
+@@@ ruby
+# Gemfile
+gem 'protected_attributes',
+  github: 'rails/protected_attributes'
+
+gem 'activeresource',
+  github: 'rails/activeresource'
+
+gem 'actionpack-action_caching',
+  github: 'rails/actionpack-action_caching'
+
+gem 'actionpack-page_caching',
+  github: 'rails/actionpack-page_caching'
+
+gem 'activerecord-session_store',
+  github: 'rails/activerecord-session_store'
+@@@
+
 Save `Gemfile` and run from the terminal:
 
 @@@ text
