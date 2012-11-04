@@ -1,7 +1,7 @@
 ## ActiveRecord & ActiveRecord::Relation
 
-Querying the database looked drastically different between Rails 2 and Rails 3.
-Thankfully Rails 4 does not change things up nearly as much but there are some
+Querying the database changed dramactially from Rails 2 and Rails 3.
+Thankfully Rails 4 does not change things up nearly as much, but there are some
 improvements and gotchas you need to be aware of.
 
 ---
@@ -120,17 +120,6 @@ class Comment < ActiveRecord::Base
 end
 @@@
 
-In addition to reducing complexity for ActiveRecord, this new requirement will
-prevent the "age-old" bug when using the current time in a scope:
-
-@@@ ruby
-class Comment < ActiveRecord::Base
-  # No longer possible to make this error where the
-  # time is "stuck" at the time the web server starts
-  scope :recent, where("created_at > ?", 5.days.ago)
-end
-@@@
-
 ### Relation#all
 
 Calling `all` on a relation in Rails 4 will return a new relation instead of
@@ -139,7 +128,7 @@ an `Array`.
 Consider this code snippet and the return values in Rails 3:
 
 @@@ ruby
-Post.where("created_at > ?, 2.days.ago).all
+Post.where("created_at > ?", 2.days.ago).all
 # [Post, Post]
 
 Post.where("created_at > ?", 2.days.ago).all.class
@@ -157,11 +146,11 @@ Post.all.where("created_at > ?", 2.days.ago).class
 # ActiveRecord::Relation
 @@@
 
-In most cases, the change should not affect your code. Both
-`ActiveRecord::Relation` and `Array` are `Enumerable`; furthermore, if there is
-a method that `ActiveRecord::Relation` does not respond to but `Array` does`,
-the method will be proxied through to a version of the results that has been
-loaded into an `Array`.
+In most cases, the change should not negatively affect your code. Both
+`ActiveRecord::Relation` and `Array` act as  `Enumerable`; furthermore, if
+there is a method that `ActiveRecord::Relation` does not respond to but `Array`
+does, the method will be proxied through to a version of the results that has
+been loaded into an `Array`.
 
 However, if you see errors caused by code that previously expected an `Array`
 and is not handling the change to `ActiveRecord::Relation` properly, you can
@@ -177,13 +166,13 @@ supports `to_a` in Rails 3.
 
 ### Relation#includes
 
-The `includes` scope is most often used to eager-load associated records, to
+The `includes` scope is most often used to eager load associated records, to
 avoid the [N+1 query
 problem](http://guides.rubyonrails.org/active_record_querying.html#eager-loading-associations):
 
 @@@ ruby
-# OUCH: Executes a query to find all posts, then N queries to find each posts'
-# comments!
+# OUCH: Executes a query to find all posts, then
+# N queries to find each posts' comments!
 Post.find_each do |post|
   post.comments.each do |comment|
     # ...
@@ -192,6 +181,7 @@ end
 @@@
 
 A solution that `includes` comments allows Rails to run 1 or 2 queries at most:
+
 @@@ ruby
 Post.includes(:comments).find_each do |post|
   post.comments.each do |comment|
@@ -223,14 +213,15 @@ Post.includes(:comments).where("comments.visible = ?", true)
 Rails was required to parse the string in the `where` clause to figure out that
 the `comments` table was referenced.
 
-There are a few ways to fix the code; first, you can explicitly tell Rails that
-the query `references` a joined table:
+In Rails 4, you must explicitly tell Rails that the query `references` a joined
+table:
 
 @@@ ruby
 Post.includes(:comments).references(:comments).where("comments.visible = ?", true)
 @@@
 
-Or you can use a hash of conditions, which does not require the `references`:
+Alternatively you can use a hash of conditions, which does not require the
+`references`:
 
 @@@ ruby
 Post.includes(:comments).where(comments: { visible: true })
