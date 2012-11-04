@@ -1,4 +1,4 @@
-## ActiveRecord & ActiveRecord::Relation
+## ActiveRecord
 
 Rails 4 did not just deprecate features of ActiveRecord, it also added some
 compelling new ones.
@@ -36,8 +36,8 @@ end
 @@@
 
 The `none` scope is returned by `Post.authorized` if the user is unapproved.
-The controller can still tack on more scopes (e.g., `limit(10)`) even though
-the query has been stunted.
+The controller can tack on more scopes (e.g., `limit(10)`) even though the
+query has been stunted.
 
 The `none` scope is implemented by returning an `ActiveRecord::NullRelation`.
 No database query will be used when a `none` scope is chained on.
