@@ -131,7 +131,7 @@ gem 'protected_attributes', github: 'rails/protected_attributes'
 @@@
 
 The gem restores `attr_accessible` and disables the requirement that
-controllers call `params.permit` before passing hashes to model methods.
+controllers call `params.require.permit` before passing hashes to model methods.
 
 Because **protected_attributes** and **strong_parameters** take very different
 approaches to enforcing mass-assignment protection, it is not advisable to
@@ -180,7 +180,7 @@ config.active_record.whitelist_attributes = false
 @@@
 
 The application is now free to ditch `attr_accessible` in the model layer in
-favor of `params.permit` in the controller layer. The application will already
+favor of `params.require.permit` in the controller layer. The application will already
 be following the convention for Rails 4 and beyond.
 
 ### Authenticity Tokens for Remote Forms
