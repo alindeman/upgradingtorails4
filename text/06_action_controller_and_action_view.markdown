@@ -148,6 +148,41 @@ New applications, however, should use **strong_parameters** and
 controller-enforced mass-assignment protection as this appears to be the
 convention going forward.
 
+#### Use in Rails 3.2
+
+**strong_parameters** is one of the many features of Rails 4 that can be used
+by Rails 3.2 applications today.
+
+I recommend that any new Rails 3.2 applications bring in the **strong_parameters**
+gem and use it instead of `attr_accessible`.
+
+To get started, simply add **strong_parameters** to the application's Gemfile:
+
+@@@ ruby
+# Gemfile
+gem 'strong_parameters'
+@@@
+
+Install it via Bundler:
+
+@@@ text
+$ bundle install
+@@@
+
+Finally, disable the configuration option where Rails will add an implicit
+`attr_accessible` if one is not specified explicitly:
+
+@@@ ruby
+# config/application.rb
+
+# Change from true (default in 3.2.8) to false
+config.active_record.whitelist_attributes = false
+@@@
+
+The application is now free to ditch `attr_accessible` in the model layer in
+favor of `params.permit` in the controller layer. The application will already
+be following the convention for Rails 4 and beyond.
+
 ### Authenticity Tokens for Remote Forms
 
 Rails protects applications from a range of security issues. By default, Rails
