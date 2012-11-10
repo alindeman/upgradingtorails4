@@ -83,6 +83,7 @@ div.frontcover img {
   padding: 0;
   width: 8.5in;
   height: 11in;
+  prince-image-resolution: 100dpi;
 }
 
 div.frontcover h1 {
@@ -259,6 +260,7 @@ li ol {
 
 img {
 	max-width: none;
+  margin-left: 10px;
 	prince-image-resolution: 96dpi;
 }
 
