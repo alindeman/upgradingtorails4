@@ -5,21 +5,51 @@ compelling new ones.
 
 ### Relation#none
 
-It was previously not possible to reliably return a scope that would select no
-records but still allow other scopes to be chained onto it. However, Rails 4
-introduces the `none` scope to faciliate this.
+Consider an authorization scheme where only approved users can view posts.
 
-Consider an authorization scheme where an unapproved user cannot view any
-posts:
+Before Rails 4, writing an `authorized` method on `Post` would be difficult
+because there is no reliable way to create a scope that will never return
+anything. An option that was often used was to return an empty array:
 
 @@@ ruby
 class Post < ActiveRecord::Base
   def self.authorized(user)
-    if user.unapproved?
-      none
-    else
-      all
+    user.approved? ? all : []
+  end
+end
+@@@
+
+However, this is problematic because any code that uses the `authorized` method
+must know that it could potentially return an array, and in that case, no
+more scopes can be chained. Consider a controller that uses the method:
+
+@@@ ruby
+class PostsController < ApplicationController
+  def index
+    @posts = Post.authorized(current_user)
+    unless @posts.is_a?(Array)
+      @posts = @posts.limit(10)
     end
+  end
+end
+@@@
+
+This is a contrived example: the astute reader will recognize that the `unless`
+conditional can be removed if `authorized` is the last method in the chain.
+However, a more complicated chain of methods and scopes might not be able to be
+simplified in this way.
+
+In any case, the code is too surprising: the `authorized` method has two very
+different return values: one where more scopes *can* be added, and the other
+(an `Array`) where more scopes *cannot* be added.
+
+All is not lost! Rails 4 introduces the `none` scope. The `authorized` methods
+can now be written as:
+
+@@@ ruby
+class Post < ActiveRecord::Base
+  def self.authorized(user)
+    user.approved? ? all : none
   end
 end
 @@@
@@ -35,9 +65,11 @@ class PostsController < ApplicationController
 end
 @@@
 
-The `none` scope is returned by `Post.authorized` if the user is unapproved.
-The controller can tack on more scopes (e.g., `limit(10)`) even though the
-query has been stunted.
+The `none` scope is returned by `Post.authorized` if the user is not yet
+approved. In that case the query will never return any posts, but the
+controller can tack on more scopes (i.e., `limit(10)`) even so.
 
-The `none` scope is implemented by returning an `ActiveRecord::NullRelation`.
-No database query will be used when a `none` scope is chained on.
+The `none` scope is implemented by returning an `ActiveRecord::NullRelation`,
+named for the [null object
+pattern](http://en.wikipedia.org/wiki/Null_Object_pattern). No database query
+will be used when a `none` scope is used in the chain.
