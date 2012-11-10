@@ -213,11 +213,13 @@ div.frontcover * {
 pre, code {
 	font-family: monaco, monospace;
 	font-size: 9pt;
+  margin: 0;
 }
 
 pre, pre code {
 	font-size: 8pt;
 	line-height: 1.4;
+  margin: 0;
 }
 
 /* ========= */
@@ -345,6 +347,8 @@ acronym:after {
 .highlight {
 	font-size: 20pt;
   margin-left: 10px;
+  padding: 2px 5px 2px 5px;
+  background-color: #f0f0f0;
 }
 
 .highlight strong {
