@@ -18,7 +18,6 @@ The book is split into three major parts:
 
 ### Beta
 
-
 This book is an evolving work in process, so please excuse any typos or errors.
 
 It is also possible that since Rails 4 is currently in development, certain

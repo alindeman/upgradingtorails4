@@ -26,9 +26,11 @@ $ rvm use --rvmrc 1.9.3
 
 <!-- TODO: fact check this -->
 If an existing application uses [JRuby](http://jruby.org), Rails 4 requires
-version JRuby 1.7.0 or above (which runs with 1.9.3 support by default).
+version JRuby 1.7.0 or above (which runs with Ruby 1.9.3 support by default).
+Unfortunately, JRuby version numbers are a tad confusing.
 
 @@@ text
+$ rvm install jruby-1.7.0
 $ rvm use --rvmrc jruby-1.7.0
 @@@
 
@@ -49,8 +51,8 @@ gem 'rails', github: 'rails/rails'
 @@@
 
 Rails 4 also depends on newer versions of gems that drive the asset pipeline
-introduced in Rails 3.1. If the application uses any gems for the asset
-pipeline, they must also be upgraded:
+introduced in Rails 3.1. Namely, make sure to update `sass-rails` and
+`coffee-rails` to the lately `master` branch as well:
 
 @@@ ruby
 # Gemfile
@@ -74,9 +76,17 @@ gem 'activerecord-deprecated_finders',
 gem 'journey', github: 'rails/journey'
 @@@
 
+`activerecord-deprecated_finders` allows certain dynamic finders that have
+been deprecated to keep operating correctly. More information about these
+changes is available in the upcoming [ActiveRecord](#activerecord) chapter.
+
+`journey` parses routes so that requests can be efficiently dispatched within
+the Rails application. At the current time, only the version from git is
+compatible with Rails 4.
+
 Finally, Rails 4 moves many features into gems that were previously shipped
 with Rails itself. Later chapters go into more detail about these changes. For
-now, however, add all of the gems that are required to keep many Rails
+now, however, add all of the gems that are required to keep existing Rails
 features working properly after upgrading:
 
 @@@ ruby
@@ -115,10 +125,6 @@ Fetching gem metadata from https://rubygems.org/........
 Fetching gem metadata from https://rubygems.org/..
 Using ...
 @@@
-
-### Rails Configuration Changes
-
-Not yet written!
 
 ### Upgrading Gem Dependencies
 
@@ -164,9 +170,10 @@ Check the gem's issue tracker to see if the authors are aware of the
 incompatibility; if not, create a new issue.
 
 It is also possible that the gem already works with Rails 4 and the constraints
-that the gem authors impose are unnecessary. If that is the case, I provide a
-guide to [forking the gem source and loosening the
-constraints](#forking-and-loosening-constraints).
+that the gem authors impose are simply unnecessary. Flip to the appendix on
+[forking the gem source and loosening the
+constraints](#forking-and-loosening-constraints) to see if it is possible to
+loosen the constraints manually for the time being.
 
 It is likely that an application will require many iterations of running
 `bundle update`, seeing an incompatibility, upgrading the outdated gem, and
