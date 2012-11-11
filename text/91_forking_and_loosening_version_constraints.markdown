@@ -26,7 +26,7 @@ currently constrainted to Rails 3 only.
 **As a cautionary note,** the process described here only works as written if
 the gem is already compatible with Rails 4, yet its dependency constraints are
 too narrowly focused on Rails 3. If the gem's implementation is not compatible
-with Rails 4, more work will be needed before it can be used in an upgraded
+with Rails 4, more work will be needed before it can be used in a Rails 4
 application.
 
 ### Forking the Source
@@ -38,7 +38,7 @@ GitHub calls this process *forking*.
 To fork a repository, you will need a GitHub account. A free GitHub account is
 easy to create via [sign up page](https://github.com/signup/free).
 
-Next, find the source code repository for a gem by searching for it on
+First, find the source code repository for a gem by searching for it on
 [rubygems.org](http://rubygems.org):
 
 ![searching for simple_form on rubygems.org](../images/searching_for_simple_form.png)
@@ -137,12 +137,14 @@ Using simple_form (2.1.0.dev) from git://github.com/alindeman/simple_form.git (a
 @@@
 
 This means that Bundler is using your version of `simple_form` instead of the
-official one which (in this example) does not support Rails 4.
+official one.
 
 It may be necessary to perform these steps for many gems in order to upgrade an
 application. Again, it may feel a bit like the whack-a-mole game.
 
-Because it can be a significant amount of work to make a gem compatible with
-Rails 4, consider [creating a pull
-request](https://help.github.com/articles/creating-a-pull-request) so that the
-gem maintainer can bring in the code changes in the official gem repository.
+If after resolving all versioning conflicts, the newly upgraded Rails
+application does not run properly, it may be because a gem does not support
+Rails 4 at a more fundamental level. In that case, file a bug on the GitHub
+issue tracker for that gem. Make sure to include any error messages or
+exception backtraces so that the gem maintainers can debug the issue more
+easily.
