@@ -128,23 +128,23 @@ Using ...
 
 ### Upgrading Gem Dependencies
 
-<!-- TODO: At some point, ransack will support Rails 4. Clarify the point here -->
+<!-- TODO: At some point, simple_form will support Rails 4. Clarify the point here -->
 It is possible that an application depends on gems that are locked to Rails 3.
 If this happens, `bundle update rails` will show output like:
 
 @@@ text
-Bundler could not find compatible versions for gem "activerecord":
+Bundler could not find compatible versions for gem "actionpack":
   In Gemfile:
-    ransack (~> 0.7.0) ruby depends on
-      activerecord (~> 3.0) ruby
+    simple_form (~> 2.0.4) ruby depends on
+      actionpack (~> 3.0) ruby
 
     rails (>= 0) ruby depends on
-      activerecord (4.0.0.beta)
+      actionpack (4.0.0.beta)
 @@@
 
-In this particular case [ransack](https://github.com/ernie/ransack) version
-0.7.0, a gem for performing complicated database searches, is not yet
-compatible with Rails 4.
+In this particular case
+[simple_form](https://github.com/plataformatec/simple_form) version 2.0.4, a
+gem that makes producing forms easier, is not yet compatible with Rails 4.
 
 If the gem is under active development, it may already have a version that
 supports Rails 4. Check the gem's website or source repository (often hosted on
@@ -155,11 +155,11 @@ If a Rails 4 compatible version is available, specify the compatible version in
 
 @@@ ruby
 # Gemfile
-gem 'ransack', 'X.Y.Z' # TODO when ransack supports Rails 4
+gem 'simple_form', 'X.Y.Z' # TODO when simple_form supports Rails 4
 @@@
 
 @@@ text
-$ bundle update rails ransack
+$ bundle update rails simple_form
 @@@
 
 If a Rails 4 compatible version is not yet available, it is unfortunately not
