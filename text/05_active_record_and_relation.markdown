@@ -235,3 +235,24 @@ associations, this deprecation will not affect your code.
 
 <!-- TODO: `order` prepends rather than appends -->
 <!-- http://edgeguides.rubyonrails.org/active_record_querying.html#ordering -->
+
+### <a id="whiny-nils"></a>whiny nils
+
+Rails 4 removed *whiny nils*, a feature that would raise a warning when code
+sent the `id` message to `nil`. Usually this cropped up in applications when
+code like `@model.id` was run and `@model` was not yet initialized
+(uninitialized instance variables in Ruby evaluate to `nil`).
+
+Because before Ruby 1.9.3, any `Object` would respond to the `id` method, and
+`nil` is an `Object`. Especially confusing was the fact that `nil.id` returned
+`4` due to implementation details of Ruby. Ask a developer who has been using
+Rails for many years about `4` sometime.
+
+Thankfully `Object` instances in Ruby 1.9.3 no longer respond to `id`.
+Therefore, whiny nils are no longer needed. Attempting to run `nil.id` will
+simply raise a `NoMethodError`, instead of a confusing warning.
+
+Rails will raise a deprecation warning if an application's configuration
+attempts to enable whiny nils. To squash the warning, remove any lines that
+refer to `config.whiny_nils` in `config/environments/development.rb` and
+`config/environments/test.rb`.
