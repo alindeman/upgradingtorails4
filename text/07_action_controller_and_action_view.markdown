@@ -235,7 +235,26 @@ can do either one of the following:
 
 ### Caching
 
-TODO: Rails 4 removes action caching and page caching.
+Rails 4 extracts page caching and action caching to gems.
+
+Page caching saved the response to a request and persisted the data to the
+filesystem. The next time a request for the same controller action camed in,
+the response would be served directly by the web server (rather than the
+Rails application server).
+
+Action caching was similar, but controller filters in the Rails application
+would still be run. This allowed, for instance, the application to verify
+that a user had access to the content before it was served.
+
+Both page and action caching are complicated, and often better implemented by
+out-of-process proxies. In Rails 4, applications that want to continue using
+page caching and action caching will need to bring in the
+`actionpack-page_caching` and `actionpack-action_caching` gems respectively
+by adding them to `Gemfile`.
+
+Notably fragment caching, where smaller pieces of a view are cached, is *not*
+deprecated in Rails 4. In fact, fragment caching is even improved. More on that
+in the section describing [cache_digests](#cache-digests).
 
 ### Disabling Asset Pipeline
 
