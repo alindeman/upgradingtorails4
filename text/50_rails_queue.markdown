@@ -53,30 +53,99 @@ class PostsController < ApplicationController
 end
 @@@
 
-Jobs added to `Rails.queue` run differently in each of the three default Rails
-environments.
+### Production Setup
 
-### Development
+By default, `Rails.queue` is a `SynchronousQueue`. `SynchronousQueue` executes
+jobs immediately. There is no background processing at all.
 
-By default in development mode, `Rails.queue` is a `SynchronousQueue`.
-`SynchronousQueue` executes jobs added to it immediately without requiring
-a production-like background job worker to be setup.
+This is convenient in development mode because jobs run immediately and
+no extra setup is required.
 
-### Test
+In production, however, it is recommended that you set up a background job
+worker backed by a durable queue and run in a separate process. A few options
+(and how to configure them with Rails 4) are described next.
 
-By default in test mode, `Rails.queue` is a `TestQueue`. `TestQueue` does not
-execute jobs at all, but instead provides a way to access the list of jobs that
-are queued:
+#### delayed\_job
+
+[delayed_job](https://github.com/collectiveidea/delayed_job) does not yet
+support `Rails.queue`.
+
+#### Resque
+
+[Resque](https://github.com/defunkt/resque) supports `Rails.queue` via the
+[resque-rails](https://github.com/jeremy/resque-rails) gem.
+
+Add `resque-rails` to `Gemfile`:
 
 @@@ ruby
-# TODO: This has not actually be tested to work properly
+gem 'resque-rails', github: 'jeremy/resque-rails', group: [:production]
+@@@
+
+Create a configuration file, `config/resque-redis.yml`. Replace the
+`production` values with the information for your Redis server:
+
+@@@ text
+production:
+  host: 10.0.0.1
+  port: 6379
+@@@
+
+Read more about [resque-rails on
+GitHub](https://github.com/jeremy/resque-rails).
+
+#### Sidekiq
+
+[Sidekiq](https://github.com/mperham/sidekiq) supports `Rails.queue` out of the
+box.
+
+For now, `Rails.queue` support in Sidekiq is only in the `rails4` branch. To
+try it out, update `Gemfile` to point to the `rails4` branch:
+
+@@@ ruby
+gem 'sidekiq', github: 'mperham/sidekiq', branch: 'rails4'
+@@@
+
+And update it via `bundler`:
+
+@@@ text
+$ bundle update sidekiq
+@@@
+
+Sidekiq automatically configures `Rails.queue`: no other changes should be
+required in your application.
+
+### Test Setup
+
+In test mode, `Rails.queue` also defaults to a `SynchronousQueue`. Jobs run
+immediately as they do in development.
+
+Rails also gives you the option to simply keep a list of jobs that were queued
+instead of running them. Using a `TestQueue`, expensive jobs are not run and
+tests can be written simply against the act of adding a job instead of
+asserting about its outcome. Assuming the job is tested in isolation itself,
+this can speed up the suite without much loss of confidence in the tests.
+
+To enable this behavior, change the default queue to `ActiveSupport::TestQueue`
+for the test environment:
+
+@@@ ruby
+# config/environments/test.rb
+Widgets::Application.configure do
+  # ...
+  config.queue = ActiveSupport::TestQueue.new
+end
+@@@
+
+`Rails.queue` now responds to the `jobs` message, returning a list of queued
+jobs:
+
+@@@ ruby
 describe PostsController do
   describe "POST #publish" do
     it "queues a job to publish the post" do
       post :publish, id: 1
 
-      job = Rails.queue.jobs.first
-      expect(job).not_to be_nil
+      job = Rails.queue.jobs.last
       expect(job.post_id).to eq(1)
     end
   end
@@ -86,46 +155,6 @@ end
 `TestQueue` will also not allow any item to be enqueued that cannot be
 marshalled. More information on marshalling is in the [Gotchas section later on
 in the chapter](#queue-gotchas).
-
-### Production
-
-By default in production, `Rails.queue` is an `ActiveSupport::Queue`. Rails
-also spawns a consumer--by default a `ThreadedQueueConsumer`--that runs jobs in
-a background thread.
-
-Jobs do run in the background with no additional setup, but this is not a
-recommended setup. Since the queue is entirely in memory, jobs would be lost
-when the web server is restarted. Furthermore, jobs cannot be distributed to
-other servers because they run alongside the web server process.
-
-In production, it is recommended that you set up a background job worker backed
-by a durable queue and run in a separate process. A few options (and how to
-configure them with Rails 4) are described next.
-
-#### delayed\_job
-
-[delayed_job](https://github.com/collective_idea/delayed_job) supports
-`Rails.queue` via `TODO`
-
-#### Resque
-
-[Resque](https://github.com/defunkt/resque) supports `Rails.queue` via `TODO`
-
-#### Sidekiq
-
-[Sidekiq](https://github.com/mperham/sidekiq) supports `Rails.queue` via
-`Sidekiq::Client::Queue`
-
-@@@ ruby
-# config/environments/production.rb
-Blog::Application.configure do
-  config.queue = Sidekiq::Client::Queue
-end
-@@@
-
-### Multiple Queues
-
-TODO if I'm able to get to it. Lower priority.
 
 ### <a id="queue-gotchas"></a>Gotchas
 
