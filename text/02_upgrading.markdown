@@ -166,12 +166,15 @@ themselves. For this reason, it is necessary to add these lines to `Gemfile`:
 gem 'activerecord-deprecated_finders', 
   github: 'rails/activerecord-deprecated_finders'
 
+gem 'arel',    github: 'rails/arel'
 gem 'journey', github: 'rails/journey'
 @@@
 
 `activerecord-deprecated_finders` allows certain dynamic finders that have
 been deprecated to keep operating correctly. More information about these
 changes is available in the upcoming [ActiveRecord](#activerecord) chapter.
+
+`arel` assists in the construction of SQL database queries.
 
 `journey` parses routes so that requests can be efficiently dispatched within
 the Rails application. At the current time, only the version from git is
