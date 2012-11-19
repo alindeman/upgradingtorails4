@@ -72,3 +72,12 @@ with an error:
 You should not use the `match` method in your router without specifying an HTTP
 method. (RuntimeError)
 @@@
+
+If you truly need to route a request that comes in via any HTTP verb, modify
+the `match` route to specify `:via => :any`
+
+@@@ ruby
+Widgets::Application.routes.draw do
+  match "/something" => "something#index", :via => :any
+end
+@@@
