@@ -256,3 +256,26 @@ Rails will raise a deprecation warning if an application's configuration
 attempts to enable whiny nils. To squash the warning, remove any lines that
 refer to `config.whiny_nils` in `config/environments/development.rb` and
 `config/environments/test.rb`.
+
+### ActiveRecord Session Store
+
+Storing session data in the database using the ActiveRecord session store has
+been extracted into a gem.
+
+Applications often used the ActiveRecord session store when the data being
+added to the sessions was sensitive (e.g., users should not be able to decode
+the contents of the session) or unusually large (over 4KB, the maximum size
+of a cookie).
+
+To continue using the ActiveRecord session store, bring in the
+`activerecord-session_store` gem:
+
+@@@ ruby
+# Gemfile
+gem 'activerecord-session_store',
+  github: 'rails/activerecord-session_store'
+@@@
+
+Rails 4 introduces [encrypted cookies](#encrypted-cookies) which may be a good
+alternative in certain use cases where the ActiveRecord session store was
+the only option before.

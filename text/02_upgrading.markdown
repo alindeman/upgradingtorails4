@@ -129,7 +129,7 @@ loosen the constraints manually for the time being.
 While it may start feeling like a game of whack-a-mole, repeat the process
 until `rake rails4:check_gems` reports that no incompatibilities exist.
 
-### Upgrading Rails Itself
+### <a id="upgrading-rails-itself"></a>Upgrading Rails Itself
 
 Rails 4 has not been yet been packaged and released; the best way to upgrade an
 existing application is to tell Bundler to use the `master` branch of the Rails
