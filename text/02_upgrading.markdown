@@ -150,11 +150,13 @@ introduced in Rails 3.1. Namely, make sure to update `sass-rails` and
 @@@ ruby
 # Gemfile
 
-# Replaces "gem 'sass-rails', '~>3.x.y'"
-gem 'sass-rails', github: 'rails/sass-rails'
+group :assets do
+  # Replaces "gem 'sass-rails', '~>3.x.y'"
+  gem 'sass-rails', github: 'rails/sass-rails'
 
-# Replaces "gem 'coffee-rails', '~>3.x.y'"
-gem 'coffee-rails', github: 'rails/coffee-rails'
+  # Replaces "gem 'coffee-rails', '~>3.x.y'"
+  gem 'coffee-rails', github: 'rails/coffee-rails'
+end
 @@@
 
 <!-- TODO: Remove after release -->
