@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alindeman/kitabu.git
-  revision: 19df52a0e1e0fd2e8e440e817c6738bfd793033f
+  revision: f500a076602fc05233d65132fa2869d1b54f1437
   specs:
     kitabu (1.0.0)
       RedCloth
@@ -18,7 +18,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     RedCloth (4.2.9)
-    activesupport (3.2.8)
+    activesupport (3.2.9)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     builder (3.1.4)
@@ -38,7 +38,7 @@ GEM
     listen (0.5.3)
     lumberjack (1.0.2)
     method_source (0.8.1)
-    multi_json (1.3.6)
+    multi_json (1.3.7)
     nokogiri (1.5.5)
     notifier (0.4.1)
     posix-spawn (0.3.6)
