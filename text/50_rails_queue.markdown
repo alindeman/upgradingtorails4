@@ -120,10 +120,10 @@ In test mode, `Rails.queue` also defaults to a `SynchronousQueue`. Jobs run
 immediately as they do in development.
 
 Rails also gives you the option to simply keep a list of jobs that were queued
-instead of running them. Using a `TestQueue`, expensive jobs are not run and
-tests can be written simply against the act of adding a job instead of
-asserting about its outcome. Assuming the job is tested in isolation itself,
-this can speed up the suite without much loss of confidence in the tests.
+without running them. Using a `TestQueue`, tests can verify only that the job
+was added to the queue, instead of asserting about its outcome. Assuming the
+job is tested in isolation itself, this can speed up the suite without much
+loss of confidence in the tests.
 
 To enable this behavior, change the default queue to `ActiveSupport::TestQueue`
 for the test environment:
@@ -132,6 +132,7 @@ for the test environment:
 # config/environments/test.rb
 Widgets::Application.configure do
   # ...
+
   config.queue = ActiveSupport::TestQueue.new
 end
 @@@
