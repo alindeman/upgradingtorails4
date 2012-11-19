@@ -34,7 +34,100 @@ $ rvm install jruby-1.7.0
 $ rvm use --rvmrc jruby-1.7.0
 @@@
 
-<!-- TODO: Update for final release -->
+### bundler
+
+It is possible that Rails 4 will require a more recent version of `bundler`
+than is installed in your set of gems.
+
+To avoid any potential problems, simply upgrade to the latest version of
+`bundler` before going any farther:
+
+@@@ text
+$ gem install bundler
+@@@
+
+### rails4\_upgrade gem
+
+The [`rails4_upgrade`](https://github.com/alindeman/rails4_upgrade) helps
+automate some of the process required to upgrade to Rails 4.
+
+Install the gem in the application that's being upgraded by adding it to
+`Gemfile`:
+
+@@@ ruby
+# Gemfile
+gem 'rails4_upgrade'
+@@@
+
+And install it using `bundler`:
+
+@@@ text
+$ bundle install
+@@@
+
+### Checking for Incompatible Gems
+
+`rails4_upgrade` adds a `rake` task to check for gems that are locked to
+Rails 3, preventing an application from upgrading successfully.
+
+Run the task:
+
+@@@ text
+$ bundle exec rake rails4:check_gems
+@@@
+
+In an ideal world, you would see `"No gem incompatibilities found"` meaning you
+can upgrade to Rails 4 straightaway. However, it is more likely that you will
+be presented with a table of gems and the version of Rails to which they
+are locked.
+
+In this example, the application depends on a version of
+[`draper`](http://github.com/drapergem/draper) that requires `actionpack` 3.2.x
+and `activesupport` 3.2.x, both gems in the Rails suite:
+
+@@@ text
++-----------------+----------------------+
+| Dependency Path | Rails Requirement    |
++-----------------+----------------------+
+| draper 0.18.0   | actionpack ~> 3.2    |
+| draper 0.18.0   | activesupport ~> 3.2 |
++-----------------+----------------------+
+@@@
+
+Attempting to upgrade to Rails 4 with draper 0.18.0 will cause `bundler` to
+raise an error, as this would violate the constraint set by draper.
+
+If an incompatible gem in the list is under active development, it may already
+have a version that supports Rails 4. Check the gem's website or source
+repository (often hosted on [GitHub](http://github.com)).
+
+If a Rails 4 compatible version is available, specify the compatible version in
+`Gemfile` and use `bundler` to update it:
+
+@@@ ruby
+# Gemfile
+gem 'draper', 'X.Y.Z' # TODO when draper supports Rails 4
+@@@
+
+@@@ text
+$ bundle update draper
+@@@
+
+If a Rails 4 compatible version is not yet available, it is unfortunately not
+possible for you to upgrade until that gem adds support or the gem is removed
+from the application.
+
+Check the gem's issue tracker to see if the authors are aware of the
+incompatibility; if not, create a new issue.
+
+It is also possible that the gem already works with Rails 4 and the constraints
+that the gem authors impose are simply unnecessary. Flip to the appendix on
+[forking the gem source and loosening the
+constraints](#forking-and-loosening-constraints) to see if it is possible to
+loosen the constraints manually for the time being.
+
+While it may start feeling like a game of whack-a-mole, repeat the process
+until `rake rails4:check_gems` reports that no incompatibilities exist.
 
 ### Upgrading Rails Itself
 
@@ -126,56 +219,4 @@ Fetching gem metadata from https://rubygems.org/..
 Using ...
 @@@
 
-### Upgrading Gem Dependencies
-
-<!-- TODO: At some point, simple_form will support Rails 4. Clarify the point here -->
-It is possible that an application depends on gems that are locked to Rails 3.
-If this happens, `bundle update rails` will show output like:
-
-@@@ text
-Bundler could not find compatible versions for gem "actionpack":
-  In Gemfile:
-    simple_form (~> 2.0.4) ruby depends on
-      actionpack (~> 3.0) ruby
-
-    rails (>= 0) ruby depends on
-      actionpack (4.0.0.beta)
-@@@
-
-In this particular case
-[simple_form](https://github.com/plataformatec/simple_form) version 2.0.4, a
-gem that makes producing forms easier, is not yet compatible with Rails 4.
-
-If the gem is under active development, it may already have a version that
-supports Rails 4. Check the gem's website or source repository (often hosted on
-[GitHub](http://github.com)).
-
-If a Rails 4 compatible version is available, specify the compatible version in
-`Gemfile` and add that gem to the list passed to `bundle update`:
-
-@@@ ruby
-# Gemfile
-gem 'simple_form', 'X.Y.Z' # TODO when simple_form supports Rails 4
-@@@
-
-@@@ text
-$ bundle update rails simple_form
-@@@
-
-If a Rails 4 compatible version is not yet available, it is unfortunately not
-possible for you to upgrade until that gem adds support or the gem is removed
-from the application.
-
-Check the gem's issue tracker to see if the authors are aware of the
-incompatibility; if not, create a new issue.
-
-It is also possible that the gem already works with Rails 4 and the constraints
-that the gem authors impose are simply unnecessary. Flip to the appendix on
-[forking the gem source and loosening the
-constraints](#forking-and-loosening-constraints) to see if it is possible to
-loosen the constraints manually for the time being.
-
-It is likely that an application will require many iterations of running
-`bundle update`, seeing an incompatibility, upgrading the outdated gem, and
-rerunning `bundle update`. It may begin feel like a game of whack-a-mole! Once
-`bundle` does run successfully, though, you are riding on Rails 4.
+You're riding on Rails 4!
