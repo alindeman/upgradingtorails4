@@ -261,8 +261,10 @@ li ol {
 }
 
 img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 	max-width: none;
-  margin-left: 10px;
 	prince-image-resolution: 96dpi;
 }
 
