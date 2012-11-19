@@ -233,8 +233,50 @@ associations, this deprecation will not affect your code.
 
 ### Relation#order
 
-<!-- TODO: `order` prepends rather than appends -->
-<!-- http://edgeguides.rubyonrails.org/active_record_querying.html#ordering -->
+Rails 4 changed the way `order` operates when there are multiple calls to
+`order` in a chain. You might say that, well, Rails 4 changed the order
+of `order`.
+
+Consider this query that attempts to show comments with many replies first.
+If comments have the same number of replies, the tie is broken by the creation
+time of the comment, earlier comments first:
+
+@@@ ruby
+Comment.order("replies_count DESC").order(:created_at)
+@@@
+
+This query works correctly in Rails 3. The query generated will be something
+like:
+
+@@@ sql
+-- Rails 3
+SELECT * FROM comments ORDER BY replies_count DESC, created_at
+@@@
+
+In Rails 4, however, the order specifications are flipped: the sort order
+is `created_at` first and `replies_count` second:
+
+@@@ sql
+-- Rails4
+SELECT * FROM comments ORDER BY created_at, replies_count DESC
+@@@
+
+In this case, the query is broken in Rails 4.
+
+One obvious fix is to simply switch the sequence of the `order` calls:
+
+@@@ ruby
+# Rails 4
+Comment.order(:created_at).order("replies_count DESC")
+@@@
+
+However, a more readable way uses `order` with multiple arguments. This call
+works correctly in both Rails 3 and Rails 4:
+
+@@@
+# Works in both Rails 3 and Rails 4
+Comment.order("replies_count DESC", :created_at)
+@@@
 
 ### <a id="whiny-nils"></a>whiny nils
 
