@@ -138,7 +138,3 @@ $ git commit -m 'Loads acts_as_tree in Rails 4'
 @@@
 
 Follow these same steps for each plugin that needs to be adapted.
-
-TODO: Find and test a plugin with rake tasks
-
-TODO: Find and test a plugin with generators
