@@ -24,3 +24,7 @@ default.
 config.eager_load is set to nil. Please update your
 config/environments/*.rb files accordingly:
 @@@
+
+Rails 4 introduces new settings for thread safety. This deprecation warning is
+prompting you to set the value of the new `config.eager_load` setting. Read
+more about it in the [Thread Safety](#thread-safety) chapter.
