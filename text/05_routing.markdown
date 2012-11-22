@@ -21,7 +21,7 @@ end
 @@@
 
 If this is the route that actually submits an order and charges a user's
-credit card, the application is vulnerability to the cross-site request
+credit card, the application is vulnerable to the cross-site request
 forgery (CSRF) attack.
 
 Because `match` without any other qualifiers routes a request with any HTTP
@@ -65,7 +65,7 @@ end
 @@@
 
 You will need to change any instance of `match` in `config/routes.rb` before
-an application will even boot in Rails 4. If you forgot, you will be confronted
+an application will even boot in Rails 4. If you forget, you will be confronted
 with an error:
 
 @@@ text

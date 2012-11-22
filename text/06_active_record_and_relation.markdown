@@ -1,6 +1,6 @@
 ## <a id="activerecord"></a>ActiveRecord
 
-Querying the database changed dramactially from Rails 2 and Rails 3.
+Querying the database changed dramactially from Rails 2 to Rails 3.
 Thankfully Rails 4 does not change things up nearly as much, but there are some
 improvements and gotchas you need to be aware of.
 
@@ -90,9 +90,9 @@ User.first_or_initialize_by(github_id: 395621)
 User.first_or_create_by(twitter_handle: "alindeman")
 @@@
 
-Finally, the `find_by_...` dynamic finder is *not* deprecated. Code such as
-`User.find_by_email("andy@andylindeman.com")` will continue functioning without
-deprecation warnings.
+Notably, though, the `find_by_...` dynamic finder is *not* deprecated. Code
+such as `User.find_by_email("andy@andylindeman.com")` will continue functioning
+without deprecation warnings.
 
 ### Eager-Evaluated Scopes
 
@@ -285,10 +285,10 @@ sent the `id` message to `nil`. Usually this cropped up in applications when
 code like `@model.id` was run and `@model` was not yet initialized
 (uninitialized instance variables in Ruby evaluate to `nil`).
 
-Because before Ruby 1.9.3, any `Object` would respond to the `id` method, and
-`nil` is an `Object`. Especially confusing was the fact that `nil.id` returned
-`4` due to implementation details of Ruby. Ask a developer who has been using
-Rails for many years about `4` sometime.
+Before Ruby 1.9.3, any `Object` would respond to the `id` method, and `nil` is
+an `Object`. Especially confusing was the fact that `nil.id` returned `4` due
+to implementation details of Ruby. Ask a developer who has been using Rails for
+many years about `4` sometime.
 
 Thankfully `Object` instances in Ruby 1.9.3 no longer respond to `id`.
 Therefore, whiny nils are no longer needed. Attempting to run `nil.id` will
@@ -318,6 +318,7 @@ gem 'activerecord-session_store',
   github: 'rails/activerecord-session_store'
 @@@
 
-Rails 4 introduces [encrypted cookies](#encrypted-cookies) which may be a good
-alternative in certain use cases where the ActiveRecord session store was
-the only option before.
+Rails 4 introduces encrypted cookies which may be a good alternative in certain
+use cases where the ActiveRecord session store was the only option before. I
+discuss more about encrypted cookies when I talk about the [new features in
+ActionController](#encrypted-cookies).

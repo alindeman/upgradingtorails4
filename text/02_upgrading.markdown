@@ -11,7 +11,7 @@ That said, upgrading to Rails 4 is a bit more involved than simply running
 Rails 4 *requires* at least Ruby 1.9.3. Attempting to run it on anything below
 1.9.3 will cause syntax errors or runtime issues.
 
-Upgrading Ruby with [`rvm`](https://rvm.io/) is one command:
+You can upgrade Ruby with a single command using [`rvm`](https://rvm.io/):
 
 @@@ text
 $ rvm install 1.9.3
@@ -48,7 +48,7 @@ $ gem install bundler
 
 ### rails4\_upgrade gem
 
-The [`rails4_upgrade`](https://github.com/alindeman/rails4_upgrade) helps
+The [`rails4_upgrade gem`](https://github.com/alindeman/rails4_upgrade) helps
 automate some of the process required to upgrade to Rails 4.
 
 Install the gem in the application that's being upgraded by adding it to
@@ -59,7 +59,7 @@ Install the gem in the application that's being upgraded by adding it to
 gem 'rails4_upgrade'
 @@@
 
-And install it using `bundler`:
+Finish the installation by running `bundle`:
 
 @@@ text
 $ bundle install
@@ -76,9 +76,9 @@ Run the task:
 $ bundle exec rake rails4:check_gems
 @@@
 
-In an ideal world, you would see `"No gem incompatibilities found"` meaning you
-can upgrade to Rails 4 straightaway. However, it is more likely that you will
-be presented with a table of gems and the version of Rails to which they
+In an ideal world, you would see `"No gem incompatibilities found"`, meaning
+you can upgrade to Rails 4 straightaway. However, it is more likely that you
+will be presented with a table of gems and the version of Rails to which they
 are locked.
 
 In this example, the application depends on a version of
@@ -94,7 +94,7 @@ and `activesupport` 3.2.x, both gems in the Rails suite:
 +-----------------+----------------------+
 @@@
 
-Attempting to upgrade to Rails 4 with draper 0.18.0 will cause `bundler` to
+Attempting to upgrade to Rails 4 with `draper` 0.18.0 will cause `bundler` to
 raise an error, as this would violate the constraint set by draper.
 
 If an incompatible gem in the list is under active development, it may already
@@ -131,9 +131,9 @@ until `rake rails4:check_gems` reports that no incompatibilities exist.
 
 ### <a id="upgrading-rails-itself"></a>Upgrading Rails Itself
 
-Rails 4 has not been yet been packaged and released; the best way to upgrade an
-existing application is to tell Bundler to use the `master` branch of the Rails
-git repository.
+Rails 4 has not been yet been packaged and released, so the best way to upgrade
+an existing application is to tell Bundler to use the `master` branch of the
+Rails git repository.
 
 Open `Gemfile` in a text editor and change the line that starts with `gem
 'rails'` to:
@@ -144,8 +144,8 @@ gem 'rails', github: 'rails/rails'
 @@@
 
 Rails 4 also depends on newer versions of gems that drive the asset pipeline
-introduced in Rails 3.1. Namely, make sure to update `sass-rails` and
-`coffee-rails` to the lately `master` branch as well:
+(which was introduced in Rails 3.1). Namely, make sure to update `sass-rails`
+and `coffee-rails` to the `master` branch as well:
 
 @@@ ruby
 # Gemfile
@@ -160,8 +160,8 @@ end
 @@@
 
 <!-- TODO: Remove after release -->
-Additionally, Rails 4 depends on other gems that have not yet been released
-themselves. For this reason, it is necessary to add these lines to `Gemfile`:
+Additionally, Rails 4 depends on other gems that themselves have not yet been
+released. For this reason, it is necessary to add these lines to `Gemfile`:
 
 @@@ ruby
 # Gemfile
@@ -174,7 +174,7 @@ gem 'journey', github: 'rails/journey'
 
 `activerecord-deprecated_finders` allows certain dynamic finders that have
 been deprecated to keep operating correctly. More information about these
-changes is available in the upcoming [ActiveRecord](#activerecord) chapter.
+changes is available in the [ActiveRecord](#activerecord) chapter.
 
 `arel` assists in the construction of SQL database queries.
 
@@ -211,7 +211,7 @@ Save `Gemfile` and run from the terminal:
 $ bundle update rails
 @@@
 
-If all goes well, `bundle` will show output like:
+`bundle` should show output like:
 
 @@@ text
 Updating git://github.com/rails/rails.git

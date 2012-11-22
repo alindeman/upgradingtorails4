@@ -1,6 +1,6 @@
 ## Rails.queue
 
-`Rails.queue` adds an layer between your code and specific background job
+`Rails.queue` adds a layer between your code and specific background job
 processors.
 
 If an existing application uses a gem like `queue_classic`, `delayed_job`,
@@ -9,7 +9,7 @@ the specifics of those gems behind the generic facade of `Rails.queue`.
 
 ---
 
-It is common to move operations that are computationally expensive or
+It is common to move operations that are computationally expensive or that
 communicate with external services to background jobs. This is such a common
 need in Rails applications that Rails 4 introduces a construct baked right into
 the framework to help.

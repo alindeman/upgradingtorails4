@@ -10,14 +10,14 @@ More and more developers are deploying to threaded web application servers like
 single application server can process concurrent requests without booting the
 application multiple times in separate processes. Java application servers have
 always taken advantage of threads, and JRuby can piggyback on their success
-with [trinidad](https://github.com/trinidad/trinidad) and
+with servers like [trinidad](https://github.com/trinidad/trinidad) and
 [Torquebox](http://torquebox.org/).
 
 ### config.threadsafe! and config.eager_load
 
-Rails 3 required a configuration flag to enable applications to work properly
-with threaded web application servers: `config.threadsafe!`. This flag was
-usually set in `config/environments/production.rb`.
+Rails 3 required a configuration flag, `config.threadsafe!`, to enable
+applications to work properly with threaded web application servers. This flag
+was usually set in `config/environments/production.rb`.
 
 Rails 4 deprecates the `config.threadsafe!` option because Rails applications
 are now threadsafe by default as long as both `config.cache_classes` and
@@ -56,11 +56,11 @@ end
 @@@
 
 Unfortunately, loading the entire application upfront is the only way for the
-application to be thread-safe. Multiple threads all vying to load the same
+application to be thread-safe. Having multiple threads vying to load the same
 piece of code at the same time is a recipe for disaster.
 
-In production, it makes sense to pay the price of eager loading the application
-in order to be able to run it on a threaded web application server.
+So, in production, it makes sense to pay the price of eager loading the
+application in order to be able to run it on a threaded web application server.
 
 Set `config.eager_load` to `true` in `config/environments/production.rb`:
 

@@ -7,9 +7,9 @@ might have these sorts of plugins even though they fell out of popularity soon
 after Rails 2.3 was released.
 
 **If an application uses gems to manage dependencies, nothing needs to be
-done.** Simply list the contents of the `vendor/plugins` directory in a Rails
-application: if the directory is empty or nonexistent, you can safely skip the
-content in this chapter.
+done.** Simply list the contents of the `vendor/plugins` directory in a given
+Rails application: if the directory is empty or nonexistent, you can safely
+skip the content in this chapter.
 
 However, if an application is using plugins, you'll need to do a bit of work to
 successfully upgrade. Read on!
@@ -34,10 +34,10 @@ GitHub](https://github.com/amerine/acts_as_tree) and released on
 
 ![acts_as_tree on rubygems.org](../images/acts_as_tree.png)
 
-When dealing with plugins while upgrading to Rails 4, first [search
-rubygems.org for a gem of the same name as the plugin](http://rubygems.org/).
-If nothing turns up, [perform a similar search on
-GitHub](https://github.com/search). Look for repositories with descriptions
+To find out if other plugins you need to replace have been released as gems,
+first [search rubygems.org for a gem of the same name as the
+plugin](http://rubygems.org/). If nothing turns up, [perform a similar search
+on GitHub](https://github.com/search). Look for repositories with descriptions
 like "Gem version of ...".
 
 ![searching for acts_as_tree on rubygems.org](../images/acts_as_tree.png)
@@ -89,7 +89,7 @@ If the Rails community has not created a gem version of a plugin or the plugin
 is highly customized for the needs of an application, you must do one of two
 things:
 
-1. Create a gemified version yourself.
+1. Create a gemified version yourself, or
 2. Move the plugin from `vendor/plugins/` to `lib/` and require it manually.
 
 An entire handbook like this one could be written about creating and managing

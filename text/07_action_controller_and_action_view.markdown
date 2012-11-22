@@ -19,7 +19,7 @@ end
 `User` is protected against mass-assignment vulnerabilities. Specifically, methods
 that accept a hash of attributes can only set `first_name` and `last_name`.
 
-Consider a controller that creates users:
+Next, consider a controller that creates users:
 
 @@@ ruby
 # app/controllers/users_controller.rb
@@ -50,8 +50,9 @@ user input and therefore do not need mass-assignment protection. You cannot,
 for instance, simply create a new admin user at the console with
 `User.new(admin: true)` even though there is no danger in this situation.
 
-Because of this, Rails 4 adds mass-assignment protection at the controller layer
-by default via the **strong_parameters** gem.
+Because of this, Rails 4 adds mass-assignment protection at the controller
+layer by default via the **strong_parameters** gem, and these features
+are available automatically in Rails 4.
 
 In Rails 4, there is no mass-assignment protection in the model by default:
 
@@ -84,7 +85,7 @@ class UsersController < ApplicationController
 end
 @@@
 
-**strong_parameters** requires that controllers expressedly slice out
+**strong_parameters** requires that controllers explicitly slice out
 attributes that clients are allowed to set before they are passed to the
 model.
 
@@ -139,13 +140,13 @@ attempt to use them together.
 
 I recommend simply using **protected_attributes** when upgrading applications
 that use `attr_accessible`, and continuing to use `attr_accessible` for
-mass-assignment protection. While at the end of the day, it is your decision as
-an engineer, I think in many cases it will be both high risk and low reward to
+mass-assignment protection. At the end of the day, it is your decision as an
+engineer, but I think in many cases it will be both high risk and low reward to
 attempt to transition a sizable application from one paradigm to the other at
 this time.
 
 New applications, however, should use **strong_parameters** and
-controller-enforced mass-assignment protection as this appears to be the
+controller-enforced mass-assignment protection, as this appears to be the
 convention going forward.
 
 #### Use in Rails 3.2
@@ -197,13 +198,13 @@ than your application. This attack is called *cross site request forgery*
 (As an aside, this is one reason why it is important for all requests that
 change server state use verbs other than GET.)
 
-Rails automatically embeds the an automatically generated authenticity token in
+Rails automatically embeds an automatically generated authenticity token in
 forms.
 
 ![authenticity_token embedded in a form](../images/authenticity_token.png)
 
 This behavior mostly stays the same in Rails 4; however, **Rails will no longer
-embed an authenticity token into remote forms submitted via Ajax by default**
+embed an authenticity token into remote forms submitted via Ajax**
 (i.e., forms created with `form_for @obj, remote: true`).
 
 Instead, Rails 4 will inject an authenticity token into the request via
@@ -223,13 +224,14 @@ embedded authenticity tokens may now be added to fragment caches. Without an
 authenticity token, the form markup is no longer specific to a user, so it
 can be cached and reused for all users, speeding up the application.
 
-If you need to preserve graceful degradation of AJAX forms in Rails 4, you
-can do either one of the following:
+If your application does not add remote forms to fragment caches, you can
+address this error and preserve graceful degradation of AJAX forms in Rails 4
+by:
 
-* Globally re-enable embedding tokens by adding
+* Globally re-enabling embedded tokens by adding
   `config.action_view.embed_authenticity_token_in_remote_forms = true` in
-  `config/application.rb`.
-* Re-enable embedding tokens on a case-by-case basis by passing
+  `config/application.rb`, or
+* Re-enabling embedded tokens on a case-by-case basis by passing
   `authenticity_token: true` in the options to `form_for` (e.g., `form_for
   @obj, remote: true, authenticity_token: true`).
 
@@ -252,6 +254,6 @@ page caching and action caching will need to bring in the
 `actionpack-page_caching` and `actionpack-action_caching` gems respectively
 by adding them to `Gemfile`.
 
-Notably fragment caching, where smaller pieces of a view are cached, is *not*
+Notably, fragment caching--where smaller pieces of a view are cached--is *not*
 deprecated in Rails 4. In fact, fragment caching is even improved. More on that
 in the section describing [cache_digests](#cache-digests).

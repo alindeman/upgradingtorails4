@@ -1,15 +1,15 @@
 ## ActiveRecord
 
-Rails 4 did not just deprecate features of ActiveRecord, it also added some
+Rails 4 did not just deprecate features of ActiveRecord; it also added some
 compelling new ones.
 
 ### Relation#none
 
 Consider an authorization scheme where only approved users can view posts.
 
-Before Rails 4, writing an `authorized` method on `Post` would be difficult
-because there is no reliable way to create a scope that will never return
-anything. An option that was often used was to return an empty array:
+Before Rails 4, writing an `authorized` method on `Post` was difficult because
+there is no reliable way to create a scope that will never return anything. An
+option that was often used was to return an empty array:
 
 @@@ ruby
 class Post < ActiveRecord::Base

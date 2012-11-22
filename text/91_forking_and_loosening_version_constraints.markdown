@@ -23,11 +23,9 @@ gem](https://github.com/plataformatec/simple_form), a gem that makes producing
 forms easier. However, you can attempt this process for any gem that is
 currently constrainted to Rails 3 only.
 
-**As a cautionary note,** the process described here only works as written if
-the gem is already compatible with Rails 4, yet its dependency constraints are
-too narrowly focused on Rails 3. If the gem's implementation is not compatible
-with Rails 4, more work will be needed before it can be used in a Rails 4
-application.
+Only use this process if the gem's authors have not yet released a version that
+is compatible with Rails 4. If the gem turns out to be fundamentally
+incompatible with Rails 4, this process will unfortunately not help.
 
 ### Forking the Source
 
