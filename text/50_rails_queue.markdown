@@ -195,3 +195,5 @@ class PostPublisher
   end
 end
 @@@
+
+### Asynchronous ActionMailer
