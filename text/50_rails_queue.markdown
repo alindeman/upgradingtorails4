@@ -90,16 +90,16 @@ production:
   port: 6379
 @@@
 
+Once configured, jobs added to `Rails.queue` will be run by Resque workers.
 Read more about [resque-rails on
 GitHub](https://github.com/jeremy/resque-rails).
 
 #### Sidekiq
 
-[Sidekiq](https://github.com/mperham/sidekiq) supports `Rails.queue` out of the
-box.
+A prerelease version of [Sidekiq](https://github.com/mperham/sidekiq) supports
+`Rails.queue` out of the box.
 
-For now, `Rails.queue` support in Sidekiq is only in the `rails4` branch. To
-try it out, update `Gemfile` to point to the `rails4` branch:
+To try it out today, update `Gemfile` to point to the `rails4` branch:
 
 @@@ ruby
 gem 'sidekiq', github: 'mperham/sidekiq', branch: 'rails4'
@@ -111,8 +111,8 @@ And update it via `bundler`:
 $ bundle update sidekiq
 @@@
 
-Sidekiq automatically configures `Rails.queue`: no other changes should be
-required in your application.
+Sidekiq automatically configures `Rails.queue`: any jobs added to it will be
+run with Sidekiq workers.
 
 ### Test Setup
 
