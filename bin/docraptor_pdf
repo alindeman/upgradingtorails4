@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'open-uri'
+require 'rubygems'
+require 'doc_raptor'
+
+if ENV['DOCRAPTOR_KEY']
+  DocRaptor.api_key ENV['DOCRAPTOR_KEY']
+else
+  abort("Please set DOCRAPTOR_KEY environment variable")
+end
+
+STDOUT.write(
+  DocRaptor.create(document_content: File.read(File.join(File.dirname(__FILE__), "..", "output", "upgradingtorails4.pdf.html")),
+                   name:             "upgradingtorails4.pdf",
+                   document_type:    "pdf",
+                   test:             !ENV['NOTEST'],
+                   prince_options:   { baseurl: "https://s3.amazonaws.com/upgradingtorails4-book/output/upgradingtorails4.html" })
+)
