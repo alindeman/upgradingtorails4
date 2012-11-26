@@ -8,8 +8,8 @@ Routes are specified in `config/routes.rb`.
 
 ### match
 
-Rails 4 removes the `match` directive. `match` was often used incorrectly,
-and to dangerous consequences.
+Rails 4 changes the way the `match` directive operates. `match` was often used
+incorrectly, and to dangerous consequences.
 
 Consider this route that submits an order to purchase a widget:
 

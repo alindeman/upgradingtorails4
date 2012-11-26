@@ -2,6 +2,8 @@
 
 ### <a id="action-controller-live"></a>ActionController::Live
 
+This section coming soon.
+
 <!-- LIVE -->
 
 ### <a id="cache-digests"></a>Cache Digests
@@ -123,6 +125,10 @@ this style of caching or want to use it before Rails 4 is released.
 
 ### <a id="encrypted-cookies"></a>Encrypted Cookies
 
+This section coming soon.
+
 <!-- https://github.com/rails/rails/pull/8112 -->
 
 ### <a id="etagger"></a>Declarative ETags
+
+This section coming soon.
