@@ -28,6 +28,11 @@ updates.
 If you find errors or have questions, please reach out to me via email at
 <rails4@andylindeman.com>.
 
+### Website
+
+To purchase additional copies of this book--or a team license--visit
+<http://upgradingtorails4.com>. Thank you so much for supporting my work.
+
 ### Cover Photo
 
 The cover photo is copyright [Jeramey
