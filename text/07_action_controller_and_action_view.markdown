@@ -51,7 +51,7 @@ for instance, simply create a new admin user at the console with
 `User.new(admin: true)` even though there is no danger in this situation.
 
 Because of this, Rails 4 adds mass-assignment protection at the controller
-layer by default via the **strong_parameters** gem, and these features
+layer by default via the **strong_parameters** plugin, and these features
 are available automatically in Rails 4.
 
 In Rails 4, there is no mass-assignment protection in the model by default:
