@@ -39,3 +39,9 @@ The cover photo is copyright [Jeramey
 Jannene](http://www.flickr.com/photos/compujeramey/168102810/) and used under
 the [CC BY 2.0
 license](http://creativecommons.org/licenses/by/2.0/).
+
+### Changelog
+
+#### 0.1: November 26, 2012
+
+First beta release to customers and technical reviewers.
