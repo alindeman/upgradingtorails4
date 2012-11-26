@@ -109,6 +109,8 @@ If a Rails 4 compatible version is available, specify the compatible version in
 gem 'draper', 'X.Y.Z' # TODO when draper supports Rails 4
 @@@
 
+<p></p>
+
 @@@ text
 $ bundle update draper
 @@@
