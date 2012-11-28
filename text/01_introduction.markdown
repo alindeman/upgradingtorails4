@@ -52,3 +52,4 @@ license](http://creativecommons.org/licenses/by/2.0/).
   without `:via`](#routing-match).
 * Added information about [encrypted cookies](#encrypted-cookies) and the
   encrypted cookie session store.
+* Added information about [the addition of the PATCH verb](#patch-verb).
