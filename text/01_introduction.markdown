@@ -50,3 +50,5 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 * Clarified that [`match` has not been removed, but instead cannot be used
   without `:via`](#routing-match).
+* Added information about [encrypted cookies](#encrypted-cookies) and the
+  encrypted cookie session store.
