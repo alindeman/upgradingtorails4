@@ -1,9 +1,9 @@
 ## <a id="turbolinks"></a>Turbolinks
 
 <!-- TODO: Make sure this stays true -->
-New Rails 4 applications include the **turbolinks** gem, which can make your
-application feel faster by avoiding full page refreshes as a user navigates
-through an application by clicking links.
+New Rails 4 applications include the **turbolinks** gem, which can sometimes
+make your application faster by avoiding full page refreshes as a user
+navigates through an application by clicking links.
 
 When **turbolinks** is enabled and a user clicks on a link, the request is sent
 in the background using AJAX. The response still contains a fully rendered HTML

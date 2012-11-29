@@ -8,7 +8,7 @@ This section coming soon.
 
 ### <a id="cache-digests"></a>Cache Digests
 
-Nesting fragment caches--often called *russian doll caching*--is an effective
+Nesting fragment caches--often called *russian doll caching*--are an effective
 way to achieve a speed up while keeping view code relatively simple.
 
 Consider an application that manages shopping wishlists: a customer creates
@@ -32,8 +32,7 @@ and caches the fragment of HTML:
 wishlist by incrementing the string to `"v2"` (and later to "`v3`" and so on)
 any time the markup inside the `cache` block is changed. If the `"v1"` were not
 present or not incremented, the application might display a mishmash of cached
-content with the older markup appearing alongside updated content with newer
-markup.
+content with the older markup alongside updated content with newer markup.
 
 For instance, a designer adding a CSS class to the wishlist title header tag
 would also need to increment the string to make sure every wishlist title
@@ -61,7 +60,7 @@ to the wishlist view:
 @@@
 
 This strategy is called russian doll caching because of its use of nested
-templates, each of which is cached. The wishlist is an outer "doll", and each
+templates, each of which is cached. The wishlist is an outer "doll," and each
 item is an inner doll. Caching occurs in both places.
 
 Russian doll caching works well when the outer cache is automatically busted
@@ -104,9 +103,9 @@ In Rails 4, the wishlist and item views can be written as:
 <%- end %>
 @@@
 
-Notably, there is no `"v1"`! **cache_digests** has added a much more robust
-version automatically. Any time the view where the `cache` call resides is
-modified, the cache is busted, *including caches in dependent views*.
+With **cache_digests**, any time the view where the `cache` call resides is
+modified, the cache is automatically busted, *including caches in dependent
+views*. There is no longer a need for `"v1"`.
 
 **cache_digests** solves the problem we had with wishlists and items: changing
 the markup in `_item.html.erb` automatically busts the cache there, as well as
@@ -119,16 +118,16 @@ template content changes, the hash value changes. Read more about
 GitHub](https://github.com/rails/cache_digests).
 
 Like certain other Rails 4 features, **cache_digests** can be included as a gem
-in Rails 3.2 so it can be used today by simply adding the gem to `Gemfile`. I
+in Rails 3.2, so it can be used today by simply adding the gem to `Gemfile`. I
 recommend using **cache_digests** in existing applications if you already use
 this style of caching or want to use it before Rails 4 is released.
 
 ### <a id="encrypted-cookies"></a>Encrypted Cookies
 
 Rails 4 introduces encrypted cookies, and uses them by default (in newly
-generated apps) as the default store for session data. Encrypted cookies
-save data in a form that cannot be easily tampered with by users;
-additionally, users cannot even read the data that is being saved at all.
+generated apps) as the store for session data. Encrypted cookies save data in a
+form that cannot be easily tampered with by users; furthermore, users cannot
+even read the data that is being saved at all.
 
 In contrast, Rails 3 uses digitally signed cookies as the default store for
 sessions. Digitally signed cookies cannot be easily tampered with, but users
@@ -140,8 +139,8 @@ store to garner an increase in security.
 Rails 4 offers a cookie store that acts as a hybrid between the signed cookie
 store (from Rails 3) and the encrypted cookie store. Appropriately enough, it
 is called the `UpgradeSignatureToEncryptionCookieStore`. Existing digitally
-signed sessions will still be valid, yet will be upgraded to be encrypted. New
-sessions will simply be encrypted right away.
+signed sessions will still be valid, and will be upgraded to be encrypted
+automatically. New sessions will simply be encrypted right away.
 
 To use the `UpgradeSignatureToEncryptionCookieStore`, edit
 `config/initializers/session_store.rb` and change `:cookie_store` to
@@ -168,7 +167,7 @@ not remove) the existing line that reads like
 `Widgets::Application.config.secret_token = '...'` (where `'...'` is an
 existing long string of numbers and characters). On the duplicated line,
 replace `secret_token` with `secret_key_base` and replace `'...'` (the existing
-secret token) with the new one you just generated with `rake secret`.
+secret token) with the string you just generated with `rake secret`.
 
 After duplicating and editing the line, you should have something that looks
 like:
@@ -176,10 +175,10 @@ like:
 @@@ ruby
 # config/initializers/secret_key.rb
 
-# Existing line and secret
+# Existing line and secret token
 Widgets::Application.config.secret_token = 'f547fd1e154c2a9a682a...'
 
-# Newly added secret for encrypted cookies
+# Newly added secret key for encrypted cookies
 Widgets::Application.config.secret_key_base = '35137db8a7a7ac525c...'
 @@@
 
