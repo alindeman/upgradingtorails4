@@ -240,7 +240,7 @@ by:
 Rails 4 extracts page caching and action caching to gems.
 
 Page caching saved the response to a request and persisted the data to the
-filesystem. The next time a request for the same controller action camed in,
+filesystem. The next time a request for the same controller action comes in,
 the response would be served directly by the web server (rather than the
 Rails application server).
 
