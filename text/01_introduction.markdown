@@ -46,7 +46,7 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 * First beta release to customers and technical reviewers.
 
-#### 0.2: December 3, 2012
+#### 0.2: November 28, 2012
 
 * Clarified that [`match` has not been removed, but instead cannot be used
   without `:via`](#routing-match).
