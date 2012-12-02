@@ -14,6 +14,8 @@ skip the content in this chapter.
 However, if an application is using plugins, you'll need to do a bit of work to
 successfully upgrade. Read on!
 
+---
+
 ### The Easy Option
 
 The easiest way to work around the removal of plugins in Rails 4 is to, well,

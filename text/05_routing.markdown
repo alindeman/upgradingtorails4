@@ -6,6 +6,8 @@ request.
 
 Routes are specified in `config/routes.rb`.
 
+---
+
 ### <a id="routing-match"></a>match
 
 Rails 4 changes the way the `match` directive operates. `match` was often used

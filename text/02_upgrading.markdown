@@ -6,6 +6,8 @@ application has become much easier.
 That said, upgrading to Rails 4 is a bit more involved than simply running
 `bundle update`.
 
+---
+
 ### Ruby 1.9.3
 
 Rails 4 *requires* at least Ruby 1.9.3. Attempting to run it on anything below
