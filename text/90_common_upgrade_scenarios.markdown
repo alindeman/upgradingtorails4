@@ -28,3 +28,14 @@ config/environments/*.rb files accordingly:
 Rails 4 introduces new settings for thread safety. This deprecation warning is
 prompting you to set the value of the new `config.eager_load` setting. Read
 more about it in the [Thread Safety](#thread-safety) chapter.
+
+---
+
+@@@ text
+DEPRECATION WARNING: Active Record Observers has been extracted out of Rails
+into a gem.  Please use callbacks or add `rails-observers` to your Gemfile to
+use observers.
+@@@
+
+Rails 4 extracts observers to a gem. Read more about it in the
+[Observers](#observers) section.
