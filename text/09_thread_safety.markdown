@@ -13,6 +13,8 @@ always taken advantage of threads, and JRuby can piggyback on their success
 with servers like [trinidad](https://github.com/trinidad/trinidad) and
 [Torquebox](http://torquebox.org/).
 
+---
+
 ### config.threadsafe! and config.eager_load
 
 Rails 3 required a configuration flag, `config.threadsafe!`, to enable

@@ -54,3 +54,7 @@ license](http://creativecommons.org/licenses/by/2.0/).
   encrypted cookie session store.
 * Added information about [the addition of the PATCH verb](#patch-verb).
 * Added information about [turbolinks](#turbolinks).
+
+#### 0.3: December 3, 2012
+
+* Added information about [changes in ActiveSupport](#activesupport).
