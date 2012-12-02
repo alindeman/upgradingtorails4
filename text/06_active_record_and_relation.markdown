@@ -1,6 +1,6 @@
 ## <a id="activerecord"></a>ActiveRecord
 
-Querying the database changed dramactially from Rails 2 to Rails 3.
+Querying the database changed dramatically from Rails 2 to Rails 3.
 Thankfully Rails 4 does not change things up nearly as much, but there are some
 improvements and gotchas you need to be aware of.
 
