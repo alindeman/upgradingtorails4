@@ -207,6 +207,9 @@ gem 'actionpack-page_caching',
 
 gem 'activerecord-session_store',
   github: 'rails/activerecord-session_store'
+
+gem 'rails-observers',
+  github: 'rails/rails-observers'
 @@@
 
 Save `Gemfile` and run from the terminal:

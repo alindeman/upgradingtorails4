@@ -322,3 +322,33 @@ Rails 4 introduces encrypted cookies which may be a good alternative in certain
 use cases where the ActiveRecord session store was the only option before. I
 discuss more about encrypted cookies when I talk about the [new features in
 ActionController](#encrypted-cookies).
+
+### <a id="observers"></a>Observers
+
+Observers have been extracted into a gem. Observers watch ActiveRecord models
+and are invoked in the same way that callbacks (e.g., `after_save`) are invoked
+on the model itself.
+
+The Rails guides once said about observers: "Whereas callbacks can pollute a
+model with code that isn't directly related to its purpose, observers allow you
+to add the same functionality without changing the code of the model."
+
+It seems that in many applications, however, observers cause more problems than
+they solve. It is often mentally taxing to remember that code in observers
+("physically" far away from model code) is run when creating, updating, saving
+or deleting a record. [Gems like no-peeping-toms have been
+written](https://github.com/patmaddox/no-peeping-toms) to disable observers in
+tests because they can slow the suite down or attempt to interface with
+external systems.
+
+By extracting observers, Rails 4 is not-so-subtly discouraging their use in
+new applications.
+
+To continue using observers in upgraded applications, though, simply bring in
+the `rails-observers` gem:
+
+@@@ ruby
+# Gemfile
+gem 'rails-observers',
+  github: 'rails/rails-observers'
+@@@

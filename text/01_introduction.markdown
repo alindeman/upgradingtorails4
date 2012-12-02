@@ -58,3 +58,4 @@ license](http://creativecommons.org/licenses/by/2.0/).
 #### 0.3: December 3, 2012
 
 * Added information about [changes in ActiveSupport](#activesupport).
+* Added information about [observers being extracted into a gem](#observers).
