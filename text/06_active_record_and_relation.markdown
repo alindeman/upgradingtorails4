@@ -333,10 +333,10 @@ The Rails guides once said about observers: "Whereas callbacks can pollute a
 model with code that isn't directly related to its purpose, observers allow you
 to add the same functionality without changing the code of the model."
 
-It seems that in many applications, however, observers cause more problems than
-they solve. It is often mentally taxing to remember that code in observers
-("physically" far away from model code) is run when creating, updating, saving
-or deleting a record. [Gems like no-peeping-toms have been
+In many applications, however, observers cause more problems than they solve.
+It is often mentally taxing to remember that code in observers ("physically"
+far away from model code) is run when creating, updating, saving or deleting a
+record. [Gems like no-peeping-toms have been
 written](https://github.com/patmaddox/no-peeping-toms) to disable observers in
 tests because they can slow the suite down or attempt to interface with
 external systems.
