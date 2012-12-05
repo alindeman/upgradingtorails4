@@ -100,7 +100,58 @@ reordering the `<head>` content so **turbolinks** is last in line.
 
 ### <a id="turbolinks-gotchas"></a>Gotchas
 
-This content has yet to be written! Coming soon.
+**turbolinks** may negatively affect JavaScript that runs code triggered by the
+jQuery `$(document).ready` event. With **turbolinks** enabled,
+`$(document).ready` runs only when the first page is ready, not each time a new
+page is loaded through **turbolinks**.
+
+Consider a view that contains a button:
+
+@@@ erb
+<%# hello.html.erb %>
+<button id="hello-button">Hello!</button>
+@@@
+
+Next, consider the corresponding JavaScript code that attachs to the button's
+`click` event to display an alert when the button is clicked:
+
+@@@ javascript
+$(document).ready(function() {
+  $("#hello-button").on("click", function() {
+    alert("Hello!");
+  });
+});
+@@@
+
+However, if `hello.html.erb` is displayed through **turbolinks** (i.e., it is
+not the first page loaded in the web application), the `$(document).ready`
+event will not be triggered, and the event handler will not be attached to the
+button.
+
+To fix the problem, it is necessary to attach the event handler both in
+`$(document).ready` (which will handle the case where the page is the first to
+load) and `$(document).on("page:load")` (which will handle the case where the
+page is loaded through **turbolinks**).
+
+@@@ javascript
+var attachClickHandler = function() {
+  $("#hello-button").on("click", function() {
+    alert("Hello!");
+  });
+};
+
+$(document).ready(attachClickHandler);
+$(document).on("page:load", attachClickHandler);
+@@@
+
+The `"page:load"` event is triggered when **turbolinks** loads a new page.
+
+While it is good to know how to manually fix the issue, a library called
+[jquery.turbolinks](https://github.com/kossnocorp/jquery.turbolinks) has also been
+created to fix the issue described here, ideally without any code changes.
+
+That is, in the presence of **jquery.turbolinks**, the original code will work
+correctly as `$(document).ready` will be fired in both cases.
 
 ### Additional Resources
 
