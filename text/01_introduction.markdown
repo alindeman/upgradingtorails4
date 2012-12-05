@@ -59,3 +59,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 * Added information about [changes in ActiveSupport](#activesupport).
 * Added information about [observers being extracted into a gem](#observers).
+
+#### 0.4: XXX
+
+* Added information about [ActiveResource no longer being bundled with
+  Rails](#activeresource).
