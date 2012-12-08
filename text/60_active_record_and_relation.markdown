@@ -73,3 +73,25 @@ The `none` scope is implemented by returning an `ActiveRecord::NullRelation`,
 named for the [null object
 pattern](http://en.wikipedia.org/wiki/Null_Object_pattern). No database query
 will be used when a `none` scope is used in the chain.
+
+### <a id="relation-not"></a>Relation#not
+
+Imagine an application has a `Comment` model, and you wish to find all of the
+comments authored by users *other* than the current user.
+
+In Rails 3, writing a query that needs the not-equal-to operator (`!=`)
+requires using `where` with a string condition:
+
+@@@ ruby
+Comment.where("user_id != ?", current_user.id)
+@@@
+
+Rails 4 introduces the `not` scope. In Rails 4, the same query could be
+rewritten as:
+
+@@@ ruby
+Comment.where.not(user_id: current_user.id)
+@@@
+
+Notably, no string clause is required. The result is a cleaner expression that
+is guaranteed to operate correctly regardless of the underlying database.

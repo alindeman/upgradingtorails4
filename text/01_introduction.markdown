@@ -65,3 +65,4 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Added information about [ActiveResource no longer being bundled with
   Rails](#activeresource).
 * Added information about [gotchas when using turbolinks](#turbolinks-gotchas).
+* Added information about [ActiveRecord::Relation#not](#relation-not).
