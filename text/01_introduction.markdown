@@ -66,3 +66,4 @@ license](http://creativecommons.org/licenses/by/2.0/).
   Rails](#activeresource).
 * Added information about [gotchas when using turbolinks](#turbolinks-gotchas).
 * Added information about [ActiveRecord::Relation#not](#relation-not).
+* Added information about [JSON serialization in Rails 4](#json-serialization).

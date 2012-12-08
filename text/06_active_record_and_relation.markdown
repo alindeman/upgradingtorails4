@@ -352,3 +352,45 @@ the `rails-observers` gem:
 gem 'rails-observers',
   github: 'rails/rails-observers'
 @@@
+
+### <a id="json-serialization"></a>JSON Serialization
+
+In Rails 3, HTML entities are output as-is when a model is serialized to JSON.
+For example, `Post.find(2).to_json` might return a structure like:
+
+@@@ json
+{
+  "id": 2,
+  "title": "Hello World",
+  "body": "<a href='hello.html'>Hello!</a>"
+}
+@@@
+
+However, because the `body` attribute can contain HTML, the application is
+vulnerable to attacks such as cross-site scripting (XSS) in certain
+circumstances. If the JSON were embedded directly into a page, for example, an
+attacker could embed malicious HTML and JavaScript that could steal the user's
+session or redirect them to another site.
+
+Rails 4 enables the `config.active_support.escape_html_entities_in_json`
+option by default. The option name is actually a bit confusing: HTML entities
+are not really *escaped*, but simply encoded differently so they do not
+evaluate to HTML tags when embedded directly in an HTML page.
+
+In Rails 4, the expression `Post.find(2).to_json` will (by default) return a
+structure like:
+
+@@@ json
+{
+  "id": 2,
+  "title": "Hello World",
+  "body": "\u003Ca href='hello.html'\u003EHello!\u003C/a\u003E"
+}
+@@@
+
+The angle brackets in `body` have been encoded such that a browser would not
+interpret them as HTML tags. However, JSON parsers will decode both the Rails 3
+and the Rails 4 versions exactly the same. For this reason, it is unlikely that
+this change will cause you any pain when upgrading. Even so, it is important to
+understand why the change was made, and why you might see slightly different
+JSON serialization output between Rails 3 and Rails 4.
