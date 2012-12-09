@@ -1,7 +1,7 @@
 ## <a id="activeresource"></a>ActiveResource
 
-Rails 4 no longer bundles ActiveResource by default. ActiveResource allows
-applications to manipulate remote resources with a syntax similar to
+ActiveResource no longer ships with Rails by default in Rails 4. ActiveResource
+allows applications to manipulate remote resources with a syntax similar to
 ActiveRecord. Usually these resources are exposed by another Rails application
 using RESTful HTTP API conventions.
 
@@ -11,8 +11,8 @@ Even so, it did not get much attention from Rails core maintainers.
 
 ActiveResource [stills exists in the Rails organization on
 GitHub](http://github.com/rails/activeresource), but as of Rails 4, it is
-independent from Rails' release cycle. It is possible that ActiveResource 4.0.1
-could be released independently of Rails 4.0.1, for instance.
+independent from Rails' release cycle. For instance, it is possible that
+ActiveResource 4.0.1 could be released independently of Rails 4.0.1.
 
 To continue using ActiveResource, add it explicitly in `Gemfile`:
 

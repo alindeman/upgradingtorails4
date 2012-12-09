@@ -8,10 +8,10 @@ for applying "partial modifications to a resource."
 
 Traditionally, Rails has used the PUT verb for updates of RESTful resources.
 However, the RFC states that PUT should be used only to "overwrite a resource
-with a complete new body," and *not* for simply updating parts of it.
+with a complete new body," and *not* to simply update parts of it.
 
-All that to say that Rails conventions have been using PUT incorrectly.
-Instead, PATCH is preferred for partial updates.
+So, the Rails conventions through Rails 3 have encouraged an incorrect use of
+PUT. For partial updates, PATCH is the preferred verb.
 
 Rails 4 retains support for update requests coming in via the PUT verb, yet
 adds support for those same types of requests coming in via the PATCH verb too.
@@ -39,7 +39,7 @@ You only need to be aware of the PATCH verb; the addition should not cause any
 upgrade pains as PUT requests continue operating as they always have.
 
 That said, it is recommended that you consider transitioning to using PATCH
-instead of PUT when using your Rails application as an HTTP/RESTful API.
+instead of PUT when your Rails application is an HTTP/RESTful API.
 
 ### <a id="routing-concerns"></a>Routing Concerns
 
@@ -48,33 +48,42 @@ domain-specific language (DSL) that promise to reduce duplication in certain
 situations.
 
 Imagine an application that manages many different resources, all of which
-users can comment on. In Rails 3, a route file might look like:
+can be commented on by users. In Rails 3, a route file might look like:
 
 @@@ ruby
 # config/routes.rb
-resources :dogs do
-  resources :comments
-end
+Animals::Application.routes.draw do
+  resources :dogs do
+    resources :comments
+  end
 
-resources :cats do
-  resources :comments
-end
+  resources :cats do
+    resources :comments
+  end
 
-# ... etc ...
+  resources :ferrets do
+    resources :comments
+  end
+
+  # ... etc ...
+end
 @@@
 
-Both dogs and cats have nested comment resources. In Rails 4, this comment
+Dogs, cats and ferrets have nested comment resources. In Rails 4, this comment
 "concern" can be extracted and reused:
 
 @@@ ruby
 # config/routes.rb
-concern :commentable do
-  resources :comments
-end
+Animals::Application.routes.draw do
+  concern :commentable do
+    resources :comments
+  end
 
-resources :dogs, concerns: [:commentable]
-resources :cats, concerns: [:commentable]
-# ... etc ...
+  resources :dogs,    concerns: [:commentable]
+  resources :cats,    concerns: [:commentable]
+  resources :ferrets, concerns: [:commentable]
+  # ... etc ...
+end
 @@@
 
 <!-- TODO: Talk about #call-able concerns -->
