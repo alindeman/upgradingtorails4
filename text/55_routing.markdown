@@ -43,4 +43,38 @@ instead of PUT when using your Rails application as an HTTP/RESTful API.
 
 ### <a id="routing-concerns"></a>Routing Concerns
 
-This section coming soon.
+Rails 4 introduces **routing concerns**: additions to the routing
+domain-specific language (DSL) that promise to reduce duplication in certain
+situations.
+
+Imagine an application that manages many different resources, all of which
+users can comment on. In Rails 3, a route file might look like:
+
+@@@ ruby
+# config/routes.rb
+resources :dogs do
+  resources :comments
+end
+
+resources :cats do
+  resources :comments
+end
+
+# ... etc ...
+@@@
+
+Both dogs and cats have nested comment resources. In Rails 4, this comment
+"concern" can be extracted and reused:
+
+@@@ ruby
+# config/routes.rb
+concern :commentable do
+  resources :comments
+end
+
+resources :dogs, concerns: [:commentable]
+resources :cats, concerns: [:commentable]
+# ... etc ...
+@@@
+
+<!-- TODO: Talk about #call-able concerns -->
