@@ -196,4 +196,46 @@ class PostPublisher
 end
 @@@
 
-### Asynchronous ActionMailer
+### <a id="async-actionmailer"></a>Asynchronous ActionMailer
+
+Attempting to send an email within the context of an HTTP request breaks down
+when the email server is having problems: responses could slow or fail
+entirely. Therefore, sending email is one of the most common use cases for a
+background queue.
+
+By default in Rails 4, emails sent by ActionMailer are delivered by enqueuing a
+job into `Rails.queue`. Consequently, sending emails asynchronously is as
+simple as making sure `Rails.queue` is asynchronous. As discussed earlier,
+the most robust solution in production is to pull in `delayed_job`, `resque`
+(and `resque-rails`), or `sidekiq`.
+
+While it shouldn't necessarily cause any problems during upgrade, it is
+important to know that emails will be delivered by background workers if
+`Rails.queue` is changed from its synchronous default.
+
+It *is* possible to change the queue used for email delivery, either globally
+or per-mailer.
+
+To change it globally for the production environment, edit
+`config/environments/production.rb`:
+
+@@@ ruby
+# config/environments/production.rb
+Widgets::Application.configure do
+  # ...
+
+  config.action_mailer.queue = ActiveSupport::Queue.new
+end
+@@@
+
+To change it per-mailer, edit the mailer source file and add the
+`self.queue =` directive:
+
+@@@ ruby
+# app/mailers/widgets_mailer.rb
+class WidgetsMailer < ActionMailer::Base
+  self.queue = ActiveSupport::Queue.new
+
+  # ...
+end
+@@@
