@@ -2,9 +2,144 @@
 
 ### <a id="action-controller-live"></a>ActionController::Live
 
-This section coming soon.
+By default, Rails renders the entire view template and layout before sending
+any data back to a browser. While simple, this approach adds to the
+critical path of time it takes before the resulting page appears to the
+user.
 
-<!-- LIVE -->
+Rails 3.1 introduced optional streaming templates: when enabled, parts of the
+view (e.g., the layout) are rendered and sent back to users's browser before
+the *entire* view is rendered. Importantly, the browser can start downloading
+and parsing assets like JavaScript, CSS stylesheets, and images while the rest
+of the view is being generated. More information about this kind of streaming
+is available in the [`ActionController::Streaming` API
+documentation](http://api.rubyonrails.org/classes/ActionController/Streaming.html).
+
+However, `ActionController::Streaming` does not give developers full control
+over the streaming process, and is geared mostly toward speeding up short-lived
+requests. Recent developments in HTML5 and JavaScript make it more
+appealing to keep long-lived connections open between servers and browsers. To
+achieve that alongside Rails, though, many developers have been forced to use a
+separate [Sinatra](http://www.sinatrarb.com/) application or even reach for
+technologies like [node.js](http://nodejs.org/).
+
+Rails 4 introduces `ActionController::Live` which gives developers full control
+over sending arbitrary data to browsers, including over long-held connections.
+
+An example is the easiest way to explain this new feature in detail.
+
+As a prerequisite, a Rails application using `ActionController::Live` should be
+configured for thread safety. Rails 4 makes this straightforward, as I explain
+in the [Thread Safety](#thread-safety) section earlier. Thread safety is
+already the default in production, but the development configuration needs to
+be adjusted by editing `config/environments/development.rb`:
+
+@@@ ruby
+# config/environments/development.rb
+Widgets::Application.configure do
+  # ...
+
+  # Add this line: disables mutex around each request
+  config.middleware.delete ::Rack::Lock
+
+  # Change from false to true!
+  config.eager_load = true
+end
+@@@
+
+Next, make sure to use a thread-safe web application server like
+[puma](http://puma.io/); avoid process-based servers like
+[unicorn](http://unicorn.bogomips.org/) which can only handle as many
+concurrent requests as there are processes. To install puma, simply add it to
+`Gemfile` and run `bundle exec puma -p 3000` instead of `rails server`:
+
+@@@ ruby
+# Gemfile
+gem 'puma'
+@@@
+
+Now, consider a controller with `ActionController::Live` enabled. It will
+send [server-sent events](http://en.wikipedia.org/wiki/Server-sent_events)
+every second, incrementing a counter each time.
+
+@@@ ruby
+# app/controllers/timer_controller.rb
+class TimerController < ApplicationController
+  include ActionController::Live
+
+  def tick
+    response.headers["Content-Type"] = "text/event-stream"
+
+    begin
+      seconds = 0
+      loop do
+        response.stream.write("data: #{seconds}\n\n")
+
+        seconds += 1
+        sleep 1
+      end
+    rescue IOError
+      # client disconnected
+    ensure
+      response.stream.close # cleanup
+    end
+  end
+end
+@@@
+
+As shown in the `TimerController` example above, live streaming is enabled by
+including the `ActionController::Live` module. When enabled, the controller
+action can write directly to `response.stream`.
+
+The consumer of the timer API can simply be a static page in `public/`:
+
+@@@ 
+<!DOCTYPE html>
+<html>
+  <!-- public/timer.html -->
+  <head>
+    <title>Timer Example</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        var timerSource = new EventSource("/tick");
+        timerSource.onmessage = function(e) {
+          $("#timer").text(e.data);
+        };
+      });
+    </script>
+  </head>
+  <body>
+    Timer: <span id="timer"></span> seconds.
+  </body>
+</html>
+@@@
+
+Any time a server-sent event is received, the `#timer` text is updated.
+
+Finally, wire everything up by adding a route for the `tick` controller action:
+
+@@@ ruby
+# config/routes.rb
+Widgets::Application.routes.draw do
+  # ...
+
+  get "/tick" => "timer#tick"
+end
+@@@
+
+Start or restart `puma` (`bundle exec puma -p 3000`), and navigate to
+<http://localhost:3000/>. The timer should start counting up every second:
+
+![Timer at 7 seconds](../images/timer_7.png)
+
+![Timer at 22 seconds](../images/timer_22.png)
+
+Voila! Consider using `ActionController::Live` to implement desktop-like
+applications that react rapidly (avoiding AJAX polling, for instance), or to
+stream JSON to users on connections with lower bandwidth or higher latency
+(e.g., cellular data).
 
 ### <a id="cache-digests"></a>Cache Digests
 

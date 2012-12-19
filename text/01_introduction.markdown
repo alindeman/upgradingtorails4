@@ -70,3 +70,11 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Added basic information about [routing concerns](#routing-concerns). I may
   add some more details later, after I come up with better examples.
 * Added information about [asynchronous ActionMailer](#async-actionmailer).
+
+#### 0.5: XXX
+
+* Added information about [ActionController::Live](#action-controller-live) and
+  streaming server-sent events.
+* Removed `Rails.queue` chapter since it has been [punted out of Rails
+  4](https://twitter.com/dhh/status/281421220417781760). If it returns as a gem
+  or plugin, I will consider adding the material back.
