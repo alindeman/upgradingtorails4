@@ -325,4 +325,83 @@ the new encrypted session store!
 
 ### <a id="etagger"></a>Declarative ETags
 
-This section coming soon.
+Client-side caching is often one of the best ways to save sending bytes over
+the wire, thereby reducing bandwidth costs and load times.
+
+An ETag is one mechanism that supports caching in the HTTP specification. When
+a browser first requests a resource, the server may send back an ETag. An ETag
+is usually an opaque hash representing a version of the resource. The next time
+a browser requests a given resource, it sends along the ETag it has remembered.
+If the ETag matches the current version of the resource (i.e., the resource has
+not changed since the last time it was requested), the server can send a 304
+Not Modified response with an empty body instead of sending the entire resource
+again.
+
+In Rails and with ActiveRecord, ETags can be generated
+automatically based on the model's class, `id`, and
+`updated_at`. With `updated_at` in the mix, this
+`cache_key` returns a new value every time the record is
+updated.
+
+Even Rails 3 provided facilities to generate ETags for caching. Consider a
+controller that takes advantage of ETags:
+
+@@@ ruby
+class WidgetsController < ApplicationController
+  def show
+    @widget = Widget.find(params[:id])
+    fresh_when(@widget)
+  end
+end
+@@@
+
+The
+[fresh_when](http://api.rubyonrails.org/classes/ActionController/ConditionalGet.html#method-i-fresh_when)
+method generates an ETag and will not render the view if
+that ETag matches the one send by the browser.
+
+Sometimes it makes sense to scope the ETag, for instance,
+to a particular authenticated user. That way, one user's
+cached content is never shown to a different user (which
+would potentially be a security vulnerability!).
+
+In Rails 3, scoping can be achieved by passing an array of
+values to `fresh_when`:
+
+@@@ ruby
+class WidgetsController < ApplicationController
+  def show
+    @widget = Widget.find(params[:id])
+    fresh_when([@widget, current_user.id])
+  end
+end
+@@@
+
+In this case, the `current_user`'s ID is used in
+generating the ETag. As a result, different ETags will be
+generated for every user, even if the `@widget` has the
+same `updated_at` timestamp. Any caching mechanism will be
+scoped to a particular logged in user as we wanted.
+
+However, it can be a pain to remember to add this scoping
+everywhere. Rails 4 introduces a new declarative syntax
+for these controller-wide ETag concerns:
+
+@@@ ruby
+class WidgetsController < ApplicationController
+  etag { current_user.id }
+
+  def show
+    @widget = Widget.find(params[:id])
+    fresh_when(@widget)
+  end
+end
+@@@
+
+The code above has the same behavior as the previous code
+that passed `current_user.id` into `fresh_when`
+explicitly.
+
+Furthermore, you can call `etag` multiple times to add
+additional values used when generating ETags for the
+controller.
