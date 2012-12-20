@@ -325,28 +325,31 @@ the new encrypted session store!
 
 ### <a id="etagger"></a>Declarative ETags
 
-Client-side caching is often one of the best ways to save sending bytes over
+Client-side caching is one of the best ways to save sending bytes over
 the wire, thereby reducing bandwidth costs and load times.
 
-An ETag is one mechanism that supports caching in the HTTP specification. When
-a browser first requests a resource, the server may send back an ETag. An ETag
-is usually an opaque hash representing a version of the resource. The next time
-a browser requests a given resource, it sends along the ETag it has remembered.
-If the ETag matches the current version of the resource (i.e., the resource has
-not changed since the last time it was requested), the server can send a 304
-Not Modified response with an empty body instead of sending the entire resource
-again.
+An entity tag (ETag) is one mechanism defined in the HTTP specification that
+supports caching. When a browser first requests a resource, the server may send
+back an ETag. An ETag is an opaque hash representing a version of the resource.
+When a browser requests the same resource in the future, it sends along the
+ETag it remembered the last time the resource was requested. If the ETag
+matches the current version of the resource (i.e., the resource has not changed
+since the last time it was requested), the server can send a "304 Not Modified"
+response with an empty body, saving bandwidth and server processing time.
 
-In Rails and with ActiveRecord, ETags can be generated
-automatically based on the model's class, `id`, and
-`updated_at`. With `updated_at` in the mix, this
-`cache_key` returns a new value every time the record is
-updated.
+Conversely, if the resource has changed, the ETags will not match and the
+server knows it must send a full response.
 
-Even Rails 3 provided facilities to generate ETags for caching. Consider a
+An ETag can be generated easily from an ActiveRecord model. By default, the
+model's class, `id` (primary key), and `updated_at` are combined as the basis
+for the ETag hash. With `updated_at` in the mix, this `cache_key` returns a new
+value every time the record is updated.
+
+Rails has provided facilities to generate ETags since Rails 3. Consider a
 controller that takes advantage of ETags:
 
 @@@ ruby
+# app/controllers/widgets_controller.rb
 class WidgetsController < ApplicationController
   def show
     @widget = Widget.find(params[:id])
@@ -357,18 +360,20 @@ end
 
 The
 [fresh_when](http://api.rubyonrails.org/classes/ActionController/ConditionalGet.html#method-i-fresh_when)
-method generates an ETag and will not render the view if
-that ETag matches the one send by the browser.
+method sets up the response to include an ETag. Furthermore, if the ETag sent
+by the browser matches the current ETag, the controller will not render the
+view, opting instead for a "304 Not Modified" empty response.
 
-Sometimes it makes sense to scope the ETag, for instance,
-to a particular authenticated user. That way, one user's
-cached content is never shown to a different user (which
-would potentially be a security vulnerability!).
+Sometimes it makes sense to use additional information when generating the
+ETag, for instance, to scope the ETag to the currently logged in user.
+Otherwise, cached content may be reused for a different user (an information
+leak and security vulnerability!).
 
-In Rails 3, scoping can be achieved by passing an array of
-values to `fresh_when`:
+In Rails 3, this scoping can be achieved by passing an array of values to
+`fresh_when`:
 
 @@@ ruby
+# app/controllers/widgets_controller.rb
 class WidgetsController < ApplicationController
   def show
     @widget = Widget.find(params[:id])
@@ -377,17 +382,16 @@ class WidgetsController < ApplicationController
 end
 @@@
 
-In this case, the `current_user`'s ID is used in
-generating the ETag. As a result, different ETags will be
-generated for every user, even if the `@widget` has the
-same `updated_at` timestamp. Any caching mechanism will be
-scoped to a particular logged in user as we wanted.
+In this case, the `current_user`'s ID is used when generating the ETag. As a
+result, different ETags will be generated for every user, even for the same
+version of `@widget`. Information leak patched!
 
-However, it can be a pain to remember to add this scoping
-everywhere. Rails 4 introduces a new declarative syntax
-for these controller-wide ETag concerns:
+However, it can be a pain to remember to add this scoping in every controller
+action. Rails 4 introduces a new declarative syntax for these controller-wide
+ETag concerns:
 
 @@@ ruby
+# app/controllers/widgets_controller.rb
 class WidgetsController < ApplicationController
   etag { current_user.id }
 
@@ -398,12 +402,20 @@ class WidgetsController < ApplicationController
 end
 @@@
 
-The code above has the same behavior as the previous code
-that passed `current_user.id` into `fresh_when`
-explicitly.
+The code above has the same behavior as the previous example where
+`current_user.id` was passed explicitly to `fresh_when`. However, it is more
+readable and DRY (Don't Repeat Yourself: an adjective for code or knowledge
+that is not duplicated).
 
-Furthermore, you can call `etag` multiple times to add
-additional values used when generating ETags for the
-controller.
+Furthermore, you can call `etag` multiple times to continue adding values used
+when generating ETags for the controller.
 
-<!-- TODO: etagger gem -->
+#### Use in Rails 3.2
+
+While declarative ETags will be baked into Rails 4 itself, they can also be
+used in Rails 3.2 applications by pulling in the `etagger` gem:
+
+@@@ ruby
+# Gemfile
+gem 'etagger'
+@@@

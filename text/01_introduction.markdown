@@ -80,3 +80,4 @@ license](http://creativecommons.org/licenses/by/2.0/).
   or plugin, I will consider adding the material back.
 * Updated the [Checking for Incompatible Gems](#incompatible-gems) section
   now that Draper 1.0.0 (prerelease) supports Rails 4.
+* Added information about [declarative ETags](#etagger).
