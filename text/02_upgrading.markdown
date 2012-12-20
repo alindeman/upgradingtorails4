@@ -67,7 +67,7 @@ Finish the installation by running `bundle`:
 $ bundle install
 @@@
 
-### Checking for Incompatible Gems
+### <a id="incompatible-gems"></a>Checking for Incompatible Gems
 
 `rails4_upgrade` adds a `rake` task to check for gems that are locked to
 Rails 3, preventing an application from upgrading successfully.
@@ -104,11 +104,12 @@ have a version that supports Rails 4. Check the gem's website or source
 repository (often hosted on [GitHub](http://github.com)).
 
 If a Rails 4 compatible version is available, specify the compatible version in
-`Gemfile` and use `bundler` to update it:
+`Gemfile` and use `bundler` to update it. In this case, `draper` 1.0.0 supports
+Rails 4.
 
 @@@ ruby
 # Gemfile
-gem 'draper', 'X.Y.Z' # TODO when draper supports Rails 4
+gem 'draper', '>=1.0.0.beta4'
 @@@
 
 <p></p>

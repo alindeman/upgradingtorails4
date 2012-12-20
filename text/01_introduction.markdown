@@ -78,3 +78,5 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Removed `Rails.queue` chapter since it has been [punted out of Rails
   4](https://twitter.com/dhh/status/281421220417781760). If it returns as a gem
   or plugin, I will consider adding the material back.
+* Updated the [Checking for Incompatible Gems](#incompatible-gems) section
+  now that Draper 1.0.0 (prerelease) supports Rails 4.
