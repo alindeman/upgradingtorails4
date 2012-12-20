@@ -405,3 +405,5 @@ explicitly.
 Furthermore, you can call `etag` multiple times to add
 additional values used when generating ETags for the
 controller.
+
+<!-- TODO: etagger gem -->
