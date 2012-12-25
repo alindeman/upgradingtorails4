@@ -10,13 +10,13 @@ user.
 Rails 3.1 introduced optional streaming templates: when enabled, parts of the
 view (e.g., the layout) are rendered and sent back to users's browser before
 the *entire* view is rendered. Importantly, the browser can start downloading
-and parsing assets like JavaScript, CSS stylesheets, and images while the rest
+and parsing assets like JavaScript, stylesheets, and images while the rest
 of the view is being generated. More information about this kind of streaming
 is available in the [`ActionController::Streaming` API
 documentation](http://api.rubyonrails.org/classes/ActionController/Streaming.html).
 
 However, `ActionController::Streaming` does not give developers full control
-over the streaming process, and is geared mostly toward speeding up short-lived
+over the streaming process and is geared mostly toward speeding up short-lived
 requests. Recent developments in HTML5 and JavaScript make it more
 appealing to keep long-lived connections open between servers and browsers. To
 achieve that alongside Rails, though, many developers have been forced to use a
@@ -382,8 +382,8 @@ class WidgetsController < ApplicationController
 end
 @@@
 
-In this case, the `current_user`'s ID is used when generating the ETag. As a
-result, different ETags will be generated for every user, even for the same
+In this case, the `current_user`'s ID is included when generating the ETag. As
+a result, different ETags will be generated for every user, even for the same
 version of `@widget`. Information leak patched!
 
 However, it can be a pain to remember to add this scoping in every controller
