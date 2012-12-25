@@ -1,1 +1,1 @@
-# Deprecations & Removed Features
+# Deprecations and Removed Features

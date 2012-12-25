@@ -1,4 +1,4 @@
-## ActionController & ActionView
+## ActionController and ActionView
 
 ### strong_parameters
 

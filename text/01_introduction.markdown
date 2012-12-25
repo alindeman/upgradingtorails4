@@ -71,7 +71,7 @@ license](http://creativecommons.org/licenses/by/2.0/).
   add some more details later, after I come up with better examples.
 * Added information about [asynchronous ActionMailer](#async-actionmailer).
 
-#### 0.5: XXX
+#### 0.5: December 25, 2012
 
 * Added information about [ActionController::Live](#action-controller-live) and
   streaming server-sent events.

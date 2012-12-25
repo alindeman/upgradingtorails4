@@ -512,8 +512,12 @@ hr {
 }
 
 .highlight {
-	font-size: 0.6em;
+  font-size: 0.6em;
   margin-left: 0.6em;
   padding: 0.1em 0.6em 0.1em 0.6em;
   background-color: #f0f0f0;
+}
+
+.c1, .c {
+  color: #888;
 }

@@ -1,4 +1,4 @@
-## ActionController & ActionView
+## ActionController and ActionView
 
 ### <a id="action-controller-live"></a>ActionController::Live
 
