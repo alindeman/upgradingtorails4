@@ -81,3 +81,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Updated the [Checking for Incompatible Gems](#incompatible-gems) section
   now that Draper 1.0.0 (prerelease) supports Rails 4.
 * Added information about [declarative ETags](#etagger).
+
+#### 0.6: XXXX
+
+* Removed `journey` from the generated `Gemfile` since `journey` has been
+  integrated into Rails.

@@ -173,7 +173,6 @@ gem 'activerecord-deprecated_finders',
   github: 'rails/activerecord-deprecated_finders'
 
 gem 'arel',    github: 'rails/arel'
-gem 'journey', github: 'rails/journey'
 @@@
 
 `activerecord-deprecated_finders` allows certain dynamic finders that have
@@ -181,10 +180,6 @@ been deprecated to keep operating correctly. More information about these
 changes is available in the [ActiveRecord](#activerecord) chapter.
 
 `arel` assists in the construction of SQL database queries.
-
-`journey` parses routes so that requests can be efficiently dispatched within
-the Rails application. At the current time, only the version from git is
-compatible with Rails 4.
 
 Finally, Rails 4 moves many features into gems that were previously shipped
 with Rails itself. Later chapters go into more detail about these changes. For
@@ -223,7 +218,6 @@ $ bundle update rails
 @@@ text
 Updating git://github.com/rails/rails.git
 Updating git://github.com/rails/activerecord-deprecated_finders.git
-Updating git://github.com/rails/journey.git
 Updating git://github.com/rails/sass-rails.git
 Updating git://github.com/rails/coffee-rails.git
 Fetching gem metadata from https://rubygems.org/........
