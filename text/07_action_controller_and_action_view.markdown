@@ -258,4 +258,36 @@ Notably, fragment caching--where smaller pieces of a view are cached--is *not*
 deprecated in Rails 4. In fact, fragment caching is even improved. More on that
 in the section describing [cache_digests](#cache-digests).
 
-<!-- TODO: actionview-encoded_mail_to -->
+### <a id="actionview-encoded_mail_to"></a>actionview-encoded\_mail\_to
+
+Rails 3 included a little-known feature to obfuscate links to email addresses.
+This is useful because spambots are known to troll the Internet looking for
+these `mailto:` links.
+
+The obfuscation was enabled by passing the `encode` option to `mail_to`,
+usually in a view:
+
+@@@ ruby
+# app/views/about/index.html.erb
+Contact us <%= mail_to "andy@example.com", "via email", encode: "hex" %>
+@@@
+
+When passed `encode: "hex"`, Rails will obfuscate the email address with HTML
+entities (in this case `andy@example.com` is transformed into
+`&#109;&#97;&#105;&#108;&#116;&#111;&#58;%61%6e%64%79@%65%78%61%6d%70%6c%65.%63%6f%6d`).
+
+While a real browser will interpret the encoded email address without any
+problems, it might trip up a naive spambot.
+
+`encode` can also be set to `"javascript"`. In this case, the email address is
+encoded into its hex form, but also embedded in a JavaScript snippet that is
+invoked when the link is clicked. This will likely trip up a higher percentage
+of spambots, but does now require JavaScript.
+
+In Rails 4, support for `encode` has been extracted to a gem: `actionview-encoded_mail_to`.
+To enable or reenable the feature, simply add the gem to `Gemfile`:
+
+@@@ ruby
+# Gemfile
+gem 'actionview-encoded_mail_to'
+@@@

@@ -82,14 +82,14 @@ license](http://creativecommons.org/licenses/by/2.0/).
   now that Draper 1.0.0 (prerelease) supports Rails 4.
 * Added information about [declarative ETags](#etagger).
 
-#### 0.6: XXXX
+#### 0.6: January 7, 2013
 
-* Added a first cut of the
-  [upgrade checklist](#upgrade-checklist).
+* Added a first cut of the [upgrade checklist](#upgrade-checklist).
 * Added information about the [changes to testing in Rails 4](#testing).
 * Removed `journey` from the generated `Gemfile` since `journey` has been
   integrated into Rails.
-* Added `actionview-encoded_mail_to` as a recommended addition to the `Gemfile`
-  used when upgrading.
-* Noted that
-  [routing concerns can be used in Rails 3.2](#routing-concerns-in-rails32).
+* Added information about [the extraction of the `encode` option for
+  `mail_to`](#actionview-encoded_mail_to) to the `actionview-encoded_mail_to`
+  gem.
+* Noted that [routing concerns can be used in Rails
+  3.2](#routing-concerns-in-rails32).
