@@ -8,7 +8,7 @@ That said, upgrading to Rails 4 is a bit more involved than simply running
 
 ---
 
-### Ruby 1.9.3
+### <a id="ruby-193"></a>Ruby 1.9.3
 
 Rails 4 *requires* at least Ruby 1.9.3. Attempting to run it on anything below
 1.9.3 will cause syntax errors or runtime issues.
@@ -35,7 +35,7 @@ $ rvm install jruby-1.7.0
 $ rvm use --rvmrc jruby-1.7.0
 @@@
 
-### bundler
+### <a id="bundler"></a>bundler
 
 It is possible that Rails 4 will require a more recent version of `bundler`
 than is installed in your set of gems.
@@ -47,7 +47,7 @@ To avoid any potential problems, simply upgrade to the latest version of
 $ gem install bundler
 @@@
 
-### rails4\_upgrade gem
+### <a id="rails4_upgrade"></a>rails4\_upgrade gem
 
 The [`rails4_upgrade gem`](https://github.com/alindeman/rails4_upgrade) helps
 automate some of the process required to upgrade to Rails 4.
@@ -172,7 +172,8 @@ released. For this reason, it is necessary to add these lines to `Gemfile`:
 gem 'activerecord-deprecated_finders', 
   github: 'rails/activerecord-deprecated_finders'
 
-gem 'arel',    github: 'rails/arel'
+gem 'arel',
+  github: 'rails/arel'
 @@@
 
 `activerecord-deprecated_finders` allows certain dynamic finders that have
@@ -181,10 +182,10 @@ changes is available in the [ActiveRecord](#activerecord) chapter.
 
 `arel` assists in the construction of SQL database queries.
 
-Finally, Rails 4 moves many features into gems that were previously shipped
-with Rails itself. Later chapters go into more detail about these changes. For
-now, however, add all of the gems that are required to keep existing Rails
-features working properly after upgrading:
+<a id="deprecation-gems"></a>Finally, Rails 4 moves many features into gems
+that were previously shipped with Rails itself. Later chapters go into more
+detail about these changes. For now, however, add all of the gems that are
+required to keep existing Rails features working properly after upgrading:
 
 @@@ ruby
 # Gemfile

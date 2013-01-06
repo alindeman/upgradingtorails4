@@ -184,7 +184,7 @@ The application is now free to ditch `attr_accessible` in the model layer in
 favor of `params.require.permit` in the controller layer. The application will already
 be following the convention for Rails 4 and beyond.
 
-### Authenticity Tokens for Remote Forms
+### <a id="authenticity-tokens-in-remote-forms"></a>Authenticity Tokens for Remote Forms
 
 Rails protects applications from a range of security issues. By default, Rails
 requires forms submitted via HTTP verbs other than GET be accompanied with

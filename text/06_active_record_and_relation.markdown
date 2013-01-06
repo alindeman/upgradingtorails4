@@ -6,7 +6,7 @@ improvements and gotchas you need to be aware of.
 
 ---
 
-### Rails 2 Finder Syntax
+### <a id="rails2-finder-syntax"></a>Rails 2 Finder Syntax
 
 Rails 2 finder syntax is deprecated. If you have an application that uses
 `find(:all)` and `find(:first)`, you'll need to transition it to the new
@@ -27,7 +27,7 @@ chained scope syntax introduced in Rails 3:
 Post.where("created_at > ?", 2.days.ago)
 @@@
 
-### Dynamic Finders
+### <a id="dynamic-finders"></a>Dynamic Finders
 
 Many of the dynamic finders have been deprecated in favor of alternate syntax.
 Most of the alternate syntax is already supported in Rails 3.2.
@@ -94,7 +94,7 @@ Notably, though, the `find_by_...` dynamic finder is *not* deprecated. Code
 such as `User.find_by_email("andy@andylindeman.com")` will continue functioning
 without deprecation warnings.
 
-### Eager-Evaluated Scopes
+### <a id="eager-evaluated-scopes"></a>Eager-Evaluated Scopes
 
 Creating a scope without a callable object is deprecated in Rails 4:
 
@@ -120,7 +120,7 @@ class Comment < ActiveRecord::Base
 end
 @@@
 
-### Relation#all
+### <a id="relation-all"></a>Relation#all
 
 Calling `all` on a relation in Rails 4 will return a new relation instead of
 an `Array`.
@@ -164,7 +164,7 @@ Post.where("created_at > ?", 2.days.ago).to_a.class
 This is also a change you can start making today, as `ActiveRecord::Relation`
 supports `to_a` in Rails 3.
 
-### Relation#includes
+### <a id="relation-includes"></a>Relation#includes
 
 The `includes` scope is most often used to eager load associated records, to
 avoid the [N+1 query
@@ -231,7 +231,7 @@ This deprecation will only bite you if you pair `includes` with a `where`
 condition on the joined table. If you use `includes` only to eager load
 associations, this deprecation will not affect your code.
 
-### Relation#order
+### <a id="relation-order"></a>Relation#order
 
 Rails 4 changed the way `order` operates when there are multiple calls to
 `order` in a chain. You might say that, well, Rails 4 changed the order

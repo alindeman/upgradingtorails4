@@ -1,4 +1,4 @@
-## Plugins
+## <a id="plugins"></a>Plugins
 
 The term *Rails plugin* can mean multiple things. In this chapter, Rails plugin
 refers to a piece of shared code that was installed via the `script/plugin

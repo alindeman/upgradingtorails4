@@ -84,6 +84,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 #### 0.6: XXXX
 
+* Added a first cut of the
+  [upgrade checklist](#upgrade-checklist).
 * Removed `journey` from the generated `Gemfile` since `journey` has been
   integrated into Rails.
 * Added `actionview-encoded_mail_to` as a recommended addition to the `Gemfile`
