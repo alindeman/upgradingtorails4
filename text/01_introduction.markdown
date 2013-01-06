@@ -91,3 +91,5 @@ license](http://creativecommons.org/licenses/by/2.0/).
   integrated into Rails.
 * Added `actionview-encoded_mail_to` as a recommended addition to the `Gemfile`
   used when upgrading.
+* Noted that
+  [routing concerns can be used in Rails 3.2](#routing-concerns-in-rails32).

@@ -86,5 +86,14 @@ Animals::Application.routes.draw do
 end
 @@@
 
+#### <a id="routing-concerns-in-rails32"></a>Use in Rails 3.2
+
+While Rails 4 will have routing concerns baked in, Rails 3.2 applications can
+also use routing concerns by pulling in the **routing_concerns** gem:
+
+@@@ ruby
+# Gemfile
+gem 'routing_concerns'
+@@@
+
 <!-- TODO: Talk about #call-able concerns -->
-<!-- TODO: routing_concerns gem for use in Rails 3.2 -->
