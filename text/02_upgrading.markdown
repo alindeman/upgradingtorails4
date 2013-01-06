@@ -205,6 +205,8 @@ gem 'activerecord-session_store',
 
 gem 'rails-observers',
   github: 'rails/rails-observers'
+
+gem 'actionview-encoded_mail_to'
 @@@
 
 Save `Gemfile` and run from the terminal:

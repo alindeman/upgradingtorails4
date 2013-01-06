@@ -257,3 +257,5 @@ by adding them to `Gemfile`.
 Notably, fragment caching--where smaller pieces of a view are cached--is *not*
 deprecated in Rails 4. In fact, fragment caching is even improved. More on that
 in the section describing [cache_digests](#cache-digests).
+
+<!-- TODO: actionview-encoded_mail_to -->

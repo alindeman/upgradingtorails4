@@ -86,3 +86,5 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 * Removed `journey` from the generated `Gemfile` since `journey` has been
   integrated into Rails.
+* Added `actionview-encoded_mail_to` as a recommended addition to the `Gemfile`
+  used when upgrading.
