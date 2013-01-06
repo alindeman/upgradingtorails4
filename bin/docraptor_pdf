@@ -15,5 +15,5 @@ STDOUT.write(
                    name:             "upgradingtorails4.pdf",
                    document_type:    "pdf",
                    test:             !ENV['NOTEST'],
-                   prince_options:   { baseurl: "https://s3.amazonaws.com/upgradingtorails4-book/output/upgradingtorails4.html" })
+                   prince_options:   { baseurl: "https://s3.amazonaws.com/upgradingtorails4-files/output/upgradingtorails4.html" })
 )
