@@ -86,6 +86,7 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 * Added a first cut of the
   [upgrade checklist](#upgrade-checklist).
+* Added information about the [changes to testing in Rails 4](#testing).
 * Removed `journey` from the generated `Gemfile` since `journey` has been
   integrated into Rails.
 * Added `actionview-encoded_mail_to` as a recommended addition to the `Gemfile`
