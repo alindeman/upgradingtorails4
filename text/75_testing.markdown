@@ -8,7 +8,7 @@ Rails 4 has adopted an RSpec-like directory structure by default.
   <tr>
     <th>Rails 2 and 3 Directory</th>
     <th>Rails 4 Directory</th>
-    <th><code>rake</code> task</th>
+    <th>Rails 4 <code>rake</code> task</th>
   </tr>
   <tr>
     <td><code>test/unit</code></td>
@@ -34,16 +34,16 @@ Rails 4 has adopted an RSpec-like directory structure by default.
 
 For backwards compatibility, running the Rails 3 rake tasks (e.g., `rake
 test:units`) will run tests in both the new directories (`test/models` and
-`test/helpers`) *and* the old directories (`test/unit`). The new rake tasks
-shown in the table above only run tests in the new directories.
+`test/helpers`) *and* the old directories (`test/unit` and
+`test/unit/helpers`). The new rake tasks shown in the table above only run
+tests in the new directories.
 
 I think this is a great improvement, as the terms "unit" and "functional" were
 at best opaque and at worst inaccurate.
 
-I think you should take the proactive step of moving all tests to the new
-locations after upgrading an application (and before you start writing any new
-code). You can use the few commands below to move existing tests into the new
-locations.
+You should take the proactive step of moving all tests to the new locations
+after upgrading an application (and before you start writing any new code). You
+can use the few commands below to move existing tests into the new locations.
 
 <!-- TODO: Try this! -->
 @@@ text

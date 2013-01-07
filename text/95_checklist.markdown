@@ -9,12 +9,13 @@
 1. [Add gems that have extracted functionality from Rails 3](#deprecation-gems)
 1. [Upgrade plugins to gems or move code to `lib/`](#plugins)
 1. [Tweak any routes that use `match` without `:via => :verb`](#routing-match)
-1. [Audit any chained uses of `Relation#order` as new orders are now prepended, rather than appended](#relation-order)
-1. [Decide whether graceful degredation of remote forms is important to your application, and if so, enable the option to embed authenticity tokens in forms](#authenticity-tokens-in-remote-forms)
+1. [Audit any chained uses of `Relation#order`, as new orders are now prepended rather than appended](#relation-order)
+1. [Decide whether graceful degredation of remote forms is important to your application and, if so, enable the option to embed authenticity tokens in forms](#authenticity-tokens-in-remote-forms)
 
-Some functionality from earlier versions of Rails has been deprecated: it
-remains operating correctly but raises a deprecation warning. After you have
-addressed the concerns above, consider addressing deprecated features:
+Some functionality from earlier versions of Rails has been deprecated: while
+your application may continue to operate correctly, you will see warnings.
+After you have addressed the concerns in the first checklist, consider
+addressing deprecated features:
 
 1. [Modernize Rails 2 finder syntax](#rails2-finder-syntax)
 1. [Modernize dynamic finders](#dynamic-finders)

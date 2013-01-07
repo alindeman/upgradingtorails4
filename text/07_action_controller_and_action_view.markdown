@@ -284,8 +284,9 @@ encoded into its hex form, but also embedded in a JavaScript snippet that is
 invoked when the link is clicked. This will likely trip up a higher percentage
 of spambots, but does now require JavaScript.
 
-In Rails 4, support for `encode` has been extracted to a gem: `actionview-encoded_mail_to`.
-To enable or reenable the feature, simply add the gem to `Gemfile`:
+In Rails 4, support for `encode` has been extracted to a gem:
+`actionview-encoded_mail_to`. To enable the feature, simply add the gem to
+`Gemfile`:
 
 @@@ ruby
 # Gemfile
