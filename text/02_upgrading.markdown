@@ -108,7 +108,7 @@ Rails 4.
 
 @@@ ruby
 # Gemfile
-gem 'draper', '>=1.0.0.beta4'
+gem 'draper', '>=1.0.0'
 @@@
 
 <p></p>
