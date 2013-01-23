@@ -163,25 +163,6 @@ group :assets do
 end
 @@@
 
-<!-- TODO: Remove after release -->
-Additionally, Rails 4 depends on other gems that themselves have not yet been
-released. For this reason, it is necessary to add these lines to `Gemfile`:
-
-@@@ ruby
-# Gemfile
-gem 'activerecord-deprecated_finders', 
-  github: 'rails/activerecord-deprecated_finders'
-
-gem 'arel',
-  github: 'rails/arel'
-@@@
-
-`activerecord-deprecated_finders` allows certain dynamic finders that have
-been deprecated to keep operating correctly. More information about these
-changes is available in the [ActiveRecord](#activerecord) chapter.
-
-`arel` assists in the construction of SQL database queries.
-
 <a id="deprecation-gems"></a>Finally, Rails 4 moves many features into gems
 that were previously shipped with Rails itself. Later chapters go into more
 detail about these changes. For now, however, add all of the gems that are
