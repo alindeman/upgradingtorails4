@@ -210,3 +210,53 @@ Using ...
 @@@
 
 You're riding on Rails 4!
+
+### <a id="binstubs"></a>Binstubs
+
+Rails 4 solidifies the idea that binaries are part of your application and
+should be shipped alongside it.
+
+Binaries have been a source of confusion in the Rails ecosystem for a while.
+For instance, in Rails 3, the `rails` command can be run alone (just `rails`)
+or via `script/rails`. It can also be run prefixed with `bundle exec`, though
+it is normally not necessary.
+
+On the other hand, it is often not possible to run the `rake` command alone
+(if you've ever been frustrated by a message claiming "You have already
+activated rake x.y.z" you know what I mean!). Usually `rake` needs to be
+prefixed with `bundle exec` to be guaranteed to work properly.
+
+There is another lesser-known option: binstubs. By running `bundle install
+--binstubs` (instead of just `bundle install`), bundler populates the `bin/`
+directory with binaries like `rake` that are guaranteed to run the correct
+version specified by your application.
+
+If you had run `bundle install --binstubs` in Rails 3, for instance, you could
+standardize by using `bin/rails` and `bin/rake`.
+
+New Rails 4 applications standardize on this practice by automatically
+generating `bin/rails` and `bin/rake`. You can generate binstubs for other
+commands you often use too (e.g., `rspec`). Furthermore, you are encouraged to
+check these binstubs into version control so that commands run consistently on
+every machine the codebase is deployed to.
+
+When upgrading, you might want to consider adopting this convention. To do so,
+first remove `/bin` from `.gitignore` (if it's currently ignored) so you will
+be able to add binstubs to version control.
+
+Next, run `bundle exec rake rails:update:bin` to add the `bin/rails` and
+`bin/rake` binstubs (this is the last time you'll need to use `bundle exec
+rake`; use `bin/rake` instead!).
+
+Add binstubs for any other commands you commonly use by running `bundle
+binstubs <gem name>`. For instance, `bundle binstubs rspec-core` adds the
+`bin/rspec` command.
+
+Finally, add these binstubs (and `.gitignore`) to version control:
+
+@@@ text
+$ git add .gitignore bin/
+$ git commit -m 'Adds binstubs for rails and rake'
+@@@
+
+<!-- TODO: What happens if you were already using binstubs? -->

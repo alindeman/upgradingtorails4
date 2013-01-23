@@ -93,3 +93,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
   gem.
 * Noted that [routing concerns can be used in Rails
   3.2](#routing-concerns-in-rails32).
+
+#### 0.7: XXX
+
+* Added information about [the new convention of adding binstubs for `rails`,
+  `rake`, and any other commonly used binaries](#binstubs).
