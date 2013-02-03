@@ -221,18 +221,21 @@ For instance, in Rails 3, the `rails` command can be run alone (just `rails`)
 or via `script/rails`. It can also be run prefixed with `bundle exec`, though
 it is normally not necessary.
 
-On the other hand, it is often not possible to run the `rake` command alone
-(if you've ever been frustrated by a message claiming "You have already
-activated rake x.y.z" you know what I mean!). Usually `rake` needs to be
-prefixed with `bundle exec` to be guaranteed to work properly.
+On the other hand, the `rake` command usually *does* need to be prefixed with
+`bundle exec` (gems like
+[rubygems-bundler](https://github.com/mpapis/rubygems-bundler) remove the need
+to actually type `bundle exec`, but the effect is simply hidden from view). If
+you've ever been frustrated by a message claiming "You have already activated
+rake x.y.z" you know what I mean!
 
 There is another lesser-known option: binstubs. By running `bundle install
 --binstubs` (instead of just `bundle install`), bundler populates the `bin/`
-directory with binaries like `rake` that are guaranteed to run the correct
-version specified by your application.
+directory--local to the project--with binaries like `rake` that are guaranteed
+to run the correct version specified by your application.
 
 If you had run `bundle install --binstubs` in Rails 3, for instance, you could
-standardize by using `bin/rails` and `bin/rake`.
+correctly run binaries by using `bin/rails` and `bin/rake` instead of `rails`
+and `rake`, respectively.
 
 New Rails 4 applications standardize on this practice by automatically
 generating `bin/rails` and `bin/rake`. You can generate binstubs for other
@@ -246,11 +249,11 @@ be able to add binstubs to version control.
 
 Next, run `bundle exec rake rails:update:bin` to add the `bin/rails` and
 `bin/rake` binstubs (this is the last time you'll need to use `bundle exec
-rake`; use `bin/rake` instead!).
+rake`; now use `bin/rake` instead!).
 
-Add binstubs for any other commands you commonly use by running `bundle
-binstubs <gem name>`. For instance, `bundle binstubs rspec-core` adds the
-`bin/rspec` command.
+Adding binstubs for other commands you frequently use is accomplished with the
+`bundle binstubs` command. For instance, `bundle binstubs rspec-core` adds the
+`bin/rspec` command (the `rspec` binary is a part of the `rspec-core` gem).
 
 Finally, add these binstubs (and `.gitignore`) to version control:
 
