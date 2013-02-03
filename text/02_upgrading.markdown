@@ -189,6 +189,8 @@ gem 'rails-observers',
   github: 'rails/rails-observers'
 
 gem 'actionview-encoded_mail_to'
+
+gem 'rails-perftest'
 @@@
 
 Save `Gemfile` and run from the terminal:
