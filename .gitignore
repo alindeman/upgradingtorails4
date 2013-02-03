@@ -4,6 +4,7 @@ output/*.html
 output/*.mobi
 output/*.txt
 output/*.pdf
+output/*.zip
 output/tmp
 .DS_Store
 .bundle
