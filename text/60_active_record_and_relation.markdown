@@ -95,3 +95,25 @@ Comment.where.not(user_id: current_user.id)
 
 Notably, no string clause is required. The result is a cleaner expression that
 is guaranteed to operate correctly regardless of the underlying database.
+
+### <a id="update"></a>ActiveRecord::Base#update
+
+Rails 4 introduces `ActiveRecord::Base#update`, allowing you to use `update`
+instead of `update_attributes` when updating the attributes of an ActiveRecord
+model.
+
+`update` is more terse and matches the name of the controller action where it
+is normally used, a property that `new`, `create`, and `destroy` have shared
+for a while now.
+
+@@@ ruby
+comment = Comment.find(1)
+
+comment.update(body: "Updated content")
+# Same as: comment.update_attributes(body: "Updated content")
+@@@
+
+`update` and `update_attributes` can be used interchangeably in Rails 4. In
+fact, `update_attributes` is only "soft deprecated": unlike other deprecations,
+it will not raise any visible warnings. While `update_attributes` may be
+removed in future versions of Rails, it will probably not be anytime soon.

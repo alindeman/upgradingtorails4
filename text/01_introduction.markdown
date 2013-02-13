@@ -100,3 +100,4 @@ license](http://creativecommons.org/licenses/by/2.0/).
   `rake`, and any other commonly used binaries](#binstubs).
 * Added information about [performance tests being extracted to a
   gem](#performance-tests).
+* Added information about [ActiveRecord::Base#update](#update).
