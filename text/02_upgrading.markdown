@@ -43,8 +43,9 @@ than is installed in your set of gems.
 To avoid any potential problems, simply upgrade to the latest version of
 `bundler` before going any farther:
 
+<!-- TODO: --pre will probably not be needed by the time Rails 4 is actually released -->
 @@@ text
-$ gem install bundler
+$ gem install bundler --pre
 @@@
 
 ### <a id="rails4_upgrade"></a>rails4\_upgrade gem
