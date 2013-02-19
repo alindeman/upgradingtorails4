@@ -43,7 +43,7 @@ than is installed in your set of gems.
 To avoid any potential problems, simply upgrade to the latest version of
 `bundler` before going any farther:
 
-<!-- TODO: --pre will probably not be needed by the time Rails 4 is actually released -->
+<!-- TODO: pre will probably not be needed by the time Rails 4 is actually released -->
 @@@ text
 $ gem install bundler --pre
 @@@
@@ -164,6 +164,7 @@ group :assets do
 end
 @@@
 
+<!-- TODO: Table of gems to the feature that required them -->
 <a id="deprecation-gems"></a>Finally, Rails 4 moves many features into gems
 that were previously shipped with Rails itself. Later chapters go into more
 detail about these changes. For now, however, add all of the gems that are
