@@ -11,6 +11,7 @@
 1. [Tweak any routes that use `match` without `:via => :verb`](#routing-match)
 1. [Audit any chained uses of `Relation#order`, as new orders are now prepended rather than appended](#relation-order)
 1. [Decide whether graceful degredation of remote forms is important to your application and, if so, enable the option to embed authenticity tokens in forms](#authenticity-tokens-in-remote-forms)
+1. [Add any image assets in `lib/` or `vendor/` to the precompilation list](#precompiled-images)
 
 Some functionality from earlier versions of Rails has been deprecated: while
 your application may continue to operate correctly, you will see warnings.

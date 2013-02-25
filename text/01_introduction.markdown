@@ -112,3 +112,5 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Added information about [Ruby 2.0.0](#ruby-193), which Rails 4 recommends.
 * Added information about [concerns](#concerns), shared pieces of functionality
   for models and controllers.
+* Added information about [breaking changes in the asset
+  pipeline](#asset-pipeline).
