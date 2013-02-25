@@ -80,4 +80,36 @@ end
 
 ### Controller Concerns
 
-### Use in Rails 3.2
+Controller concerns are modules of shared behavior applied to controllers.
+
+For example, consider a `RequiresAuthentication` concern that protects certain
+controllers from unauthenticated access:
+
+@@@ ruby
+# app/controllers/concerns/requires_authentication.rb
+module RequiresAuthentication
+  extend ActiveSupport::Concern
+
+  included do
+    before_filter :require_authentication
+  end
+
+  def require_authentication
+    @current_user = User.find_by_id(session[:user_id])
+    redirect_to login_url unless @current_user
+  end
+end
+@@@
+
+To use, simply include in any relevant controllers:
+
+@@@ ruby
+# app/controllers/super_secret_controller.rb
+class SuperSecretController < ApplicationController
+  include RequiresAuthentication
+
+  # ...
+end
+@@@
+
+<!-- TODO: use in Rails 3.2 -->
