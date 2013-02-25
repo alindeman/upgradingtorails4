@@ -10,8 +10,15 @@ That said, upgrading to Rails 4 is a bit more involved than simply running
 
 ### <a id="ruby-193"></a>Ruby 1.9.3
 
-Rails 4 *requires* at least Ruby 1.9.3. Attempting to run it on anything below
-1.9.3 will cause syntax errors or runtime issues.
+Rails 4 *requires* Ruby 1.9.3 and *recommends* Ruby 2.0.0. Attempting to run
+Rails 4 with a Ruby version below 1.9.3 will cause syntax errors or runtime
+issues.
+
+While Ruby 2.0.0 is mostly backwards compatible with 1.9.3, I recommend you
+upgrade only to 1.9.3 during the initial stages of upgrading to Rails 4. You
+are less likely to run into issues with Ruby itself if the jump is as small as
+possible. After you have stabilized your application on Ruby 1.9.3 and Rails
+4, consider upgrading to Ruby 2.0.0.
 
 You can upgrade Ruby with a single command using [`rvm`](https://rvm.io/):
 

@@ -2,7 +2,7 @@
 
 ## <a id="upgrade-checklist"></a>Upgrade Checklist
 
-1. [Upgrade to Ruby 1.9.3](#ruby-193)
+1. [Upgrade to Ruby 1.9.3 or 2.0.0](#ruby-193)
 1. [Upgrade bundler](#bundler)
 1. [Check for gem incompatibilities using `rails4_upgrade`](#rails4_upgrade)
 1. [Upgrade Rails itself](#upgrading-rails-itself)

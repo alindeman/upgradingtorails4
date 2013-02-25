@@ -106,3 +106,7 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Added information about [performance tests being extracted to a
   gem](#performance-tests).
 * Added information about [ActiveRecord::Base#update](#update).
+
+#### 0.8: February 25, 2013
+
+* Added information about [Ruby 2.0.0](#ruby-193), which Rails 4 recommends.
