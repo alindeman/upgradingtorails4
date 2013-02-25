@@ -23,7 +23,3 @@ addressing deprecated features:
 1. [Audit any uses of `Relation#all`](#relation-all)
 1. [Address any uses of `Relation#includes` with conditions on the joined table](#relation-includes)
 1. [Add new thread-safety configuration options](#thread-safety)
-
-## Feature Checklist
-
-This section coming soon.
