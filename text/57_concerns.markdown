@@ -1,4 +1,4 @@
-## Concerns
+## <a id="concerns"></a>Concerns
 
 The Rails community has embraced the concept of [skinny controllers, fat
 models](http://weblog.jamisbuck.org/2006/10/18/skinny-controller-fat-model).
