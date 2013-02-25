@@ -23,4 +23,6 @@ addressing deprecated features:
 1. [Change eager-evaluated scopes to use lambdas](#eager-evaluated-scopes)
 1. [Audit any uses of `Relation#all`](#relation-all)
 1. [Address any uses of `Relation#includes` with conditions on the joined table](#relation-includes)
+1. [Remove the `whiny_nils` setting from all environment configuration files](#whiny-nils)
+1. [Remove the `auto_explain_threshold_in_seconds` setting from all environment configuration files](#auto-explain-queries)
 1. [Add new thread-safety configuration options](#thread-safety)

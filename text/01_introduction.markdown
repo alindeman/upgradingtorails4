@@ -114,3 +114,5 @@ license](http://creativecommons.org/licenses/by/2.0/).
   for models and controllers.
 * Added information about [breaking changes in the asset
   pipeline](#asset-pipeline).
+* Added information about [Auto-EXPLAIN for inefficient queries being
+  removed](#auto-explain-queries).

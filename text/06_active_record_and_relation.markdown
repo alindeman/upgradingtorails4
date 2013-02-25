@@ -323,6 +323,21 @@ use cases where the ActiveRecord session store was the only option before. I
 discuss more about encrypted cookies when I talk about the [new features in
 ActionController](#encrypted-cookies).
 
+### <a id="auto-explain-queries"></a>Auto-EXPLAIN Queries
+
+Rails 3.2 added a feature that would automatically run `EXPLAIN` on queries
+that took longer than a certain amount of time (0.5 seconds by default).
+Queries that took longer might lack indexes, and `EXPLAIN` would highlight
+these inefficiencies.
+
+The Rails core team decided that the feature was rarely used in practice, so it is
+removed in Rails 4. The setting `config.active_record.auto_explain_threshold_in_seconds`
+should be removed from `config/environments/development.rb` as well as
+`config/environments/test.rb` and `config/environments/production.rb` if it
+exists there.
+
+<!-- TODO: Mention #explain and something like bullet? -->
+
 ### <a id="observers"></a>Observers
 
 Observers have been extracted into a gem. Observers watch ActiveRecord models

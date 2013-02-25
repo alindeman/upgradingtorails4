@@ -39,3 +39,15 @@ use observers.
 
 Rails 4 extracts observers to a gem. Read more about it in the
 [Observers](#observers) section.
+
+---
+
+@@@ text
+DEPRECATION WARNING: The Active Record auto explain feature has been removed.
+
+To disable this message remove the `active_record.auto_explain_threshold_in_seconds`
+option from the `config/environments/*.rb` config file.
+@@@
+
+Rails 4 removes Auto-EXPLAIN for inefficient queries. Read more about it in the
+[Auto-EXPLAIN queries](#auto-explain-queries) section.
