@@ -16,6 +16,11 @@ The book is split into three major parts:
 3. Common Upgrading Scenarios: specific issues you might encounter when
    upgrading a Rails application and how to fix them
 
+Also included is an [Upgrade Checklist](#upgrade-checklist) which links to
+specific, important sections that are relevant when upgrading an application. I
+recommend you read through the Deprecations section entirely first, then use
+the checklist as a guide when upgrading your applications.
+
 ### Beta
 
 This book is an evolving work in process, so please excuse any typos or errors.
