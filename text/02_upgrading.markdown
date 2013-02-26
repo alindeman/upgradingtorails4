@@ -38,8 +38,8 @@ version JRuby 1.7.0 or above (which runs with Ruby 1.9.3 support by default).
 Unfortunately, JRuby version numbers are a tad confusing.
 
 @@@ text
-$ rvm install jruby-1.7.0
-$ rvm use --rvmrc jruby-1.7.0
+$ rvm install jruby-1.7.3
+$ rvm use --rvmrc jruby-1.7.3
 @@@
 
 ### <a id="bundler"></a>bundler
@@ -50,9 +50,8 @@ than is installed in your set of gems.
 To avoid any potential problems, simply upgrade to the latest version of
 `bundler` before going any farther:
 
-<!-- TODO: pre will probably not be needed by the time Rails 4 is actually released -->
 @@@ text
-$ gem install bundler --pre
+$ gem install bundler
 @@@
 
 ### <a id="rails4_upgrade"></a>rails4\_upgrade gem
@@ -143,31 +142,27 @@ until `rake rails4:check_gems` reports that no incompatibilities exist.
 
 ### <a id="upgrading-rails-itself"></a>Upgrading Rails Itself
 
-Rails 4 has not been yet been packaged and released, so the best way to upgrade
-an existing application is to tell Bundler to use the `master` branch of the
-Rails git repository.
-
 Open `Gemfile` in a text editor and change the line that starts with `gem
 'rails'` to:
 
 @@@ ruby
 # Gemfile
-gem 'rails', github: 'rails/rails'
+gem 'rails', '~>4.0.0.beta1'
 @@@
 
 Rails 4 also depends on newer versions of gems that drive the asset pipeline
 (which was introduced in Rails 3.1). Namely, make sure to update `sass-rails`
-and `coffee-rails` to the `master` branch as well:
+and `coffee-rails` as well:
 
 @@@ ruby
 # Gemfile
 
 group :assets do
   # Replaces "gem 'sass-rails', '~>3.x.y'"
-  gem 'sass-rails', github: 'rails/sass-rails'
+  gem 'sass-rails', '~>4.0.0.beta1'
 
   # Replaces "gem 'coffee-rails', '~>3.x.y'"
-  gem 'coffee-rails', github: 'rails/coffee-rails'
+  gem 'coffee-rails', '~>4.0.0.beta1'
 end
 @@@
 
@@ -179,27 +174,15 @@ required to keep existing Rails features working properly after upgrading:
 
 @@@ ruby
 # Gemfile
-gem 'protected_attributes',
-  github: 'rails/protected_attributes'
-
-gem 'activeresource',
-  github: 'rails/activeresource'
-
-gem 'actionpack-action_caching',
-  github: 'rails/actionpack-action_caching'
-
-gem 'actionpack-page_caching',
-  github: 'rails/actionpack-page_caching'
-
-gem 'activerecord-session_store',
-  github: 'rails/activerecord-session_store'
-
-gem 'rails-observers',
-  github: 'rails/rails-observers'
-
+gem 'protected_attributes'
+gem 'activeresource', github: 'rails/activeresource'
+gem 'actionpack-action_caching', github: 'rails/actionpack-action_caching'
+gem 'actionpack-page_caching', github: 'rails/actionpack-page_caching'
+gem 'activerecord-session_store'
+gem 'rails-observers'
 gem 'actionview-encoded_mail_to'
-
 gem 'rails-perftest'
+gem 'actionpack-xml_parser', github: 'rails/actionpack-xml_parser'
 @@@
 
 Save `Gemfile` and run from the terminal:
@@ -211,13 +194,10 @@ $ bundle update rails
 `bundle` should show output like:
 
 @@@ text
-Updating git://github.com/rails/rails.git
-Updating git://github.com/rails/activerecord-deprecated_finders.git
-Updating git://github.com/rails/sass-rails.git
-Updating git://github.com/rails/coffee-rails.git
 Fetching gem metadata from https://rubygems.org/........
 Fetching gem metadata from https://rubygems.org/..
-Using ...
+Resolving dependencies...
+...
 @@@
 
 You're riding on Rails 4!
