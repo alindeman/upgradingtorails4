@@ -51,3 +51,15 @@ option from the `config/environments/*.rb` config file.
 
 Rails 4 removes Auto-EXPLAIN for inefficient queries. Read more about it in the
 [Auto-EXPLAIN queries](#auto-explain-queries) section.
+
+---
+
+@@@ text
+The provided regular expression is using multiline anchors (^ or $), which may
+present a security risk. Did you mean to use \A and \z, or forgot to add the
+:multiline => true option? (ArgumentError)
+@@@
+
+Rails 4 does not allow the `^` and `$` anchors with a `validates_format_of`
+validation. Read more about it in the [validates\_format\_of with ^ and
+$](#validates-format-of) section.

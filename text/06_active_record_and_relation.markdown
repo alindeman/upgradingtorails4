@@ -337,6 +337,55 @@ should be removed from `config/environments/development.rb` as well as
 
 <!-- TODO: Mention #explain and something like bullet? -->
 
+### <a id="validates-format-of"></a>validates\_format\_of with ^ and $
+
+Consider a `Post` model with a validation on the format of a URL slug:
+
+@@@ ruby
+# app/models/post.rb
+class Post < ActiveRecord::Base
+  # only alphanumeric chars and the hyphen allowed
+  validates_format_of :slug, with: /^[A-Za-z0-9-]+$/
+end
+@@@
+
+Unfortunately, the validator does not quite cover all the cases we expected.
+In Ruby, `^` and `$` match at the beginning and end of a line respectively, but
+not necessarily at the beginning and end of the entire string.
+
+A sneaky user could submit a post whose slug has multiple lines, and only one
+of the lines must validate against the regular expression. For example,
+"thisisvalid\n!@$^&()$@#$#!" passes the validation as written in Rails 3.
+
+Depending on how other parts of the application are written, a validation that
+uses `^` and `$` could present a security risk because data the developer did
+not expect will pass the validation. The developer likely meant to use `\A` and
+`\z` which match at the beginning and end of the entire string respectively.
+
+In Rails 4, you may not use `^` and `$` with `validates_format_of` unless you
+specifically allow the attribute to be multiline by passing the `multiline:
+true` option. If you have validations that use `^` and `$` but without
+`multiline: true`, you will receive an error:
+
+@@@ text
+The provided regular expression is using multiline anchors (^ or $), which may
+present a security risk. Did you mean to use \A and \z, or forgot to add the
+:multiline => true option? (ArgumentError)
+@@@
+
+Fixing the issue is straightforward: replace `^` with `\A` and `$` with `\z`:
+
+@@@ ruby
+# app/models/post.rb
+class Post < ActiveRecord::Base
+  # only alphanumeric chars and the hyphen allowed
+  validates_format_of :slug, with: /\A[A-Za-z0-9-]+\z/
+end
+@@@
+
+This is a positive change because the error is easy to make, yet could have
+dire consequences for the security of an application.
+
 ### <a id="observers"></a>Observers
 
 Observers have been extracted into a gem. Observers watch ActiveRecord models

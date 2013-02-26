@@ -118,3 +118,5 @@ license](http://creativecommons.org/licenses/by/2.0/).
   pipeline](#asset-pipeline).
 * Added information about [Auto-EXPLAIN for inefficient queries being
   removed](#auto-explain-queries).
+* Added information about [validates\_format\_of and the ^ and $ regular
+  expression anchors](#validates-format-of).
