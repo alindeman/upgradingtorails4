@@ -109,6 +109,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 #### 0.8: February 25, 2013
 
+* Rails 4.0.0.beta1 has shipped! Updated the [Upgrading Rails
+  Itself](#upgrading-rails-itself) section to use beta1.
 * Added information about [Ruby 2.0.0](#ruby-193), which Rails 4 recommends.
 * Added information about [concerns](#concerns), shared pieces of functionality
   for models and controllers.
