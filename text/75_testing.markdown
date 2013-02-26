@@ -77,16 +77,14 @@ $ git commit -m 'Moved tests to Rails 4 conventional locations'
 Speaking of RSpec, if you are using
 [**rspec-rails**](https://github.com/rspec/rspec-rails) as your testing
 library, upgrade both **rspec-rails** and **rspec-expectations** to version
-2.12.1 or greater to get Rails 4 support.
+2.13.0 or greater to get Rails 4 support.
 
 The easiest way is to specify the constraint in your `Gemfile`:
 
-<!-- TODO: Release rspec-rails 2.12.1 -->
 @@@ ruby
 # Gemfile
 group :development, :test do
-  gem 'rspec-rails', '>= 2.12.1'
-  gem 'rspec-expectations', '>= 2.12.1'
+  gem 'rspec-rails', '>= 2.13.0'
 end
 @@@
 
