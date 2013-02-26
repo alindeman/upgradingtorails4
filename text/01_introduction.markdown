@@ -120,3 +120,11 @@ license](http://creativecommons.org/licenses/by/2.0/).
 #### 0.1: November 26, 2012
 
 * First beta release to customers and technical reviewers.
+
+### Technical Reviewers
+
+Thank you to these folks for reviewing and giving technical feedback:
+
+* [Steve Klabnik](http://steveklabnik.com/)
+* [Caius Durling](http://caius.name/)
+* [Ashish Dixit](https://twitter.com/tundal45)
