@@ -47,66 +47,6 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 ### Changelog
 
-#### 0.1: November 26, 2012
-
-* First beta release to customers and technical reviewers.
-
-#### 0.2: November 28, 2012
-
-* Clarified that [`match` has not been removed, but instead cannot be used
-  without `:via`](#routing-match).
-* Added information about [encrypted cookies](#encrypted-cookies) and the
-  encrypted cookie session store.
-* Added information about [the addition of the PATCH verb](#patch-verb).
-* Added information about [turbolinks](#turbolinks).
-
-#### 0.3: December 3, 2012
-
-* Added information about [changes in ActiveSupport](#activesupport).
-* Added information about [observers being extracted into a gem](#observers).
-
-#### 0.4: December 10, 2012
-
-* Added information about [ActiveResource no longer being bundled with
-  Rails](#activeresource).
-* Added information about [gotchas when using turbolinks](#turbolinks-gotchas).
-* Added information about [ActiveRecord::Relation#not](#relation-not).
-* Added information about [JSON serialization in Rails 4](#json-serialization).
-* Added basic information about [routing concerns](#routing-concerns). I may
-  add some more details later, after I come up with better examples.
-* Added information about [asynchronous ActionMailer](#async-actionmailer).
-
-#### 0.5: December 25, 2012
-
-* Added information about [ActionController::Live](#action-controller-live) and
-  streaming server-sent events.
-* Removed `Rails.queue` chapter since it has been [punted out of Rails
-  4](https://twitter.com/dhh/status/281421220417781760). If it returns as a gem
-  or plugin, I will consider adding the material back.
-* Updated the [Checking for Incompatible Gems](#incompatible-gems) section
-  now that Draper 1.0.0 (prerelease) supports Rails 4.
-* Added information about [declarative ETags](#etagger).
-
-#### 0.6: January 7, 2013
-
-* Added a first cut of the [upgrade checklist](#upgrade-checklist).
-* Added information about the [changes to testing in Rails 4](#testing).
-* Removed `journey` from the generated `Gemfile` since `journey` has been
-  integrated into Rails.
-* Added information about [the extraction of the `encode` option for
-  `mail_to`](#actionview-encoded_mail_to) to the `actionview-encoded_mail_to`
-  gem.
-* Noted that [routing concerns can be used in Rails
-  3.2](#routing-concerns-in-rails32).
-
-#### 0.7: February 13, 2013
-
-* Added information about [the new convention of adding binstubs for `rails`,
-  `rake`, and any other commonly used binaries](#binstubs).
-* Added information about [performance tests being extracted to a
-  gem](#performance-tests).
-* Added information about [ActiveRecord::Base#update](#update).
-
 #### 0.8: February 25, 2013
 
 * Rails 4.0.0.beta1 has shipped! Updated the [Upgrading Rails
@@ -120,3 +60,63 @@ license](http://creativecommons.org/licenses/by/2.0/).
   removed](#auto-explain-queries).
 * Added information about [validates\_format\_of and the ^ and $ regular
   expression anchors](#validates-format-of).
+
+#### 0.7: February 13, 2013
+
+* Added information about [the new convention of adding binstubs for `rails`,
+  `rake`, and any other commonly used binaries](#binstubs).
+* Added information about [performance tests being extracted to a
+  gem](#performance-tests).
+* Added information about [ActiveRecord::Base#update](#update).
+
+#### 0.6: January 7, 2013
+
+* Added a first cut of the [upgrade checklist](#upgrade-checklist).
+* Added information about the [changes to testing in Rails 4](#testing).
+* Removed `journey` from the generated `Gemfile` since `journey` has been
+  integrated into Rails.
+* Added information about [the extraction of the `encode` option for
+  `mail_to`](#actionview-encoded_mail_to) to the `actionview-encoded_mail_to`
+  gem.
+* Noted that [routing concerns can be used in Rails
+  3.2](#routing-concerns-in-rails32).
+
+#### 0.5: December 25, 2012
+
+* Added information about [ActionController::Live](#action-controller-live) and
+  streaming server-sent events.
+* Removed `Rails.queue` chapter since it has been [punted out of Rails
+  4](https://twitter.com/dhh/status/281421220417781760). If it returns as a gem
+  or plugin, I will consider adding the material back.
+* Updated the [Checking for Incompatible Gems](#incompatible-gems) section
+  now that Draper 1.0.0 (prerelease) supports Rails 4.
+* Added information about [declarative ETags](#etagger).
+
+#### 0.4: December 10, 2012
+
+* Added information about [ActiveResource no longer being bundled with
+  Rails](#activeresource).
+* Added information about [gotchas when using turbolinks](#turbolinks-gotchas).
+* Added information about [ActiveRecord::Relation#not](#relation-not).
+* Added information about [JSON serialization in Rails 4](#json-serialization).
+* Added basic information about [routing concerns](#routing-concerns). I may
+  add some more details later, after I come up with better examples.
+* Added information about [asynchronous ActionMailer](#async-actionmailer).
+
+#### 0.3: December 3, 2012
+
+* Added information about [changes in ActiveSupport](#activesupport).
+* Added information about [observers being extracted into a gem](#observers).
+
+#### 0.2: November 28, 2012
+
+* Clarified that [`match` has not been removed, but instead cannot be used
+  without `:via`](#routing-match).
+* Added information about [encrypted cookies](#encrypted-cookies) and the
+  encrypted cookie session store.
+* Added information about [the addition of the PATCH verb](#patch-verb).
+* Added information about [turbolinks](#turbolinks).
+
+#### 0.1: November 26, 2012
+
+* First beta release to customers and technical reviewers.
