@@ -157,3 +157,4 @@ correctly as `$(document).ready` will be fired in both cases.
 
 * [turbolinks on GitHub](https://github.com/rails/turbolinks)
 * [Railscasts #390: Turbolinks](http://railscasts.com/episodes/390-turbolinks)
+* [Turbolinks Compatibility](http://reed.github.com/turbolinks-compatibility/)
