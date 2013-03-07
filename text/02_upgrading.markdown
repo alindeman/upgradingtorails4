@@ -8,6 +8,20 @@ That said, upgrading to Rails 4 is a bit more involved than simply running
 
 ---
 
+### <a id="rails-32"></a>Rails 3.2
+
+It is much easier to upgrade a Rails application in small steps. If an
+application you wish to upgrade to Rails 4 is not yet running the latest
+version of Rails 3.2, you should first upgrade it there as a stepping stone.
+
+In order to provide the best content in a concise form, this handbook assumes
+applications being upgraded are running on the latest version of Rails 3.2.
+
+Resources that can help upgrade older applications to Rails 3 include:
+
+* [Rails 3 Upgrade Handbook](http://www.railsupgradehandbook.com/)
+* [Rails 3.2 Release Notes](http://guides.rubyonrails.org/3_2_release_notes.html)
+
 ### <a id="ruby-193"></a>Ruby 1.9.3
 
 Rails 4 *requires* Ruby 1.9.3 and *recommends* Ruby 2.0.0. Attempting to run

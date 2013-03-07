@@ -50,6 +50,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
 #### 0.9: XXX
 
 * Added information about [XML parsing being extracted to a gem](#xml-parsing).
+* This handbook assumes that applications being upgraded are [running the latest
+  version of Rails 3.2](#rails-32).
 
 #### 0.8: February 25, 2013
 
