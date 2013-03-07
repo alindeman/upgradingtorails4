@@ -47,6 +47,10 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 ### Changelog
 
+#### 0.9: XXX
+
+* Added information about [XML parsing being extracted to a gem](#xml-parsing).
+
 #### 0.8: February 25, 2013
 
 * Rails 4.0.0.beta1 has shipped! Updated the [Upgrading Rails

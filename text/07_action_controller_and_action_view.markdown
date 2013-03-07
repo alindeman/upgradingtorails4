@@ -258,6 +258,33 @@ Notably, fragment caching--where smaller pieces of a view are cached--is *not*
 deprecated in Rails 4. In fact, fragment caching is even improved. More on that
 in the section describing [cache_digests](#cache-digests).
 
+### <a id="xml-parsing"></a>XML Parsing
+
+The release of Rails 3.2.11 was prompted in part because a vulnerability in XML
+parsing allowed the clients to send requests that could create symbols within
+the Ruby environment and parse embedded YAML. These and other closely related
+vulnerabilities turned out to be extremely critical, allowing arbitrary code to
+be executed in the context of unpatched Rails applications.
+
+These vulnerabilities, combined with the fact that JSON seems to have
+overshadowed XML as the lingua franca for Rails APIs, prompted the Rails core
+team to extract XML parsing into a gem in Rails 4.
+
+If your application accepts XML in the request body (note: this is distinct
+from *rendering* XML as output), you will need to pull in the
+`actionpack-xml_parser` gem:
+
+@@@ ruby
+# Gemfile
+gem 'actionpack-xml_parser'
+@@@
+
+If your application does not need to accept XML input, I recommend leaving the
+gem out in order to reduce the possibility that XML parsing will be the vector
+for a yet undiscovered security vulnerability.
+
+Applications that simply *render* XML do not need the gem.
+
 ### <a id="actionview-encoded_mail_to"></a>actionview-encoded\_mail\_to
 
 Rails 3 included a little-known feature to obfuscate links to email addresses.
