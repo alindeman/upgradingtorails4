@@ -15,7 +15,7 @@ GIT
       thor
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     RedCloth (4.2.9)
     activesupport (3.2.9)
