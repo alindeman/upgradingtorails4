@@ -118,6 +118,71 @@ Furthermore, Rails 4 will raise an error if a controller attempts to pass
 `params` to a model method without explicitly permitting attributes via
 `permit`.
 
+#### Non-Scalar Values
+
+**strong_parameters** requires special syntax to permit non-scalar values
+such an array or hash.
+
+Consider a system where users have interests such as "programming" or
+"rugby." A user may have many interests:
+
+@@@ ruby
+# app/models/user.rb
+class User < ActiveRecord::Base
+  has_many :interests
+end
+@@@
+
+<p></p>
+
+@@@ ruby
+# app/models/interest.rb
+class Interest < ActiveRecord::Base
+  belongs_to :user
+end
+@@@
+
+Users are able to select their interests from a list in a multi-select:
+
+@@@ ruby
+# app/views/users/edit.html.erb
+<%= form_for @user do |f| %>
+  <%= f.label :interests, "Select your interests" %>
+  <%= f.collection_select :interest_ids, Interest.all, :id, :name, {}, :multiple => true %>
+
+  <%= f.submit %>
+<%- end %>
+@@@
+
+When the form is submitted, the list of interest model IDs will arrive as
+an array nested inside the `params` hash:
+
+@@@ ruby
+# params
+{ :interest_ids => ["1", "2", "5"] }
+@@@
+
+To permit an array of IDs with **strong_parameters**, pass a hash key with the
+name of the attribute and a value of an empty array:
+
+@@@ ruby
+# app/controllers/users_controller.rb
+class UsersController < ApplicationController
+  # ...
+
+  private
+
+  def user_params
+    params.require(:user).permit(:interest_ids => [])
+  end
+end
+@@@
+
+**strong_parameters** can accept deeply nested structures of arrays and hashes,
+but needs to be aware of their structure. For in-depth coverage of the syntax,
+scan the examples in the [**strong_parameters**
+README](https://github.com/rails/strong_parameters/blob/master/README.md).
+
 #### Upgrading
 
 While `attr_accessible` has been removed from Rails 4, it can be brought back
