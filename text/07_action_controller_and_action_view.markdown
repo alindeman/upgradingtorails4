@@ -188,13 +188,13 @@ README](https://github.com/rails/strong_parameters/blob/master/README.md).
 Any parameters that is not `permit`ted is removed from the hash of parameters
 passed through **strong_parameters**. The model will simply not see it at all.
 
-Furthermore, in the development and test environments, a message will be logged
-to the log file and `rails server` output. However, no error will be raised:
-the request will continue.
+Furthermore, in the development and test environments, a message is logged
+to the log file and `rails server` output. However, no error is raised:
+the request continues.
 
 @@@ text
 # logs/development.log
-Unpermitted parameters: admin
+Unpermitted parameters: email
 @@@
 
 I found this lack of an error frustrating in development mode. In my Rails 4
