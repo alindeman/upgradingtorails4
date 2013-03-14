@@ -183,6 +183,44 @@ but needs to be aware of their structure. For in-depth coverage of the syntax,
 scan the examples in the [**strong_parameters**
 README](https://github.com/rails/strong_parameters/blob/master/README.md).
 
+#### <a id="unpermitted-attributes"></a>Behavior for Unpermitted Paramters
+
+Any parameters that is not `permit`ted is removed from the hash of parameters
+passed through **strong_parameters**. The model will simply not see it at all.
+
+Furthermore, in the development and test environments, a message will be logged
+to the log file and `rails server` output. However, no error will be raised:
+the request will continue.
+
+@@@ text
+# logs/development.log
+Unpermitted parameters: admin
+@@@
+
+I found this lack of an error frustrating in development mode. In my Rails 4
+applications, I would sometimes add a new field to the model and to a form, but
+forget to tweak the `xxx_params` method in the controller.
+
+Submitting the form with the new field would not result in an error, but the
+new attribute would not be populated either. And, of course, it would take me
+several minutes to figure out where the problem lay.
+
+I now recommend changing the behavior of **strong_parameters** to raise an
+exception when an unpermitted parameter is received, though only in
+development mode. To do so, add a line to `config/environments/development.rb`:
+
+@@@ ruby
+# config/environments/development.rb
+Widgets::Application.configure do
+  # ...
+
+  config.action_controller.action_on_unpermitted_parameters = :raise
+end
+@@@
+
+With the configuration option set to `:raise`, it is much more obvious during
+development when you forget to add a new field to the `permit`ted list.
+
 #### Upgrading
 
 While `attr_accessible` has been removed from Rails 4, it can be brought back

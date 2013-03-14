@@ -54,6 +54,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
   version of Rails 3.2](#rails-32).
 * Added information about the [`rails test` command](#testing) which is
   recommended over `rake test`.
+* Recommended [raising an error](#unpermitted-attributes) when an unpermitted
+  parameter is received by **strong_paramters**.
 
 #### 0.8: February 25, 2013
 
