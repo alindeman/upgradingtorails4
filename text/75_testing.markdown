@@ -39,14 +39,20 @@ needed.
   </tr>
 </table>
 
+`rails test` can also run individual test files:
+
+@@@ text
+$ rails test test/models/posts_test.rb
+@@@
+
 For backwards compatibility, running tasks for the Rails 3 structure (e.g.,
 `rails test:units`) will run tests in both the new directories (`test/models`
 and `test/helpers`) *and* the old directories (`test/unit` and
 `test/unit/helpers`). The new tasks shown in the table above only run
 tests in the new directories.
 
-I think this is a great improvement, as the terms "unit" and "functional" were
-at best opaque and at worst inaccurate.
+I think the new directory structure is a great improvement, as the terms "unit"
+and "functional" were at best opaque and at worst inaccurate.
 
 You should take the proactive step of moving all tests to the new locations
 after upgrading an application (and before you start writing any new code). You
