@@ -47,7 +47,7 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 ### Changelog
 
-#### 0.9: XXX
+#### 0.9: March 17, 2013
 
 * Added information about [XML parsing being extracted to a gem](#xml-parsing).
 * This handbook assumes that applications being upgraded are [running the latest

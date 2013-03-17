@@ -49,7 +49,6 @@ $ rvm use --rvmrc 1.9.3
 
 If an existing application uses [JRuby](http://jruby.org), Rails 4 requires
 version JRuby 1.7.0 or above (which runs with Ruby 1.9.3 support by default).
-Unfortunately, JRuby version numbers are a tad confusing.
 
 @@@ text
 $ rvm install jruby-1.7.3

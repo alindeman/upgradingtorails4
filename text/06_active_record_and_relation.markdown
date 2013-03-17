@@ -359,7 +359,7 @@ of the lines must validate against the regular expression. For example,
 
 Depending on how other parts of the application are written, a validation that
 uses `^` and `$` could present a security risk because data the developer did
-not expect will pass the validation. The developer likely meant to use `\A` and
+not expect to pass the validation. The developer likely meant to use `\A` and
 `\z` which match at the beginning and end of the entire string respectively.
 
 In Rails 4, you may not use `^` and `$` with `validates_format_of` unless you
@@ -403,7 +403,7 @@ class User < ActiveRecord::Base
 end
 @@@
 
-In Rails 3, an mismatch between `password` and `password_confirmation` will
+In Rails 3, a mismatch between `password` and `password_confirmation` will
 add an error message `"doesn't match confirmation"` to the `password` field:
 
 @@@ text

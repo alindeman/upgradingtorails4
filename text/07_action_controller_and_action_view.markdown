@@ -178,14 +178,14 @@ class UsersController < ApplicationController
 end
 @@@
 
-**strong_parameters** can accept deeply nested structures of arrays and hashes,
-but needs to be aware of their structure. For in-depth coverage of the syntax,
-scan the examples in the [**strong_parameters**
+**strong_parameters** can accept deeply nested arrays and hashes, but needs to
+be aware of their structure. For in-depth coverage of the syntax, scan the
+examples in the [**strong_parameters**
 README](https://github.com/rails/strong_parameters/blob/master/README.md).
 
 #### <a id="unpermitted-attributes"></a>Behavior for Unpermitted Paramters
 
-Any parameters that is not `permit`ted is removed from the hash of parameters
+Any parameter that is not `permit`ted is removed from the hash of parameters
 passed through **strong_parameters**. The model will simply not see it at all.
 
 Furthermore, in the development and test environments, a message is logged
