@@ -56,6 +56,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
   recommended over `rake test`.
 * Recommended [raising an error](#unpermitted-attributes) when an unpermitted
   parameter is received by **strong_paramters**.
+* Added details about [`validates_confirmation_of` now adding error messages to
+  the \_confirmation field](#validates-confirmation-of).
 
 #### 0.8: February 25, 2013
 

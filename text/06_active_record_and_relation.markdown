@@ -386,6 +386,61 @@ end
 This is a positive change because the error is easy to make, yet could have
 dire consequences for the security of an application.
 
+### <a id="validates-confirmation-of"></a>validates\_confirmation\_of
+
+Rails 4 changes where error messages are added for fields validated with
+`validates_confirmation_of` (or `validates :field, confirmation: true`).
+
+A confirmation validation requires that a field and its field\_confirmation
+counterpart match.
+
+The typical example is a `User` with a confirmation validation on `password`:
+
+@@@ ruby
+# app/models/user.rb
+class User < ActiveRecord::Base
+  validates :password, confirmation: true
+end
+@@@
+
+In Rails 3, an mismatch between `password` and `password_confirmation` will
+add an error message `"doesn't match confirmation"` to the `password` field:
+
+@@@ text
+> user = User.new
+> user.password = "foo"
+> user.password_confirmation = "bar"
+> user.valid?
+false
+> user.errors[:password]
+["doesn't match confirmation"]
+@@@
+
+In Rails 4, the error message is added to the `password_confirmation` field
+instead:
+
+@@@ text
+> user.valid?
+false
+> user.errors[:password_confirmation]
+["doesn't match Password"]
+@@@
+
+Watch out for this change if you have forms that display error messages inline.
+You or your team may have designed the form with error messages on `password`
+in mind, but not `password_confirmation`.
+
+Also take note if your application has been internationalized. Since the error
+resides on a different attribute, the lookup prefix in the localization file
+(located in `config/locales`) changes from
+`activerecord.errors.models.user.attributes.password` and
+`errors.attributes.password` to
+`activerecord.errors.models.user.attributes.password_confirmation` and
+`errors.attributes.password_confirmation` respectively. You will want to rename
+or retranslate these values if you used them. More information on
+internationalization of error messages is in the [Rails
+guides](http://edgeguides.rubyonrails.org/i18n.html#translations-for-active-record-models).
+
 ### <a id="observers"></a>Observers
 
 Observers have been extracted into a gem. Observers watch ActiveRecord models
