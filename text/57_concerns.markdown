@@ -30,7 +30,7 @@ class Note < ActiveRecord::Base
   scope :unarchived, -> { where(archived: false) }
 
   def archive
-    update_attributes(archived: true)
+    update(archived: true)
   end
 
   # ...
@@ -55,7 +55,7 @@ module Archivable
   end
 
   def archive
-    update_attributes(archived: true)
+    update(archived: true)
   end
 end
 @@@

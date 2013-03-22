@@ -52,7 +52,7 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Added information about [XML parsing being extracted to a gem](#xml-parsing).
 * This handbook assumes that applications being upgraded are [running the latest
   version of Rails 3.2](#rails-32).
-* Added information about the [`rails test` command](#testing) which is
+* Added information about the [`rails test` command](#new-testing) which is
   recommended over `rake test`.
 * Recommended [raising an error](#unpermitted-attributes) when an unpermitted
   parameter is received by **strong_paramters**.

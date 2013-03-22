@@ -1,4 +1,4 @@
-## <a id="testing"></a>Testing
+## <a id="new-testing"></a>Testing
 
 ### Directory Structure
 
@@ -46,7 +46,7 @@ $ rails test test/models/posts_test.rb
 @@@
 
 For backwards compatibility, running tasks for the Rails 3 structure (e.g.,
-`rails test:units`) will run tests in both the new directories (`test/models`
+`rails test units`) will run tests in both the new directories (`test/models`
 and `test/helpers`) *and* the old directories (`test/unit` and
 `test/unit/helpers`). The new tasks shown in the table above only run
 tests in the new directories.
@@ -89,8 +89,8 @@ $ git commit -m 'Moved tests to Rails 4 conventional locations'
 
 Speaking of RSpec, if you are using
 [**rspec-rails**](https://github.com/rspec/rspec-rails) as your testing
-library, upgrade both **rspec-rails** to version 2.13.0 or greater to get Rails
-4 support.
+library, upgrade **rspec-rails** to version 2.13.0 or greater to get Rails 4
+support.
 
 The easiest way is to specify the constraint in your `Gemfile`:
 

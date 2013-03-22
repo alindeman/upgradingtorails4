@@ -194,7 +194,7 @@ the request continues.
 
 @@@ text
 # logs/development.log
-Unpermitted parameters: email
+Unpermitted parameters: admin
 @@@
 
 I found this lack of an error frustrating in development mode. In my Rails 4
@@ -364,10 +364,10 @@ in the section describing [cache_digests](#cache-digests).
 ### <a id="xml-parsing"></a>XML Parsing
 
 The release of Rails 3.2.11 was prompted in part because a vulnerability in XML
-parsing allowed the clients to send requests that could create symbols within
-the Ruby environment and parse embedded YAML. These and other closely related
-vulnerabilities turned out to be extremely critical, allowing arbitrary code to
-be executed in the context of unpatched Rails applications.
+parsing allowed the clients to send requests that create symbols within the
+Ruby environment, as well as evaluate embedded YAML. These and other closely
+related vulnerabilities turned out to be extremely critical, allowing arbitrary
+code to be executed in the context of unpatched Rails applications.
 
 These vulnerabilities, combined with the fact that JSON seems to have
 overshadowed XML as the lingua franca for Rails APIs, prompted the Rails core
