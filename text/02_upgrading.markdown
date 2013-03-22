@@ -187,14 +187,14 @@ required to keep existing Rails features working properly after upgrading:
 
 @@@ ruby
 # Gemfile
-gem 'protected_attributes'
-gem 'activeresource', github: 'rails/activeresource'
-gem 'actionpack-action_caching', github: 'rails/actionpack-action_caching'
-gem 'actionpack-page_caching', github: 'rails/actionpack-page_caching'
-gem 'activerecord-session_store'
-gem 'rails-observers'
-gem 'actionview-encoded_mail_to'
-gem 'rails-perftest'
+gem 'protected_attributes', '~>1.0.0'
+gem 'activeresource', '~>4.0.0.beta1'
+gem 'actionpack-action_caching', '~>1.0.0'
+gem 'actionpack-page_caching', '~>1.0.0'
+gem 'activerecord-session_store', '~>0.0.1'
+gem 'rails-observers', '~>0.1.1'
+gem 'actionview-encoded_mail_to', '~>1.0.3'
+gem 'rails-perftest', '~>0.0.2'
 gem 'actionpack-xml_parser', github: 'rails/actionpack-xml_parser'
 @@@
 
