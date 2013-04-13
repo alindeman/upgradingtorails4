@@ -47,6 +47,11 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 ### Changelog
 
+#### 0.10: XXX
+
+* Updated information about [binaries and bundle binstubs](#binstubs), including
+  information about how to upgrade if you are already using binstubs.
+
 #### 0.9: March 21, 2013
 
 * Added information about [XML parsing being extracted to a gem](#xml-parsing).
