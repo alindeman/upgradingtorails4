@@ -56,6 +56,9 @@ license](http://creativecommons.org/licenses/by/2.0/).
   Rails 3).
 * Rails 4 [removes the `:assets` group from Gemfile](#no-assets-group). Be sure
   to move gems like sass-rails and coffee-rails to the top level.
+* Updated information about [encrypted cookies](#encrypted-cookies). Rails 3
+  cookies are upgradable to Rails 4 cookies, but the API looks different
+  than it did in Rails 4.0.0.beta1.
 
 #### 0.9: March 21, 2013
 

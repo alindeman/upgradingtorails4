@@ -26,3 +26,8 @@ addressing deprecated features:
 1. [Remove the `whiny_nils` setting from all environment configuration files](#whiny-nils)
 1. [Remove the `auto_explain_threshold_in_seconds` setting from all environment configuration files](#auto-explain-queries)
 1. [Add new thread-safety configuration options](#thread-safety)
+
+After your Rails 4 application is running smoothly in production, consider
+making these changes:
+
+1. [Upgrade digitally signed cookies to encrypted cookies](#encrypted-cookies)
