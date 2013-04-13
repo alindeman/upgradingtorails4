@@ -2,57 +2,44 @@
 
 ### Directory Structure
 
-Rails 4 has adopted an RSpec-like directory structure by default. Furthermore,
-Rails 4 introduces and recommends using `rails test` instead of `rake test` to
-run tests from the command line. `rails test` will start up more quickly in
-most applications.
-
-`rake test` will continue to operate correctly for the time being, so if you
-have scripts or continuous integration servers that rely on it, no action is
-needed.
+Rails 4 has adopted an RSpec-like directory structure by default.
 
 <table>
   <tr>
     <th>Rails 2 and 3 Directory</th>
     <th>Rails 4 Directory</th>
-    <th>Rails 4 Task</th>
+    <th>Rails 4 <code>rake</code> task</th>
   </tr>
   <tr>
     <td><code>test/unit</code></td>
     <td><code>test/models</code></td>
-    <td><code>rails test models</code></td>
+    <td><code>rake test:models</code></td>
   </tr>
   <tr>
     <td><code>test/unit/helpers</code></td>
     <td><code>test/helpers</code></td>
-    <td><code>rails test helpers</code></td>
+    <td><code>rake test:helpers</code></td>
   </tr>
   <tr>
     <td><code>test/functional</code> (for controllers)</td>
     <td><code>test/controllers</code></td>
-    <td><code>rails test controllers</code></td>
+    <td><code>rake test:controllers</code></td>
   </tr>
   <tr>
     <td><code>test/functional</code> (for mailers)</td>
     <td><code>test/mailers</code></td>
-    <td><code>rails test mailers</code></td>
+    <td><code>rake test:mailers</code></td>
   </tr>
 </table>
 
-`rails test` can also run individual test files:
-
-@@@ text
-$ rails test test/models/posts_test.rb
-@@@
-
-For backwards compatibility, running tasks for the Rails 3 structure (e.g.,
-`rails test units`) will run tests in both the new directories (`test/models`
-and `test/helpers`) *and* the old directories (`test/unit` and
-`test/unit/helpers`). The new tasks shown in the table above only run
+For backwards compatibility, running the Rails 3 rake tasks (e.g., `rake
+test:units`) will run tests in both the new directories (`test/models` and
+`test/helpers`) *and* the old directories (`test/unit` and
+`test/unit/helpers`). The new rake tasks shown in the table above only run
 tests in the new directories.
 
-I think the new directory structure is a great improvement, as the terms "unit"
-and "functional" were at best opaque and at worst inaccurate.
+I think this is a great improvement, as the terms "unit" and "functional" were
+at best opaque and at worst inaccurate.
 
 You should take the proactive step of moving all tests to the new locations
 after upgrading an application (and before you start writing any new code). You

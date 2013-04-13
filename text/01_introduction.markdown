@@ -51,6 +51,9 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 * Updated information about [binaries and bundle binstubs](#binstubs), including
   information about how to upgrade if you are already using binstubs.
+* Removed details about the [`rails test` command](#new-testing) since it has
+  been removed in favor of running tests through `rake` (as is the norm in
+  Rails 3).
 
 #### 0.9: March 21, 2013
 
