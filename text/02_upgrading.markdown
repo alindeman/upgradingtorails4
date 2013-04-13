@@ -170,13 +170,25 @@ and `coffee-rails` as well:
 @@@ ruby
 # Gemfile
 
-group :assets do
-  # Replaces "gem 'sass-rails', '~>3.x.y'"
-  gem 'sass-rails', '~>4.0.0.beta1'
+# Replaces "gem 'sass-rails', '~>3.x.y'"
+gem 'sass-rails', '~>4.0.0.beta1'
 
-  # Replaces "gem 'coffee-rails', '~>3.x.y'"
-  gem 'coffee-rails', '~>4.0.0.beta1'
-end
+# Replaces "gem 'coffee-rails', '~>3.x.y'"
+gem 'coffee-rails', '~>4.0.0.beta1'
+@@@
+
+<a id="no-assets-group"></a>Furthermore, Rails 4 removes the `:assets` group.
+If you have gems currently grouped in `:assets` in `Gemfile`, you need to
+promote them to the top level:
+
+@@@ ruby
+# Gemfile
+
+# Delete `group :assets` and move these gems
+# (and any others) to the top level
+gem 'sass-rails', '~>4.0.0.beta1'
+gem 'coffee-rails', '~>4.0.0.beta1'
+gem 'uglifier', '>=1.0.3'
 @@@
 
 <!-- TODO: Table of gems to the feature that required them -->

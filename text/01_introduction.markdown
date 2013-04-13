@@ -54,6 +54,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Removed details about the [`rails test` command](#new-testing) since it has
   been removed in favor of running tests through `rake` (as is the norm in
   Rails 3).
+* Rails 4 [removes the `:assets` group from Gemfile](#no-assets-group). Be sure
+  to move gems like sass-rails and coffee-rails to the top level.
 
 #### 0.9: March 21, 2013
 
