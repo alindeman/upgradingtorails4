@@ -36,6 +36,7 @@ need them during the upgrade process.
 1. [Upgrade plugins to gems or move code to `lib/`](#plugins)
 1. [Tweak any routes that use `match` without `:via => :verb`](#routing-match)
 1. [Audit any chained uses of `Relation#order`, as new orders are now prepended rather than appended](#relation-order)
+1. [Change `^` and `$` to `\A` and `\z` (respectively) when using `validates_format_of`](#validates-format-of)
 1. [Decide whether graceful degredation of remote forms is important to your application and, if so, enable the option to embed authenticity tokens in forms](#authenticity-tokens-in-remote-forms)
 1. [Add any image assets in `lib/` or `vendor/` to the precompilation list](#precompiled-images)
 
