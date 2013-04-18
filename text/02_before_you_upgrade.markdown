@@ -17,17 +17,22 @@ integration tests (also called request specs or feature specs), you are off to
 a great start. Run these tests as you go through the upgrade process to verify
 breaking changes don't get pushed out to production.
 
-Note, however, that you may need to upgrade your testing framework alongside
-Rails (specifically, if you use RSpec or Rails performance tests). The
-specifics are [covered in the testing chapter](#testing).
-
 ## <a id="upgrade-checklist"></a>Checklist
+
+The book goes into detail about each major change in Rails 4. I recommend you
+read through the first section entirely before attempting an upgrade.
+
+Afterward, or after you have upgraded an application or few, you can use this
+checklist to navigate to specific sections in the order that I expect you will
+need them during the upgrade process.
 
 1. [Upgrade to Ruby 1.9.3 or 2.0.0](#ruby-193)
 1. [Upgrade bundler](#bundler)
 1. [Check for gem incompatibilities using `rails4_upgrade`](#rails4_upgrade)
 1. [Upgrade Rails itself](#upgrading-rails-itself)
 1. [Add gems that have extracted functionality from Rails 3](#deprecation-gems)
+1. [Upgrade **rspec-rails** if you use RSpec as your testing framework](#rspec)
+1. [Add binaries and binstubs for `rails` and `rake`](#binstubs)
 1. [Upgrade plugins to gems or move code to `lib/`](#plugins)
 1. [Tweak any routes that use `match` without `:via => :verb`](#routing-match)
 1. [Audit any chained uses of `Relation#order`, as new orders are now prepended rather than appended](#relation-order)

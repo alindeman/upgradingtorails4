@@ -227,7 +227,25 @@ Resolving dependencies...
 
 You're riding on Rails 4!
 
-### <a id="binstubs"></a>Binaries
+### <a id="rspec"></a>RSpec
+
+Tests are critical to a smooth upgrade process: they can help highlight
+breaking changes that need attention with you manually running through each
+code path in your application.
+
+If you use RSpec as your testing framework, upgrade it to the latest version to
+get Rails 4 support:
+
+@@@ ruby
+# Gemfile
+group :development, :test do
+  gem 'rspec-rails', '>= 2.13.1'
+end
+@@@
+
+Finally, run `bundle update rspec-rails`.
+
+### <a id="binstubs"></a>Binaries and Binstubs
 
 Binaries have been a source of confusion in the Rails ecosystem for a while.
 For instance, in Rails 3, the `rails` command can be run alone (just `rails`)
