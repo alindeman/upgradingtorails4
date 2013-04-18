@@ -71,22 +71,3 @@ $ git commit -m 'Moved tests to Rails 4 conventional locations'
 @@@
 
 <!-- TODO: This is a good thing to automate with the rails4_upgrade gem? -->
-
-### RSpec
-
-Speaking of RSpec, if you are using
-[**rspec-rails**](https://github.com/rspec/rspec-rails) as your testing
-library, upgrade **rspec-rails** to version 2.13.0 or greater to get Rails 4
-support.
-
-The easiest way is to specify the constraint in your `Gemfile`:
-
-@@@ ruby
-# Gemfile
-group :development, :test do
-  gem 'rspec-rails', '>= 2.13.0'
-end
-@@@
-
-Finally, run `bundle update rspec-rails` to finish the
-upgrade.
