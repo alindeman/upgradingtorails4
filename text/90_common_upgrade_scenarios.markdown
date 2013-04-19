@@ -6,6 +6,21 @@ occur when upgrading applications from Rails 3 to Rails 4.
 ---
 
 @@@ text
+`attr_accessible` is extracted out of Rails into a gem.
+Please use new recommended protection model for params
+(strong_parameters) or add `protected_attributes` to your
+Gemfile to use old one.
+@@@
+
+Rails 4 extracted `attr_accessible` and `attr_protected` into the
+`protected_attributes` gem. To fix the error, add the `protected_attributes`
+gem to your `Gemfile`.
+
+Read more about it in the [`strong_parameters`](#strong-paramters) section.
+
+---
+
+@@@ text
 DEPRECATION WARNING: config.whiny_nils option is deprecated
 and no longer works.
 @@@

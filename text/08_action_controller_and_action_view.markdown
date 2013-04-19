@@ -1,6 +1,6 @@
 ## ActionController and ActionView
 
-### strong_parameters
+### <a id="strong-parameters"></a>strong_parameters
 
 Securing a Rails application normally involves protecting against a class
 of attacks known as mass-assignment vulnerabilities.
