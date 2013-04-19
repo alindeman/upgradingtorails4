@@ -21,6 +21,30 @@ Read more about it in the [`strong_parameters`](#strong-paramters) section.
 ---
 
 @@@ text
+... was passed as :conditions but is not callable.
+Pass a callable instead: `conditions: -> { where(approved: true) }`
+@@@
+
+Rails 4 pushes you to use callable objects when passing conditions to
+`validates_uniqueness_of`. More information is available in the
+[eager-evaluated scopes](#eager-evaluated-scopes) section.
+
+---
+
+@@@ text
+DEPRECATION WARNING: The following options in your Post.has_many
+:recent_comments declaration are deprecated: :conditions. Please use a scope
+block instead.
+@@@
+
+Rails 4 deprecates many options to `has_many`, `has_one`, and `belongs_to`.
+Instead of using `:order` and `:conditions`, for instance, you pass a scope
+wrapped in a lambda. More information is available in the [eager-evaluated
+scopes](#eager-evaluated-scopes) section.
+
+---
+
+@@@ text
 DEPRECATION WARNING: config.whiny_nils option is deprecated
 and no longer works.
 @@@

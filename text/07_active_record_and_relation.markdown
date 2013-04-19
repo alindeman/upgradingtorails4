@@ -94,7 +94,9 @@ Notably, though, the `find_by_...` dynamic finder is *not* deprecated. Code
 such as `User.find_by_email("andy@andylindeman.com")` will continue functioning
 without deprecation warnings.
 
-### <a id="eager-evaluated-scopes"></a>Eager-Evaluated Scopes
+### <a id="eager-evaluated-scopes"></a>Eager-Evaluated Conditions
+
+#### scope
 
 Creating a scope without a callable object is deprecated in Rails 4:
 
@@ -119,6 +121,50 @@ class Comment < ActiveRecord::Base
   scope :visible, lambda { where(visible: true) }
 end
 @@@
+
+#### has_many, has_one, belongs_to
+
+Similarly, creating an association with options such as `:conditions`,
+`:order`, or `:limit` is deprecated in Rails 4:
+
+@@@ ruby
+class Post < ActiveRecord::Base
+  has_many :recent_comments, class_name: "Comment",
+    order: "created_at DESC", limit: 10
+end
+# DEPRECATION WARNING: The following options in your Post.has_many
+# :recent_comments declaration are deprecated: :order,:limit. Please
+# use a scope block instead.
+@@@
+
+The preferred syntax in Rails 4 is to create a scope that is merged with the
+association, wrapped in a proc or lambda:
+
+@@@ ruby
+class Post < ActiveRecord::Base
+  has_many :recent_comments,
+    -> { order("created_at DESC").limit(10) },
+    class_name: "Comment"
+end
+@@@
+
+In my opinion, the new syntax is much more clear and powerful. That said,
+upgrading many be painful if you have many associations that use these methods.
+
+The full list of deprecated options is shown below. All of these options
+can be replaced by a scope wrapped in a lambda passed as the second argument
+to `has_many`, `has_one`, or `belongs_to`:
+
+* `:readonly`
+* `:order`
+* `:limit`
+* `:group`
+* `:having`
+* `:offset`
+* `:select`
+* `:uniq`
+* `:include`
+* `:conditions`
 
 ### <a id="relation-all"></a>Relation#all
 
