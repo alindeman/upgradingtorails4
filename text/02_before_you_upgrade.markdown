@@ -1,4 +1,4 @@
-# Before You Upgrade
+# <a id="before-you-upgrade"></a>Before You Upgrade
 
 This handbook is focused around upgrading a Rails 3 application to a Rails 4
 application.

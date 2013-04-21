@@ -49,6 +49,9 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 #### 0.10: XXX
 
+* Added a [Before You Upgrade](#before-you-upgrade) section highlighting some
+  things to consider before upgrading, and moves the upgrading checklist to
+  this section.
 * Updated information about [binaries and bundle binstubs](#binstubs), including
   information about how to upgrade if you are already using binstubs.
 * Removed details about the [`rails test` command](#new-testing) since it has
@@ -59,6 +62,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Updated information about [encrypted cookies](#encrypted-cookies). Rails 3
   cookies are upgradable to Rails 4 cookies, but the API looks different
   than it did in Rails 4.0.0.beta1.
+* Discussed [upgrading RSpec](#rspec) earlier in the book: tests are critical
+  to a smooth upgrade process.
 
 #### 0.9: March 21, 2013
 
