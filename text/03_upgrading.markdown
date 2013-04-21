@@ -171,10 +171,13 @@ and `coffee-rails` as well:
 # Gemfile
 
 # Replaces "gem 'sass-rails', '~>3.x.y'"
-gem 'sass-rails', '~>4.0.0.beta1'
+gem 'sass-rails', '~>4.0.0.rc1'
 
 # Replaces "gem 'coffee-rails', '~>3.x.y'"
-gem 'coffee-rails', '~>4.0.0.beta1'
+gem 'coffee-rails', '~>4.0.0'
+
+# Replaces "gem 'uglifier', '~>1.0.3'"
+gem 'uglifier', '>=1.3.0'
 @@@
 
 <a id="no-assets-group"></a>Furthermore, Rails 4 removes the `:assets` group.
@@ -186,20 +189,20 @@ promote them to the top level:
 
 # Delete `group :assets` and move these gems
 # (and any others) to the top level
-gem 'sass-rails', '~>4.0.0.beta1'
-gem 'coffee-rails', '~>4.0.0.beta1'
-gem 'uglifier', '>=1.0.3'
+gem 'sass-rails', '~>4.0.0.rc1'
+gem 'coffee-rails', '~>4.0.0'
+gem 'uglifier', '>=1.3.0'
 @@@
 
-<!-- TODO: Table of gems to the feature that required them -->
 <a id="deprecation-gems"></a>Finally, Rails 4 moves many features into gems
 that were previously shipped with Rails itself. Later chapters go into more
-detail about these changes. For now, however, add all of the gems that are
-required to keep existing Rails features working properly after upgrading:
+detail about these changes, and you may not actually need all of these gems for
+your application.  For now, however, add all of the gems that are required to
+keep existing Rails features working properly after upgrading:
 
 @@@ ruby
 # Gemfile
-gem 'protected_attributes', '~>1.0.0'
+gem 'protected_attributes', '~>1.0.1'
 gem 'activeresource', '~>4.0.0.beta1'
 gem 'actionpack-action_caching', '~>1.0.0'
 gem 'actionpack-page_caching', '~>1.0.0'
