@@ -102,3 +102,18 @@ present a security risk. Did you mean to use \A and \z, or forgot to add the
 Rails 4 does not allow the `^` and `$` anchors with a `validates_format_of`
 validation. Read more about it in the [validates\_format\_of with ^ and
 $](#validates-format-of) section.
+
+---
+
+@@@ text
+You don't have dalli installed in your application. Please add it to your
+Gemfile and run bundle install
+
+`rescue in lookup_store': Could not find cache store adapter for
+mem_cache_store (cannot load such file -- dalli) (RuntimeError)
+@@@
+
+Your application caches data in memcached. Rails 4 no longer uses the
+`memcache-client` gem as it has been superceded by the `dalli` gem. Remove the
+`memcache-client` gem from Gemfile and add `dalli` instead. Read more about
+it in the [caching with memcached](#caching-with-memcached) section.

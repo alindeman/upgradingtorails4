@@ -32,6 +32,7 @@ need them during the upgrade process.
 1. [Upgrade Rails itself](#upgrading-rails-itself)
 1. [Add gems that have extracted functionality from Rails 3](#deprecation-gems)
 1. [Upgrade **rspec-rails** if you use RSpec as your testing framework](#rspec)
+1. [Add **dalli** if you cache data in memcache](#caching-with-memcache)
 1. [Add binaries and binstubs for `rails` and `rake`](#binstubs)
 1. [Upgrade plugins to gems or move code to `lib/`](#plugins)
 1. [Tweak any routes that use `match` without `:via => :verb`](#routing-match)

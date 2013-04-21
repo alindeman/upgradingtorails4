@@ -61,3 +61,42 @@ for good in Rails 4.
 Finally, `Object#try` can no longer be used to invoke private methods in Rails
 4. Attempting to call a private method using `try` will simply return `nil`
 and the method will not be invoked.
+
+## <a id="caching-with-memcached"></a>Caching with memcached
+
+Caching data in memcached is a popular way to speed up Rails applications.
+Rails 4 requires the `dalli` gem, whereas Rails 3 used the now-outdated
+`memcache-client` gem.
+
+If your application caches data in memcached, you may receive an error tracing
+to a line in `config/application.rb` or `config/environments/production.rb`:
+
+@@@ ruby
+# config/environments/production.rb
+Widgets::Application.configure do
+  # ...
+
+  config.cache_store = :mem_cache_store, "cache1.example.com"
+end
+# You don't have dalli installed in your application. Please add it
+# to your Gemfile and run bundle install
+# 
+# `rescue in lookup_store': Could not find cache store adapter for
+# mem_cache_store (cannot load such file -- dalli) (RuntimeError)
+@@@
+
+The error message sums it up: you need `dalli` instead of `memcache-client`.
+Adjust Gemfile:
+
+@@@ ruby
+# Gemfile
+
+# Remove "gem 'memcache-client'"
+gem 'dalli', '~> 2.6.2'
+@@@
+
+Finish up with:
+
+@@@ text
+$ bundle install
+@@@

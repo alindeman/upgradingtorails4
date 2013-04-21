@@ -64,6 +64,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
   than it did in Rails 4.0.0.beta1.
 * Discussed [upgrading RSpec](#rspec) earlier in the book: tests are critical
   to a smooth upgrade process.
+* Noted that using memcached in Rails 4 [requires the `dalli`
+  gem](#caching-with-memcached).
 
 #### 0.9: March 21, 2013
 
