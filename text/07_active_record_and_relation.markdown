@@ -513,8 +513,7 @@ the `rails-observers` gem:
 
 @@@ ruby
 # Gemfile
-gem 'rails-observers',
-  github: 'rails/rails-observers'
+gem 'rails-observers', '~>0.1.1'
 @@@
 
 ### <a id="json-serialization"></a>JSON Serialization

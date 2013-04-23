@@ -183,7 +183,7 @@ be aware of their structure. For in-depth coverage of the syntax, scan the
 examples in the [**strong_parameters**
 README](https://github.com/rails/strong_parameters/blob/master/README.md).
 
-#### <a id="unpermitted-attributes"></a>Behavior for Unpermitted Paramters
+#### <a id="unpermitted-attributes"></a>Behavior for Unpermitted Parameters
 
 Any parameter that is not `permit`ted is removed from the hash of parameters
 passed through **strong_parameters**. The model will simply not see it at all.
