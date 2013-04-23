@@ -93,8 +93,8 @@ equal to 3.0 is allowed, including 4.0.
 Gem::Specification.new do |s|
   # ... other directives ...
 
-  s.add_dependency('activemodel', '>= 3.0')
-  s.add_dependency('actionpack', '>= 3.0')
+  s.add_dependency('activemodel', '>= 3.0', '< 5')
+  s.add_dependency('actionpack', '>= 3.0', '< 5')
 end
 @@@
 
