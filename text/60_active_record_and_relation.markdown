@@ -109,8 +109,11 @@ for a while now.
 @@@ ruby
 comment = Comment.find(1)
 
+# Rails 3
+comment.update_attributes(body: "Updated content")
+
+# Rails 4 (same effect)
 comment.update(body: "Updated content")
-# Same as: comment.update_attributes(body: "Updated content")
 @@@
 
 `update` and `update_attributes` can be used interchangeably in Rails 4. In

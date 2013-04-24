@@ -77,11 +77,13 @@ end
 
 With `config.cache_classes` and `config.eager_load` enabled in production,
 the application is thread-safe and can run on a web application server that
-uses threads.
+uses threads like [puma](http://puma.io/).
 
-This is a huge win: it may be possible for you to handle many more requests
-concurrently without needing more memory. Check out the [puma](http://puma.io/)
-landing page for more information.
+For certain applications, this could be a win: it may be possible for you
+to handle many more requests concurrently without needing more memory. The
+effect is seen best on Ruby implementations that allow true parallelism like
+Rubinius or JRuby. Make sure to benchmark and gather metrics on your specific
+application before switching web application servers in production.
 
 A threaded web application server also makes it feasible to keep long-running
 connections open to web clients in order to stream data to them over many

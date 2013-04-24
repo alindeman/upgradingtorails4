@@ -239,7 +239,7 @@ controllers call `params.require.permit` before passing hashes to model methods.
 
 Because **protected_attributes** and **strong_parameters** take very different
 approaches to enforcing mass-assignment protection, it is not advisable to
-attempt to use them together.
+attempt to use them together in the same application.
 
 I recommend simply using **protected_attributes** when upgrading applications
 that use `attr_accessible`, and continuing to use `attr_accessible` for
@@ -355,7 +355,13 @@ Both page and action caching are complicated, and often better implemented by
 out-of-process proxies. In Rails 4, applications that want to continue using
 page caching and action caching will need to bring in the
 `actionpack-page_caching` and `actionpack-action_caching` gems respectively
-by adding them to `Gemfile`.
+by adding them to `Gemfile`:
+
+@@@ ruby
+# Gemfile
+gem 'actionpack-action_caching', '~>1.0.0'
+gem 'actionpack-page_caching', '~>1.0.0'
+@@@
 
 Notably, fragment caching--where smaller pieces of a view are cached--is *not*
 deprecated in Rails 4. In fact, fragment caching is even improved. More on that

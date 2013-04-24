@@ -202,15 +202,15 @@ keep existing Rails features working properly after upgrading:
 
 @@@ ruby
 # Gemfile
-gem 'protected_attributes', '~>1.0.1'
-gem 'activeresource', '~>4.0.0.beta1'
 gem 'actionpack-action_caching', '~>1.0.0'
 gem 'actionpack-page_caching', '~>1.0.0'
-gem 'activerecord-session_store', '~>0.0.1'
-gem 'rails-observers', '~>0.1.1'
-gem 'actionview-encoded_mail_to', '~>1.0.3'
-gem 'rails-perftest', '~>0.0.2'
 gem 'actionpack-xml_parser', github: 'rails/actionpack-xml_parser'
+gem 'actionview-encoded_mail_to', '~>1.0.3'
+gem 'activerecord-session_store', '~>0.0.1'
+gem 'activeresource', '~>4.0.0.beta1'
+gem 'protected_attributes', '~>1.0.1'
+gem 'rails-observers', '~>0.1.1'
+gem 'rails-perftest', '~>0.0.2'
 @@@
 
 Save `Gemfile` and run from the terminal:
@@ -250,10 +250,10 @@ Finally, run `bundle update rspec-rails`.
 
 ### <a id="binstubs"></a>Binaries and Binstubs
 
-Binaries have been a source of confusion in the Rails ecosystem for a while.
-For instance, in Rails 3, the `rails` command can be run alone (just `rails`)
-or via `script/rails`. It can also be run prefixed with `bundle exec`, though
-it is normally not necessary.
+Binaries, commands like `rails` and `rake`, have been a source of confusion in
+the Rails ecosystem for a while. For instance, in Rails 3, the `rails` command
+can be run alone (just `rails`) or via `script/rails`. It can also be run
+prefixed with `bundle exec`, though it is normally not necessary.
 
 On the other hand, the `rake` command usually *does* need to be prefixed with
 `bundle exec` (gems like
