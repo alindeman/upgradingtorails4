@@ -122,6 +122,30 @@ class Comment < ActiveRecord::Base
 end
 @@@
 
+In some situations, eager evaluated scopes are not just deprecated: they will
+cause errors. For instance, `validates_uniqueness_of` with the `:conditions`
+option:
+
+@@@ ruby
+class Post < ActiveRecord::Base
+  # All non-archived titles must be unique
+  validates_uniqueness_of :title,
+    conditions: where("archived != ?", true)
+end
+# ArgumentError: ... was passed as :conditions but is not callable.
+# Pass a callable instead: `conditions: -> { where(approved: true) }`
+@@@
+
+When upgrading, you must wrap the conditions in a proc or lambda:
+
+@@@ ruby
+class Post < ActiveRecord::Base
+  # All non-archived titles must be unique
+  validates_uniqueness_of :title,
+    conditions: -> { where("archived != ?", true) }
+end
+@@@
+
 #### has_many, has_one, belongs_to
 
 Similarly, creating an association with options such as `:conditions`,
