@@ -61,7 +61,7 @@ It is possible that Rails 4 will require a more recent version of `bundler`
 than is installed in your set of gems.
 
 To avoid any potential problems, simply upgrade to the latest version of
-`bundler` before going any farther:
+`bundler` before going any further:
 
 @@@ text
 $ gem install bundler
