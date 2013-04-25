@@ -1,6 +1,6 @@
 # <a id="before-you-upgrade"></a>Before You Upgrade
 
-This handbook is focused around upgrading a Rails 3 application to a Rails 4
+This handbook is focuses on upgrading a Rails 3 application to a Rails 4
 application.
 
 To use it most effectively, there are a few things you should know first before
@@ -12,19 +12,22 @@ Higher level tests, those that drive your application from the outside, can
 be invaluable during an upgrade process. Any medium to large application needs
 at least some coverage before an upgrade to Rails 4 is attempted.
 
-If your application has controller tests (also called functional tests),
+If your application has controller tests (also called functional tests) or
 integration tests (also called request specs or feature specs), you are off to
 a great start. Run these tests as you go through the upgrade process to verify
 breaking changes don't get pushed out to production.
 
+Unit tests are also useful, though are less likely to break because they
+integrate less of the system. By definition, unit tests are more isolated.
+
 ## <a id="upgrade-checklist"></a>Checklist
 
-The book goes into detail about each major change in Rails 4. I recommend you
-read through the first section entirely before attempting an upgrade.
+The handbook goes into detail about each major change in Rails 4. I recommend
+you read through the first section entirely before attempting an upgrade.
 
-Afterward, or after you have upgraded an application or few, you can use this
-checklist to navigate to specific sections in the order that I expect you will
-need them during the upgrade process.
+Afterward, or after you have upgraded an application or few, you should use
+this checklist to navigate to specific sections in the order that I expect you
+will need them during the upgrade process.
 
 1. [Upgrade to Ruby 1.9.3 or 2.0.0](#ruby-193)
 1. [Upgrade bundler](#bundler)

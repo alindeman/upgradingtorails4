@@ -124,7 +124,7 @@ end
 
 In some situations, eager evaluated scopes are not just deprecated: they will
 cause errors. For instance, `validates_uniqueness_of` with the `:conditions`
-option:
+option raises an `ArgumentError` if the value is not callable:
 
 @@@ ruby
 class Post < ActiveRecord::Base
@@ -173,7 +173,7 @@ end
 @@@
 
 In my opinion, the new syntax is much more clear and powerful. That said,
-upgrading many be painful if you have many associations that use these methods.
+upgrading may be painful if you have many associations that use these options.
 
 The full list of deprecated options is shown below. All of these options
 can be replaced by a scope wrapped in a lambda passed as the second argument
