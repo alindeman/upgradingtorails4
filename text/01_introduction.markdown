@@ -160,3 +160,6 @@ Thank you to these folks for reviewing and giving technical feedback:
 * [Steve Klabnik](http://steveklabnik.com/)
 * [Caius Durling](http://caius.name/)
 * [Ashish Dixit](https://twitter.com/tundal45)
+* [Ernie Miller](http://erniemiller.org/)
+* [Darcy Laycock](http://sutto.net/)
+* [Sean Marcia](http://arlingtonruby.org)
