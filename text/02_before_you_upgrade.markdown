@@ -1,4 +1,4 @@
-# <a id="before-you-upgrade"></a>Before You Upgrade
+## <a id="before-you-upgrade"></a>Before You Upgrade
 
 This handbook is focuses on upgrading a Rails 3 application to a Rails 4
 application.
@@ -6,7 +6,7 @@ application.
 To use it most effectively, there are a few things you should know first before
 you dive into your `Gemfile` and run `bundle update rails`.
 
-## Test Suite
+### Test Suite
 
 Higher level tests, those that drive your application from the outside, can
 be invaluable during an upgrade process. Any medium to large application needs
@@ -20,7 +20,7 @@ breaking changes don't get pushed out to production.
 Unit tests are also useful, though are less likely to break because they
 integrate less of the system. By definition, unit tests are more isolated.
 
-## <a id="upgrade-checklist"></a>Checklist
+### <a id="upgrade-checklist"></a>Checklist
 
 The handbook goes into detail about each major change in Rails 4. I recommend
 you read through the first section entirely before attempting an upgrade.
