@@ -47,7 +47,7 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 ### Changelog
 
-#### 0.10: XXX
+#### 0.10: April 26, 2013
 
 * Added a [Before You Upgrade](#before-you-upgrade) section highlighting some
   things to consider before upgrading, and moves the upgrading checklist to
