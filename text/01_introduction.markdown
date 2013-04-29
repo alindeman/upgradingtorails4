@@ -47,6 +47,10 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 ### Changelog
 
+#### 0.10.1: April 29, 2013
+
+* Bumps gem versions throughout the book for the release of Rails 4.0.0.rc1.
+
 #### 0.10: April 26, 2013
 
 * Added a [Before You Upgrade](#before-you-upgrade) section highlighting some

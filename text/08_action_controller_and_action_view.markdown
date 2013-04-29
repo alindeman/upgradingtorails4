@@ -231,7 +231,7 @@ when upgrading:
 
 @@@ ruby
 # Gemfile
-gem 'protected_attributes', github: 'rails/protected_attributes'
+gem 'protected_attributes', '~>1.0.1'
 @@@
 
 The gem restores `attr_accessible` and disables the requirement that
@@ -385,7 +385,8 @@ from *rendering* XML as output), you will need to pull in the
 
 @@@ ruby
 # Gemfile
-gem 'actionpack-xml_parser'
+gem 'actionpack-xml_parser',
+  github: 'rails/actionpack-xml_parser'
 @@@
 
 If your application does not need to accept XML input, I recommend leaving the

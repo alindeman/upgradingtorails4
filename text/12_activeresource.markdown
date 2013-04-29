@@ -28,7 +28,7 @@ in `Gemfile`:
 
 @@@ ruby
 # Gemfile
-gem 'activeresource', github: 'rails/activeresource'
+gem 'activeresource', '~>4.0.0.beta1'
 @@@
 
 More information about ActiveResource's new direction and plans for the future

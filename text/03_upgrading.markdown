@@ -160,7 +160,7 @@ Open `Gemfile` in a text editor and change the line that starts with `gem
 
 @@@ ruby
 # Gemfile
-gem 'rails', '~>4.0.0.beta1'
+gem 'rails', '~>4.0.0.rc1'
 @@@
 
 Rails 4 also depends on newer versions of gems that drive the asset pipeline

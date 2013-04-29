@@ -384,8 +384,7 @@ To continue using the ActiveRecord session store, bring in the
 
 @@@ ruby
 # Gemfile
-gem 'activerecord-session_store',
-  github: 'rails/activerecord-session_store'
+gem 'activerecord-session_store', '~>0.0.1'
 @@@
 
 Rails 4 introduces encrypted cookies which may be a good alternative in certain
