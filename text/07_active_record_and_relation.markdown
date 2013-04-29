@@ -146,7 +146,7 @@ class Post < ActiveRecord::Base
 end
 @@@
 
-#### has_many, has_one, belongs_to
+#### has\_many, has\_one, belongs\_to
 
 Similarly, creating an association with options such as `:conditions`,
 `:order`, or `:limit` is deprecated in Rails 4:
