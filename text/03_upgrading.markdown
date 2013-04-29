@@ -88,8 +88,9 @@ $ bundle install
 
 ### <a id="incompatible-gems"></a>Checking for Incompatible Gems
 
-`rails4_upgrade` adds a `rake` task to check for gems that are locked to
-Rails 3, preventing an application from upgrading successfully.
+`rails4_upgrade` adds a `rake` task to check for gems that are locked to Rails
+3, since they would otherwise prevent an application from upgrading
+successfully.
 
 Run the task:
 
@@ -98,7 +99,7 @@ $ bundle exec rake rails4:check_gems
 @@@
 
 In an ideal world, you would see `"No gem incompatibilities found"`, meaning
-you can upgrade to Rails 4 straightaway. However, it is more likely that you
+you could upgrade to Rails 4 straightaway. However, it is more likely that you
 will be presented with a table of gems and the version of Rails to which they
 are locked.
 

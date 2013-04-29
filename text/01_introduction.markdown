@@ -1,7 +1,7 @@
 ## Introduction
 
 Even though Rails 4 is not yet released, it is important to start thinking
-about the how easy or difficult it will be to upgrade your applications. It may
+about how easy or difficult it will be to upgrade your applications. It may
 be possible to nip certain problems in the bud now to save pain later.
 
 My goal with this book is to provide a clear path for upgrading Rails 3
@@ -14,7 +14,7 @@ The book is split into three major parts:
 2. New Features: novel features in Rails 4 to be aware of, especially when
    upgrading
 3. Common Upgrading Scenarios: specific issues you might encounter when
-   upgrading a Rails application and how to fix them
+   upgrading a Rails application, and how to fix them
 
 Also included is an [Upgrade Checklist](#upgrade-checklist) which links to
 important sections that are relevant when upgrading an application. I recommend
@@ -23,7 +23,8 @@ checklist as a guide when upgrading your applications.
 
 ### Beta
 
-This book is an evolving work in process, so please excuse any typos or errors.
+This book is an evolving work in progress, so please excuse any typos or
+errors.
 
 It is also possible that since Rails 4 is currently in development, certain
 versions of the book may contain inaccuracies. I keep a close watch on the

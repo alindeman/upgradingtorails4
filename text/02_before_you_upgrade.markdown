@@ -1,24 +1,22 @@
 ## <a id="before-you-upgrade"></a>Before You Upgrade
 
-This handbook is focuses on upgrading a Rails 3 application to a Rails 4
+This handbook focuses on upgrading a Rails 3 application to a Rails 4
 application.
 
-To use it most effectively, there are a few things you should know first before
-you dive into your `Gemfile` and run `bundle update rails`.
+To use it most effectively, there are a few things you should know first,
+before you dive into your `Gemfile` and run `bundle update rails`.
 
 ### Test Suite
 
-Higher level tests, those that drive your application from the outside, can
-be invaluable during an upgrade process. Any medium to large application needs
-at least some coverage before an upgrade to Rails 4 is attempted.
+Higher level tests, those that drive your application from the outside, become
+essential during an upgrade process. Any medium to large application needs at
+least some coverage before an upgrade to Rails 4 is attempted.
 
 If your application has controller tests (also called functional tests) or
 integration tests (also called request specs or feature specs), you are off to
-a great start. Run these tests as you go through the upgrade process to verify
-breaking changes don't get pushed out to production.
-
-Unit tests are also useful, though are less likely to break because they
-integrate less of the system. By definition, unit tests are more isolated.
+a great start. Run these tests as you go through the upgrade process, to verify
+breaking changes don't get pushed out to production. If your application lacks
+these kinds of tests, consider writing some before upgrading.
 
 ### <a id="upgrade-checklist"></a>Checklist
 
@@ -41,7 +39,7 @@ will need them during the upgrade process.
 1. [Tweak any routes that use `match` without `:via => :verb`](#routing-match)
 1. [Audit any chained uses of `Relation#order`, as new orders are now prepended rather than appended](#relation-order)
 1. [Change `^` and `$` to `\A` and `\z` (respectively) when using `validates_format_of`](#validates-format-of)
-1. [Decide whether graceful degredation of remote forms is important to your application and, if so, enable the option to embed authenticity tokens in forms](#authenticity-tokens-in-remote-forms)
+1. [Decide whether graceful degradation of remote forms is important to your application and, if so, enable the option to embed authenticity tokens in forms](#authenticity-tokens-in-remote-forms)
 1. [Add any image assets in `lib/` or `vendor/` to the precompilation list](#precompiled-images)
 
 Some functionality from earlier versions of Rails has been deprecated: while
