@@ -168,3 +168,4 @@ Thank you to these folks for reviewing and giving technical feedback:
 * [Ernie Miller](http://erniemiller.org/)
 * [Darcy Laycock](http://sutto.net/)
 * [Sean Marcia](http://arlingtonruby.org)
+* [Giles Bowkett](http://gilesbowkett.blogspot.com/)
