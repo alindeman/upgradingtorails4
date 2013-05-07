@@ -11,6 +11,41 @@ notice that asset precompilation during a deploy takes much less time in Rails
 
 That said, there are some gotchas you need to be aware of when upgrading.
 
+### <a id="js-compress"></a>JavaScript and CSS Compressors
+
+Rails 4 changes the configuration options surrounding compressing assets.
+
+By default, Rails 3 enabled JavaScript and CSS compression with the
+`config.assets.compress` directive in `config/assets/production.rb`:
+
+@@@ ruby
+# config/environments/production.rb
+Widgets::Application.configure do
+  # Rails 3 setting
+  config.assets.compress = true
+end
+@@@
+
+Instead, Rails 4 requires you to explicitly specify which compressors to use.
+In fact, the `config.assets.compress` setting silently has no effect any
+longer. If you do not update your configuration, assets will no longer be
+compressed, which could lead to sluggish page loads in production.
+
+When upgrading, remove the `config.assets.compress` directive and replace it
+with `js_compressor` and `css_compressor`:
+
+@@@ ruby
+# config/environments/production.rb
+Widgets::Application.configure do
+  # Remove config.assets.compress = true
+  config.assets.js_compressor  = :uglifier
+  config.assets.css_compressor = :sass
+end
+@@@
+
+While other compressors can be used, `uglifier` and `sass` are available by
+default in both Rails 3 and 4.
+
 ### <a id="precompiled-images"></a>Precompiled Assets in lib/ and vendor/
 
 Assets (JavaScript, CSS stylesheets, and images) can be added to three

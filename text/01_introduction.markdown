@@ -48,6 +48,11 @@ license](http://creativecommons.org/licenses/by/2.0/).
 
 ### Changelog
 
+#### 0.11.0: XXX
+
+* Added information about required configuration changes to [enable JavaScript
+  and CSS compression in production](#js-compress).
+
 #### 0.10.1: April 29, 2013
 
 * Bumps gem versions throughout the book for the release of Rails 4.0.0.rc1.

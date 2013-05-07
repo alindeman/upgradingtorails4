@@ -51,6 +51,7 @@ need to make changes to files like `config/application.rb`,
 1. [Remove the `whiny_nils` setting from all environment configuration files](#whiny-nils)
 1. [Remove the `auto_explain_threshold_in_seconds` setting from all environment configuration files](#auto-explain-queries)
 1. [Add new thread-safety configuration options](#thread-safety)
+1. [Update JavaScript and CSS compression options](#js-compress)
 
 Some functionality from earlier versions of Rails has been deprecated: while
 your application may continue to operate correctly, you will see warnings.
