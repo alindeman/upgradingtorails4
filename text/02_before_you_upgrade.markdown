@@ -28,6 +28,7 @@ this checklist to navigate to specific sections in the order that I expect you
 will need them during the upgrade process.
 
 1. [Upgrade to Ruby 1.9.3 or 2.0.0](#ruby-193)
+1. [Upgrade to the latest version of Rails 3.2](#rails-32)
 1. [Upgrade bundler](#bundler)
 1. [Check for gem incompatibilities using `rails4_upgrade`](#rails4_upgrade)
 1. [Upgrade Rails itself](#upgrading-rails-itself)
@@ -42,6 +43,15 @@ will need them during the upgrade process.
 1. [Decide whether graceful degradation of remote forms is important to your application and, if so, enable the option to embed authenticity tokens in forms](#authenticity-tokens-in-remote-forms)
 1. [Add any image assets in `lib/` or `vendor/` to the precompilation list](#precompiled-images)
 
+Many configuration options have changed or been removed in Rails 4. You will
+need to make changes to files like `config/application.rb`,
+`config/environments/development.rb`, `config/environments/test.rb`, and
+`config/environments/production.rb`:
+
+1. [Remove the `whiny_nils` setting from all environment configuration files](#whiny-nils)
+1. [Remove the `auto_explain_threshold_in_seconds` setting from all environment configuration files](#auto-explain-queries)
+1. [Add new thread-safety configuration options](#thread-safety)
+
 Some functionality from earlier versions of Rails has been deprecated: while
 your application may continue to operate correctly, you will see warnings.
 After you have addressed the concerns in the first checklist, consider
@@ -52,9 +62,6 @@ addressing deprecated features:
 1. [Change eager-evaluated scopes to use lambdas](#eager-evaluated-scopes)
 1. [Audit any uses of `Relation#all`](#relation-all)
 1. [Address any uses of `Relation#includes` with conditions on the joined table](#relation-includes)
-1. [Remove the `whiny_nils` setting from all environment configuration files](#whiny-nils)
-1. [Remove the `auto_explain_threshold_in_seconds` setting from all environment configuration files](#auto-explain-queries)
-1. [Add new thread-safety configuration options](#thread-safety)
 
 After your Rails 4 application is running smoothly in production, consider
 making these changes:
