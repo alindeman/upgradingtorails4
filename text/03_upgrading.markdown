@@ -183,9 +183,9 @@ gem 'coffee-rails', '~>4.0.0'
 gem 'uglifier', '>=1.3.0'
 @@@
 
-<a id="no-assets-group"></a>Furthermore, Rails 4 removes the `:assets` group.
-If you have gems currently grouped in `:assets` in `Gemfile`, you need to
-promote them to the top level:
+<a id="no-assets-group"></a>Furthermore, Rails 4 moves away from using an
+`:assets` group. If you have gems currently grouped in `:assets` in `Gemfile`,
+promote them to the top level by removing `group :assets`:
 
 @@@ ruby
 # Gemfile
