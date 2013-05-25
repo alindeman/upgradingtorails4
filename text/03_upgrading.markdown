@@ -34,6 +34,8 @@ are less likely to run into issues with Ruby itself if the jump is as small as
 possible. After you have stabilized your application on Ruby 1.9.3 and Rails
 4, consider upgrading to Ruby 2.0.0.
 
+Of course, if you are already using Ruby 2.0.0, you're golden.
+
 You can upgrade Ruby with a single command using [`rvm`](https://rvm.io/):
 
 @@@ text
