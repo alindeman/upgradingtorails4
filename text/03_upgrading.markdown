@@ -131,7 +131,7 @@ Rails 4.
 
 @@@ ruby
 # Gemfile
-gem 'draper', '>=1.0.0'
+gem 'draper', '~> 1.0'
 @@@
 
 <p></p>
