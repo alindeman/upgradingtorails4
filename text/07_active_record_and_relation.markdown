@@ -56,7 +56,7 @@ Most of the alternate syntax is already supported in Rails 3.2.
   </tr>
   <tr>
     <td>
-      <code>first_or_initialize_by_...</code>
+      <code>find_or_initialize_by_...</code>
     </td>
     <td>
       <code>first_or_initialize_by(...)</code>
@@ -65,11 +65,11 @@ Most of the alternate syntax is already supported in Rails 3.2.
   <tr>
     <td>
       <code>find_or_create_by_...</code><br/>
-      <code>first_or_create_by_...!</code>
+      <code>find_or_create_by_...!</code>
     </td>
     <td>
-      <code>find_or_create_by(...)</code><br/>
-      <code>find_or_create_by!(...)</code>
+      <code>first_or_create_by(...)</code><br/>
+      <code>first_or_create_by!(...)</code>
     </td>
   </tr>
 </table>
