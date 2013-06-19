@@ -282,8 +282,16 @@ When upgrading, you should adopt this new convention. To do so, first remove
 binstubs to version control.
 
 Next, run `bundle exec rake rails:update:bin` to add the `bin/rails` and
-`bin/rake` binstubs (this is the last time you'll need to use `bundle exec
-rake`; now use `bin/rake` instead!).
+`bin/rake` binstubs. This is the last time you'll need to use `bundle exec
+rake`. From now on, you can use `bin/rake` instead.
+
+Better yet, if you add `bin` to your `PATH` environment variable, you can
+just run `rake`:
+
+@@@ bash
+# ~/.profile
+export PATH=$PATH:bin
+@@@
 
 Finally, add these binstubs (and `.gitignore`) to version control:
 
