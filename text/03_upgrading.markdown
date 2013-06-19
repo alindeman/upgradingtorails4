@@ -163,7 +163,7 @@ Open `Gemfile` in a text editor and change the line that starts with `gem
 
 @@@ ruby
 # Gemfile
-gem 'rails', '~>4.0.0.rc1'
+gem 'rails', '~>4.0.0.rc2'
 @@@
 
 Rails 4 also depends on newer versions of gems that drive the asset pipeline
@@ -174,7 +174,7 @@ and `coffee-rails` as well:
 # Gemfile
 
 # Replaces "gem 'sass-rails', '~>3.x.y'"
-gem 'sass-rails', '~>4.0.0.rc1'
+gem 'sass-rails', '~>4.0.0.rc2'
 
 # Replaces "gem 'coffee-rails', '~>3.x.y'"
 gem 'coffee-rails', '~>4.0.0'
@@ -192,7 +192,7 @@ promote them to the top level by removing `group :assets`:
 
 # Delete `group :assets` and move these gems
 # (and any others) to the top level
-gem 'sass-rails', '~>4.0.0.rc1'
+gem 'sass-rails', '~>4.0.0.rc2'
 gem 'coffee-rails', '~>4.0.0'
 gem 'uglifier', '>=1.3.0'
 @@@
