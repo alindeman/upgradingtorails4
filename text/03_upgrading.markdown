@@ -253,7 +253,7 @@ Finally, run `bundle update rspec-rails`.
 
 ### <a id="binstubs"></a>Binaries and Binstubs
 
-Binaries, commands like `rails` and `rake`, have been a source of confusion in
+Binaries--commands like `rails` and `rake`--have been a source of confusion in
 the Rails ecosystem for a while. For instance, in Rails 3, the `rails` command
 can be run alone (just `rails`) or via `script/rails`. It can also be run
 prefixed with `bundle exec`, though it is normally not necessary.
