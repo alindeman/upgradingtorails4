@@ -239,8 +239,8 @@ Tests are critical to a smooth upgrade process: they can help highlight
 breaking changes that need attention with you manually running through each
 code path in your application.
 
-If you use RSpec as your testing framework, upgrade it to the latest version to
-get Rails 4 support:
+If you use RSpec as your testing framework, upgrade it to the latest version
+for Rails 4 support:
 
 @@@ ruby
 # Gemfile
