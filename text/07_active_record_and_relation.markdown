@@ -281,7 +281,7 @@ Post.includes(:comments).where("comments.visible = ?", true)
 # posts, comments) that are referenced in a string SQL snippet.
 @@@
 
-Rails was required to parse the string in the `where` clause to figure out that
+Rails had to parse the string in the `where` clause to figure out that
 the `comments` table was referenced.
 
 In Rails 4, you must explicitly tell Rails that the query `references` a joined
@@ -461,7 +461,7 @@ dire consequences for the security of an application.
 Rails 4 changes where error messages are added for fields validated with
 `validates_confirmation_of` (or `validates :field, confirmation: true`).
 
-A confirmation validation requires that a field and its field\_confirmation
+A confirmation validation requires that a `field` and its `field\_confirmation`
 counterpart match.
 
 The typical example is a `User` with a confirmation validation on `password`:

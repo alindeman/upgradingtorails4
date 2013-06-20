@@ -121,7 +121,7 @@ Furthermore, Rails 4 will raise an error if a controller attempts to pass
 #### Non-Scalar Values
 
 **strong_parameters** requires special syntax to permit non-scalar values
-such an array or hash.
+such as an array or hash.
 
 Consider a system where users have interests such as "programming" or
 "rugby." A user may have many interests:
