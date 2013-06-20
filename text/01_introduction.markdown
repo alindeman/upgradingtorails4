@@ -53,6 +53,8 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Added information about required configuration changes to [enable JavaScript
   and CSS compression in production](#js-compress).
 * Updated version numbers to 4.0.0.rc2.
+* Added detailed information on [all the gems that were extracted in Rails
+  4](#extracted-gems).
 
 #### 0.10.1: April 29, 2013
 

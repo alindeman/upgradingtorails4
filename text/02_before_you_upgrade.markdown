@@ -68,3 +68,4 @@ After your Rails 4 application is running smoothly in production, consider
 making these changes:
 
 1. [Upgrade digitally signed cookies to encrypted cookies](#encrypted-cookies)
+1. [Remove any extracted gems that your application does not need](#extracted-gems)
