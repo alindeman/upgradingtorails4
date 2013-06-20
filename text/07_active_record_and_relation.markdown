@@ -217,10 +217,11 @@ Post.all.where("created_at > ?", 2.days.ago).class
 @@@
 
 In most cases, the change should not negatively affect your code. Both
-`ActiveRecord::Relation` and `Array` act as  `Enumerable`; furthermore, if
-there is a method that `ActiveRecord::Relation` does not respond to but `Array`
-does, the method will be proxied through to a version of the results that has
-been loaded into an `Array`.
+`ActiveRecord::Relation` and `Array` mix in  `Enumerable`, giving them many of
+the same methods; furthermore, if there is a method that
+`ActiveRecord::Relation` does not respond to but `Array` does, the method will
+be proxied through to a version of the results that has been loaded into an
+`Array`.
 
 However, if you see errors caused by code that previously expected an `Array`
 and is not handling the change to `ActiveRecord::Relation` properly, you can
