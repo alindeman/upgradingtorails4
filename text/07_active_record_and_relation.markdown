@@ -177,7 +177,7 @@ upgrading may be painful if you have many associations that use these options.
 
 The full list of deprecated options is shown below. All of these options
 can be replaced by a scope wrapped in a lambda passed as the second argument
-to `has_many`, `has_one`, or `belongs_to`:
+to `has\_many`, `has\_one`, or `belongs\_to`:
 
 * `:readonly`
 * `:order`
