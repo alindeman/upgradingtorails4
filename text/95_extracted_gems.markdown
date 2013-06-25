@@ -41,7 +41,7 @@ The table below describes each of the extracted gems and what it provides:
       <td>
         Provides an ActiveRecord-like abstraction over a RESTful API. You can
         quickly figure out if your application uses ActiveResource by searching
-        for classes that inherit from <pre>ActiveResource::Base</pre>. More
+        for classes that inherit from <code>ActiveResource::Base</code>. More
         details about ActiveResource are available in the <a
         href="#activeresource">ActiveResource</a> chapter.
       </td>
@@ -54,7 +54,7 @@ The table below describes each of the extracted gems and what it provides:
       <td>
         Rails 4 includes many improvements to fragment caching, but action and
         page caching have been extracted. If your application uses the
-        <pre>caches_page</pre> or <pre>caches_action</pre> directives in
+        <code>caches_page</code> or <code>caches_action</code> directives in
         any controller, you will need these gems. Otherwise, you can remove
         them.
       </td>
@@ -66,9 +66,9 @@ The table below describes each of the extracted gems and what it provides:
       <td>
         The ability to store session data in a database table has been
         extracted in Rails 4. You need this gem if you store session data in
-        the database by setting <pre>config.session_store
-        :active_record_store</pre> in
-        <pre>config/initializers/session_store.rb</pre>. Otherwise, you do not
+        the database by setting <code>config.session_store
+        :active_record_store</code> in
+        <code>config/initializers/session_store.rb</code>. Otherwise, you do not
         need this gem.
       </td>
     </tr>
@@ -79,7 +79,7 @@ The table below describes each of the extracted gems and what it provides:
       <td>
         Rails no longer encourages the use of observers, separate objects that
         can react to lifecycle events of ActiveRecord models. If you use
-        observers--classes that inherit from <pre>ActiveRecord::Observer</pre>,
+        observers--classes that inherit from <code>ActiveRecord::Observer</code>,
         you need this gem; otherwise, you can remove it. More information is
         available in the <a href="#observers">Observers</a> chapter.
       </td>
@@ -101,9 +101,9 @@ The table below describes each of the extracted gems and what it provides:
         <a href="https://github.com/rails/rails-perftest">rails-perftest</a>
       </th>
       <td>
-        Rails 4 extracts <pre>ActionDispatch::PerformanceTest</pre>. If your
+        Rails 4 extracts <code>ActionDispatch::PerformanceTest</code>. If your
         application includes performance tests (usually located in
-        <pre>test/performance</pre>), you need to bundle this gem. Otherwise,
+        <code>test/performance</code>), you need to bundle this gem. Otherwise,
         you can remove it. More information is available in the <a
         href="#performance-tests">Performance Tests</a> chapter.
       </td>
@@ -115,8 +115,8 @@ The table below describes each of the extracted gems and what it provides:
       <td>
         Rails previously included a little-known feature to obfuscate email
         addresses in hyperlinks, either with HTML entities or JavaScript code.
-        If your application uses the <pre>encode</pre> option with
-        <pre>mail_to</pre> in any views, keep this gem. Otherwise, it can be
+        If your application uses the <code>encode</code> option with
+        <code>mail_to</code> in any views, keep this gem. Otherwise, it can be
         removed. More information is available in the <a
         href="#actionview-encoded_mail_to">activerecord-encoded_mail_to</a>
         chapter.
