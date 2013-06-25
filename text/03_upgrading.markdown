@@ -163,7 +163,7 @@ Open `Gemfile` in a text editor and change the line that starts with `gem
 
 @@@ ruby
 # Gemfile
-gem 'rails', '~>4.0.0.rc2'
+gem 'rails', '~>4.0.0'
 @@@
 
 Rails 4 also depends on newer versions of gems that drive the asset pipeline
@@ -174,7 +174,7 @@ and `coffee-rails` as well:
 # Gemfile
 
 # Replaces "gem 'sass-rails', '~>3.x.y'"
-gem 'sass-rails', '~>4.0.0.rc2'
+gem 'sass-rails', '~>4.0.0'
 
 # Replaces "gem 'coffee-rails', '~>3.x.y'"
 gem 'coffee-rails', '~>4.0.0'
@@ -192,7 +192,7 @@ promote them to the top level by removing `group :assets`:
 
 # Delete `group :assets` and move these gems
 # (and any others) to the top level
-gem 'sass-rails', '~>4.0.0.rc2'
+gem 'sass-rails', '~>4.0.0'
 gem 'coffee-rails', '~>4.0.0'
 gem 'uglifier', '>=1.3.0'
 @@@
@@ -207,8 +207,8 @@ keep existing Rails features working properly after upgrading:
 # Gemfile
 gem 'actionpack-action_caching', '~>1.0.0'
 gem 'actionpack-page_caching', '~>1.0.0'
-gem 'actionpack-xml_parser', github: 'rails/actionpack-xml_parser'
-gem 'actionview-encoded_mail_to', '~>1.0.3'
+gem 'actionpack-xml_parser', '~>1.0.0'
+gem 'actionview-encoded_mail_to', '~>1.0.4'
 gem 'activerecord-session_store', '~>0.0.1'
 gem 'activeresource', '~>4.0.0.beta1'
 gem 'protected_attributes', '~>1.0.1'

@@ -385,8 +385,7 @@ from *rendering* XML as output), you will need to pull in the
 
 @@@ ruby
 # Gemfile
-gem 'actionpack-xml_parser',
-  github: 'rails/actionpack-xml_parser'
+gem 'actionpack-xml_parser', '~>1.0.0'
 @@@
 
 If your application does not need to accept XML input, I recommend leaving the
