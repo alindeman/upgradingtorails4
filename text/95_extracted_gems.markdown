@@ -1,4 +1,4 @@
-## <a id="extracted-gems"></a>Extracted Gems
+# <a id="extracted-gems"></a>Extracted Gems
 
 During the development of Rails 4, many features that were present in earlier
 versions of Rails were removed from Rails itself and extracted to gems.
