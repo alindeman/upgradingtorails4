@@ -1,9 +1,5 @@
 ## Introduction
 
-Even though Rails 4 is not yet released, it is important to start thinking
-about how easy or difficult it will be to upgrade your applications. It may
-be possible to nip certain problems in the bud now to save pain later.
-
 My goal with this book is to provide a clear path for upgrading Rails 3
 applications to Rails 4.
 
