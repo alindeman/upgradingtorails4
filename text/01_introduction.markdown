@@ -17,23 +17,20 @@ important sections that are relevant when upgrading an application. I recommend
 you read through the Deprecations section entirely first, then use the
 checklist as a guide when upgrading your applications.
 
-### Beta
+### Open Source
 
-This book is an evolving work in progress, so please excuse any typos or
-errors.
+The source code for the book is [open source hosted on
+GitHub](https://github.com/alindeman/upgradingtorails4). You are welcome to
+submit new content or distribute the book under the terms of the Creative
+Commons Attribution 3.0 license.
 
-It is also possible that since Rails 4 is currently in development, certain
-versions of the book may contain inaccuracies. I keep a close watch on the
-commit log for Rails 4, so these sorts of errors should be resolved in future
-updates.
-
-If you find errors or have questions, please reach out to me via email at
-<rails4@andylindeman.com>.
+If you find errors or have questions, please reach out by [filing an
+issue](https://github.com/alindeman/upgradingtorails4/issues).
 
 ### Website
 
 To purchase additional copies of this book--or a team license--visit
-<http://upgradingtorails4.com>. Thank you so much for supporting my work.
+<http://upgradingtorails4.com>.
 
 ### Cover Photo
 
@@ -43,6 +40,11 @@ the [CC BY 2.0
 license](http://creativecommons.org/licenses/by/2.0/).
 
 ### Changelog
+
+#### 1.1.0: October 20, 2013
+
+* The source code for the book is now open source. Proceeds from new sales
+  benefit [CFY](http://cfy.org).
 
 #### 1.0.0: June 25, 2013
 
