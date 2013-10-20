@@ -13,7 +13,7 @@ language: en
 #   This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
 #   This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 #
-copyright: "Copyright (C) 2012 Andy Lindeman."
+copyright: "Copyright (C) 2012-2013 Andy Lindeman. Licensed under CC BY 3.0."
 
 # Who's publishing this book.
 publisher: "Andy Lindeman"
@@ -41,4 +41,4 @@ authors:
   - "Andy Lindeman"
 
 # The base URL from your source code.
-base_url: http://example.com
+base_url: https://github.com/alindeman/upgradingtorails4
