@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'kitabu', github: 'alindeman/kitabu'
+gem 'kitabu', :git => 'https://github.com/alindeman/kitabu.git'
 gem 'pygments.rb'
 gem 'redcarpet'
 
