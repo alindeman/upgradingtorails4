@@ -87,7 +87,7 @@ license](http://creativecommons.org/licenses/by/2.0/).
 * Added information about the [`rails test` command](#new-testing) which is
   recommended over `rake test`.
 * Recommended [raising an error](#unpermitted-attributes) when an unpermitted
-  parameter is received by **strong_paramters**.
+  parameter is received by **strong_parameters**.
 * Added details about [`validates_confirmation_of` now adding error messages to
   the \_confirmation field](#validates-confirmation-of).
 
