@@ -7,10 +7,6 @@ Originally written by [Andy Lindeman](http://andylindeman.com) and now released
 under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/).
 
 Where should you go from here?
-* Buy the PDF, ePub, and mobi versions of book at
-  <http://upgradingtorails4.com>. **Proceeds since the book was open sourced
-  will be donated to <http://cfy.org/>.** You'll receive periodic updates
-  as the content is updated in this repository.
 * [Build the book yourself](#build-toolchain).
 * Contribute to the book. [Pull requests
   accepted](https://github.com/alindeman/upgradingtorails4/pulls).
